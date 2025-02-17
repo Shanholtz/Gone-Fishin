@@ -22,7 +22,7 @@ public class AngleNeedle : MonoBehaviour
     void Update()
     {
         // Get the user input (typically A/D or arrow keys)
-        float input = Input.GetAxis("Horizontal"); // -1 to 1 (left to right)
+        float input = Input.GetAxis("Horizontal") * -1; // -1 to 1 (left to right)
 
         // Calculate the rotation amount based on input and rotation speed
         float rotationAmount = rotationSpeed * input * Time.deltaTime;
