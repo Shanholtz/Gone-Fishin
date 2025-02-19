@@ -49,6 +49,8 @@ public class SCR_FishSpawner : MonoBehaviour
             {
                 Vector3 position = GetRandomPosition(false);
                 SCR_Fish fish_script = AddFish(position);
+
+                // This makes the fish start swimming within a 45 degree angle of the center, removing it will make the fish swim towards the center.
                 fish_script.transform.Rotate(Vector3.forward * Random.Range(-45.0f, 45.0f));
             }
         }
@@ -58,6 +60,7 @@ public class SCR_FishSpawner : MonoBehaviour
     {
         Vector3 position = Random.insideUnitCircle;
 
+        // .normalized makes the fish spawn on the spawn radius edges
         if (within_camera == false)
         {
             position = position.normalized;
