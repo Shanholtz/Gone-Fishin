@@ -22,6 +22,7 @@ public class SCR_Fish : MonoBehaviour
 
         //add action and event listners
         fishingCastController.OnHookCast += AssignHook;
+        fishingCastController.OnFishCaught += DisperseFish;
     }
 
     /// <summary>
@@ -32,14 +33,25 @@ public class SCR_Fish : MonoBehaviour
         hookToFollow = hook;
     }
 
+    void DisperseFish(SCR_Fish fish)
+    {
+        if (fish != this)
+        {
+          hookInSight = false;  
+        }
+        
+    }
+
     void OnDestroy(){
         fishingCastController.OnHookCast -= AssignHook;
+        fishingCastController.OnFishCaught -= DisperseFish;
     }
 
     void Update()
     {
-        if(fishingCastController.IsCast)
+        if(fishingCastController._fishingStates == FishingCastController.FishingStates.cast)
             CheckHookProximity();
+            
         Move();
     }
 
@@ -114,7 +126,7 @@ public class SCR_Fish : MonoBehaviour
 
             if (distanceToHook <= hookToFollow.hookedRadius)
             {
-                RemoveFish();
+                fishingCastController.CatchFish(this);
             }
         }
     }

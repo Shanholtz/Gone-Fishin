@@ -10,11 +10,10 @@ public class Catch : MonoBehaviour
 {
     private string sequence = "";
     private string userInput = "";
-    private int sequenceLength = 5;
+    public int sequenceLength = 5;
     private char[] possibleInputs = {'W', 'A', 'S', 'D'};
 
     public TMP_Text sequenceText;
-    public Transform Hook;
 
     // Start is called before the first frame update
     void Start()
