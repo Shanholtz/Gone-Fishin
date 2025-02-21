@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Microsoft.Unity.VisualStudio.Editor;
@@ -8,12 +9,23 @@ public class FishingCastController : MonoBehaviour
 {
     public GameObject fishingLinePrefab; // The prefab for the fishing line (LineRenderer)
     public GameObject hook;
+    Vector3 origHookPos;
+    private SCR_Hook hookLogic;
+
     public Slider powerBar;
     private Vector3 startPosition; // Starting position of the line (rod's position) 
     private GameObject currentLine; // The instantiated fishing line
     private GameObject currentHook;
     private LineRenderer lineRenderer; // The line renderer component
     float power;
+
+    public bool IsCast;
+
+    public Action<SCR_Hook> OnHookCast;
+
+    void Start() {
+        origHookPos = hook.transform.position;
+    }
 
     // Update is called once per frame
     void Update()
@@ -22,11 +34,16 @@ public class FishingCastController : MonoBehaviour
         {
             CastLine();
         }
+
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            //Return to start/despawn line 
+            DoReturnLine();
+        }
     }
 
     private void CastLine()
     {
-
         // Start the casting when player clicks
         startPosition = transform.position;
         startPosition.z = 0f; // Ensure the position is at the same plane as the rod
@@ -46,13 +63,30 @@ public class FishingCastController : MonoBehaviour
         power = powerBar.value;
 
         // Optionally, make the line disappear after the cast
-         // Destroy the line after 3 seconds (adjust as needed)
-
         currentHook = Instantiate(hook, endPos, Quaternion.identity);
+        currentHook.transform.position = endPos;  
+        hookLogic = currentHook.GetComponent<SCR_Hook>();
 
-        currentHook.transform.position = endPos;
+        //Let Fish know we threw a hook out!
+        OnHookCast?.Invoke(hookLogic);
+      
+        IsCast = true;
 
-        Destroy(currentHook, 3f);
-        Destroy(currentLine, 3f);
+        StartCoroutine(ReturnLine());
+    }
+
+    IEnumerator ReturnLine()
+    {
+        yield return new WaitForSeconds(3f);
+
+        DoReturnLine();
+    }
+
+    void DoReturnLine()
+    {
+        Destroy(currentHook);
+        Destroy(currentLine);
+
+        IsCast = false;
     }
 }

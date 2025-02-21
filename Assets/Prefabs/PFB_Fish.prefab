@@ -126,9 +126,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7852427924444507833}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d12bed540630c04c832f5243f74097a, type: 3}
+  m_Script: {fileID: 11500000, guid: 99e62790d99af974e98a0d21a9076ec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fish_spawner: {fileID: 0}
   game_area: {fileID: 0}
   speed: 0
+  hookInSight: 0

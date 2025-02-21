@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SCR_Fish : MonoBehaviour
 {
+    private FishingCastController fishingCastController;
     public SCR_FishSpawner fish_spawner;
     public GameObject game_area;
 
@@ -11,26 +12,42 @@ public class SCR_Fish : MonoBehaviour
 
     public bool hookInSight;
 
-    private SCR_Hook hook;
+    private SCR_Hook hookToFollow;
     private Coroutine changeDirectionCoroutine; // Track the coroutine
 
     void Start()
     {
-        hook = FindObjectOfType<SCR_Hook>();
+        fishingCastController = FindObjectOfType<FishingCastController>();
         changeDirectionCoroutine = StartCoroutine(ChangeDirectionRoutine()); // Start the coroutine and store its reference
+
+        //add action and event listners
+        fishingCastController.OnHookCast += AssignHook;
+    }
+
+    /// <summary>
+    /// Assigns current hook to follow.
+    /// </summary>
+    /// <param name="hook"></param>
+    void AssignHook(SCR_Hook hook){
+        hookToFollow = hook;
+    }
+
+    void OnDestroy(){
+        fishingCastController.OnHookCast -= AssignHook;
     }
 
     void Update()
     {
-        CheckHookProximity();
+        if(fishingCastController.IsCast)
+            CheckHookProximity();
         Move();
     }
 
     void Move()
     {
-        if (hookInSight && hook != null)
+        if (hookInSight && hookToFollow != null)
         {
-            Vector3 direction = (hook.transform.position - transform.position).normalized;
+            Vector3 direction = (hookToFollow.transform.position - transform.position).normalized;
             transform.position += direction * (Time.deltaTime * speed);
 
             // Smoothly rotate towards the hook
@@ -70,7 +87,7 @@ public class SCR_Fish : MonoBehaviour
         {
             StopCoroutine(changeDirectionCoroutine);
         }
-
+        //transform.Rotate(Vector3.forward * 180);
         Destroy(gameObject);
         fish_spawner.fish_count = Mathf.Max(0, fish_spawner.fish_count - 1); // Ensure fish_count doesn't go below zero
     }
@@ -89,15 +106,13 @@ public class SCR_Fish : MonoBehaviour
 
     void CheckHookProximity()
     {
-        if (hook != null)
+        if (hookToFollow != null)
         {
-            float distanceToHookSqr = (hook.transform.position - transform.position).sqrMagnitude; // Use squared distance for performance
-            float attractionRadiusSqr = hook.attractionRadius * hook.attractionRadius;
-            float hookedRadiusSqr = hook.hookedRadius * hook.hookedRadius;
+            float distanceToHook = Vector3.Distance(hookToFollow.transform.position, transform.position); // Use squared distance for performance
 
-            hookInSight = distanceToHookSqr <= attractionRadiusSqr;
+            hookInSight = distanceToHook <= hookToFollow.attractionRadius;
 
-            if (distanceToHookSqr <= hookedRadiusSqr)
+            if (distanceToHook <= hookToFollow.hookedRadius)
             {
                 RemoveFish();
             }
