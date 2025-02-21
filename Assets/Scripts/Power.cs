@@ -12,8 +12,8 @@ public class Power : MonoBehaviour
     private Vector3 startPos;
     private Vector3 initialMousePos;
     private float meterHeight;
-    public float speed = 0.0001f;
 
+    public float speed = 0.005f;
     public GameObject Bar;
 
     // Start is called before the first frame update
