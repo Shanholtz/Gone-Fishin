@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SCR_Hook : MonoBehaviour
 {
-    
     public GameObject game_area;
 
     public float attractionRadius = 3.0f;

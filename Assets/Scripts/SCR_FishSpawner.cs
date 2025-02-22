@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SCR_FishSpawner : MonoBehaviour
 {
-
     public GameObject game_area;
     public GameObject fish_prefab;
 
