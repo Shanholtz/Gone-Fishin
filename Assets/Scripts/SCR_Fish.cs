@@ -51,7 +51,7 @@ public class SCR_Fish : MonoBehaviour
     {
         if(fishingCastController._fishingStates == FishingCastController.FishingStates.Cast)
             CheckHookProximity();
-            
+    
         Move();
     }
 

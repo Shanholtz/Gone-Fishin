@@ -19,6 +19,10 @@ public class FishingRodController : MonoBehaviour
     void Update()
     {
         RotateRod();
+        if (Input.GetMouseButtonUp(0))
+        {
+            this.enabled = false;
+        }
     }
 
     private void RotateRod()
