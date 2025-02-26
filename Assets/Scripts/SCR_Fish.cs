@@ -86,9 +86,11 @@ public class SCR_Fish : MonoBehaviour
 
         // Check if the fish is outside the game area
         float distanceSqr = (transform.position - game_area.transform.position).sqrMagnitude;
-        if (distanceSqr > fish_spawner.death_circle_radius * fish_spawner.death_circle_radius)
+        if (distanceSqr > fish_spawner.game_boundary_circle_radius * fish_spawner.game_boundary_circle_radius)
         {
-            RemoveFish();
+            // Turns the fish around and rotates a random degree betweem -45 and 45 when reaching the game boundary.
+            transform.Rotate(Vector3.forward * 180);
+            transform.Rotate(Vector3.forward * Random.Range(-45.0f, 45.0f));
         }
     }
 
@@ -99,7 +101,7 @@ public class SCR_Fish : MonoBehaviour
         {
             StopCoroutine(changeDirectionCoroutine);
         }
-        //transform.Rotate(Vector3.forward * 180);
+        
         Destroy(gameObject);
         fish_spawner.fish_count = Mathf.Max(0, fish_spawner.fish_count - 1); // Ensure fish_count doesn't go below zero
     }

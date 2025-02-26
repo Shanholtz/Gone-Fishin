@@ -12,7 +12,7 @@ public class SCR_FishSpawner : MonoBehaviour
     public int fish_per_frame = 1;
 
     public float spawn_circle_radius = 80.0f;
-    public float death_circle_radius = 90.0f;
+    public float game_boundary_circle_radius = 90.0f;
 
     public float fastest_speed = 12.0f;
     public float slowest_speed = 0.75f;
