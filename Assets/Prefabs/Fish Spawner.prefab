@@ -41,15 +41,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1267687858188764005}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 525844c0ca0e60f4a820853f85ead651, type: 3}
+  m_Script: {fileID: 11500000, guid: 6885eab5d7929a24eb97e8974d672f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game_area: {fileID: 0}
+  game_area: {fileID: 5405795717336493088, guid: 2b26be38e7e91da4e99a2b448673806e, type: 3}
   fish_prefab: {fileID: 7852427924444507833, guid: d555dc6821c991f428e616cb2b86f11f, type: 3}
   fish_count: 0
   fish_limit: 10
   fish_per_frame: 1
-  spawn_circle_radius: 5
-  death_circle_radius: 8
-  fastest_speed: 3
+  spawn_circle_radius: 80
+  game_boundary_circle_radius: 90
+  fastest_speed: 12
   slowest_speed: 0.75
