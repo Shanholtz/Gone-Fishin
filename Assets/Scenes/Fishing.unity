@@ -460,6 +460,7 @@ MonoBehaviour:
   game_boundary_circle_radius: 10
   fastest_speed: 5
   slowest_speed: 0.75
+  fishHooked: 0
 --- !u!1 &1338933975 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5405795717336493088, guid: 2b26be38e7e91da4e99a2b448673806e, type: 3}

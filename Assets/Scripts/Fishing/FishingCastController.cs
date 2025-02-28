@@ -31,9 +31,10 @@ public class FishingCastController : MonoBehaviour
     private GameObject currentHook; // Instantiated hook object
     private LineRenderer lineRenderer; // Line renderer component
     private float power; // Casting power
-    
-    
-    
+
+    private SCR_FishSpawner fishSpawner; // Reference to the Fish Spawner
+
+
 
     void Start()
     {
@@ -41,6 +42,12 @@ public class FishingCastController : MonoBehaviour
         if (catching != null)
         {
             catching.complete += OnCatchingComplete; // Subscribe to the event
+        }
+        // Initialize fishSpawner
+        fishSpawner = FindObjectOfType<SCR_FishSpawner>();
+        if (fishSpawner == null)
+        {
+            Debug.LogError("FishSpawner not found in the scene!");
         }
     }
 
@@ -138,8 +145,14 @@ public class FishingCastController : MonoBehaviour
 
     public void CatchFish(SCR_Fish fish)
     {
+        // Notify all fish that one has been caught
+        fishSpawner.fishHooked = true;
+        OnFishCaught?.Invoke(fish);
+        
+        Debug.Log("fish is on");
         // Start reeling state and attach fish to hook
         fish.transform.SetParent(hook.transform);
-        OnFishCaught?.Invoke(fish);
+
+
     }
 }

@@ -11,12 +11,13 @@ public class SCR_FishSpawner : MonoBehaviour
     public int fish_limit = 10;
     public int fish_per_frame = 1;
 
-    public float spawn_circle_radius = 80.0f;
-    public float game_boundary_circle_radius = 90.0f;
+    public float spawn_circle_radius = 5.0f;
+    public float game_boundary_circle_radius = 10.0f;
 
     public float fastest_speed = 12.0f;
     public float slowest_speed = 0.75f;
-
+    
+    public bool fishHooked = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,7 @@ public class SCR_FishSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MaintainPopulation();
+        //MaintainPopulation();
     }
 
     void InitialPopulation()

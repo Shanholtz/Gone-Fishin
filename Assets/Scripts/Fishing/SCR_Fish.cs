@@ -15,6 +15,9 @@ public class SCR_Fish : MonoBehaviour
     private SCR_Hook hookToFollow;
     private Coroutine changeDirectionCoroutine; // Track the coroutine
 
+    private SCR_FishSpawner fishSpawner; // Reference to the Fish Spawner
+
+
     void Start()
     {
         fishingCastController = FindObjectOfType<FishingCastController>();
@@ -29,7 +32,8 @@ public class SCR_Fish : MonoBehaviour
     /// Assigns current hook to follow.
     /// </summary>
     /// <param name="hook"></param>
-    void AssignHook(SCR_Hook hook){
+    void AssignHook(SCR_Hook hook)
+    {
         hookToFollow = hook;
     }
 
@@ -37,26 +41,39 @@ public class SCR_Fish : MonoBehaviour
     {
         if (fish != this)
         {
-          hookInSight = false;  
+            hookInSight = false;
+
+            // Make fish swim away from the hook, without this, the fish will just continue towards the hook.
+            if (hookToFollow != null)
+            {
+                Vector3 runAwayDircection = (transform.position - hookToFollow.transform.position).normalized;
+                transform.rotation = Quaternion.LookRotation(Vector3.forward, runAwayDircection);
+
+                // Move in the new direction
+                transform.position += runAwayDircection * (Time.deltaTime * speed * 2f); // Move faster when dispersing
+            }
+
         }
-        
+
     }
 
-    void OnDestroy(){
+    void OnDestroy()
+    {
         fishingCastController.OnHookCast -= AssignHook;
         fishingCastController.OnFishCaught -= DisperseFish;
     }
 
     void Update()
     {
-        if(fishingCastController._fishingStates == FishingCastController.FishingStates.Cast)
+        if (fishingCastController._fishingStates == FishingCastController.FishingStates.Cast)
             CheckHookProximity();
-    
+
         Move();
     }
 
     void Move()
     {
+
         if (hookInSight && hookToFollow != null)
         {
             Vector3 direction = (hookToFollow.transform.position - transform.position).normalized;
@@ -84,14 +101,27 @@ public class SCR_Fish : MonoBehaviour
             }
         }
 
-        // Check if the fish is outside the game area
         float distanceSqr = (transform.position - game_area.transform.position).sqrMagnitude;
-        if (distanceSqr > fish_spawner.game_boundary_circle_radius * fish_spawner.game_boundary_circle_radius)
+        float boundarySqr = fish_spawner.game_boundary_circle_radius * fish_spawner.game_boundary_circle_radius;
+
+        // Checks if fish is outside of the game boundary.
+        if (distanceSqr > boundarySqr)
         {
-            // Turns the fish around and rotates a random degree betweem -45 and 45 when reaching the game boundary.
-            transform.Rotate(Vector3.forward * 180);
-            transform.Rotate(Vector3.forward * Random.Range(-45.0f, 45.0f));
+            if (fish_spawner.fishHooked)
+            {
+                // if a fish is hooked, removes the fish who touch the boundary
+                Debug.Log("Fish is outside boundary and a fish is hooked. Removing fish.");
+                RemoveFish();
+            }
+            else
+            {
+                // makes fish turn around and adjust angle.
+                transform.Rotate(Vector3.forward * 180);
+                transform.Rotate(Vector3.forward * Random.Range(-45.0f, 45.0f));
+            }
         }
+
+
     }
 
     void RemoveFish()
@@ -101,14 +131,15 @@ public class SCR_Fish : MonoBehaviour
         {
             StopCoroutine(changeDirectionCoroutine);
         }
-        
+
         Destroy(gameObject);
         fish_spawner.fish_count = Mathf.Max(0, fish_spawner.fish_count - 1); // Ensure fish_count doesn't go below zero
     }
 
     IEnumerator ChangeDirectionRoutine()
     {
-        while (!hookInSight)
+        while (!hookInSight && !fish_spawner.fishHooked) // Stop changing direction when a fish is hooked
+
         {
             float waitTime = Random.Range(1f, 5f); // Random time between direction changes
             yield return new WaitForSeconds(waitTime);
@@ -116,8 +147,8 @@ public class SCR_Fish : MonoBehaviour
             float randomAngle = Random.Range(-90f, 90f); // Adjust rotation range
             transform.Rotate(Vector3.forward * randomAngle);
         }
-    }
 
+    }
     void CheckHookProximity()
     {
         if (hookToFollow != null)
@@ -131,5 +162,7 @@ public class SCR_Fish : MonoBehaviour
                 fishingCastController.CatchFish(this);
             }
         }
+
     }
+    
 }
