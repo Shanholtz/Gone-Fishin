@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        Debug.Log($"Cards in Deck: {deckManager.deck.Count}");
         DealInitialCards();
     }
 
@@ -23,14 +22,13 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < 5; i++) // Deal 5 cards to each player
         {
-            DrawCard(playerHand);
-            DrawCard(opponentHand);
+            DrawCard(playerHand, playerHandPanel);
+            DrawCard(opponentHand, opponentHandPanel);
         }
     }
 
-    public void DrawCard(List<Card> hand)
+    public void DrawCard(List<Card> hand, Transform panel = null)
     {
-        
         if (deckManager.deck.Count > 0)
         {
             Card drawnCard = deckManager.deck[0];
@@ -38,8 +36,8 @@ public class GameManager : MonoBehaviour
             hand.Add(drawnCard);
 
             drawnCard.gameObject.SetActive(true);
-            drawnCard.transform.SetParent(playerHandPanel, false);
-            drawnCard.transform.localScale = Vector3.one;
+            drawnCard.transform.SetParent(panel, false);
+            drawnCard.transform.localScale = Vector2.one;
         }
     }
 

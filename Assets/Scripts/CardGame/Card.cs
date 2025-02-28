@@ -18,6 +18,7 @@ public class Card : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sortingLayerName = "Cards";
         UpdateCardFace();
     }
 
