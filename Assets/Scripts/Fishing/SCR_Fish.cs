@@ -52,9 +52,7 @@ public class SCR_Fish : MonoBehaviour
                 // Move in the new direction
                 transform.position += runAwayDircection * (Time.deltaTime * speed * 2f); // Move faster when dispersing
             }
-
         }
-
     }
 
     void OnDestroy()
@@ -110,7 +108,7 @@ public class SCR_Fish : MonoBehaviour
             if (fish_spawner.fishHooked)
             {
                 // if a fish is hooked, removes the fish who touch the boundary
-                Debug.Log("Fish is outside boundary and a fish is hooked. Removing fish.");
+                //Debug.Log("Fish is outside boundary and a fish is hooked. Removing fish.");
                 RemoveFish();
             }
             else
@@ -149,9 +147,10 @@ public class SCR_Fish : MonoBehaviour
         }
 
     }
+
     void CheckHookProximity()
     {
-        if (hookToFollow != null)
+        if (hookToFollow != null && !hookToFollow.isFishHooked) // Check if hook is not already hooked
         {
             float distanceToHook = Vector3.Distance(hookToFollow.transform.position, transform.position); // Use squared distance for performance
 
@@ -160,9 +159,9 @@ public class SCR_Fish : MonoBehaviour
             if (distanceToHook <= hookToFollow.hookedRadius)
             {
                 fishingCastController.CatchFish(this);
+                hookToFollow.isFishHooked = true; // Set the hook as hooked
             }
         }
-
     }
-    
+
 }

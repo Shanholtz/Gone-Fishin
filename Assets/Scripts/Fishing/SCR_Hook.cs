@@ -9,6 +9,9 @@ public class SCR_Hook : MonoBehaviour
     public float attractionRadius = 3.0f;
     public float hookedRadius = 0.25f;
 
+    public bool isFishHooked = false; // New flag to track if a fish is hooked
+
+
     // Start is called before the first frame update
     void Start()
     {

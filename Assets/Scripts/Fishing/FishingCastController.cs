@@ -138,8 +138,15 @@ public class FishingCastController : MonoBehaviour
     void DoReturnLine()
     {
         // Clean up the hook and line when retracting
-        Destroy(currentHook);
-        Destroy(currentLine);
+        if (currentHook != null)
+        {
+            currentHook.GetComponent<SCR_Hook>().isFishHooked = false; // Reset the hook state
+            Destroy(currentHook);
+        }
+        if (currentLine != null)
+        {
+            Destroy(currentLine);
+        }
         _fishingStates = FishingStates.Idle;
     }
 
