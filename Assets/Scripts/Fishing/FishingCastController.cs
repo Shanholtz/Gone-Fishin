@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,17 +9,19 @@ public class FishingCastController : MonoBehaviour
     // Fishing line and hook references
     public GameObject fishingLinePrefab; // Prefab for the fishing line (LineRenderer)
     public GameObject hook; // Hook object
+
     // Fishing mechanics
     public float reelSpeed = 0.5f;
     public Slider powerBar; // Power meter for casting strength
-    public enum FishingStates   // Fishing states
+
+    public enum FishingStates // Fishing states
     {
         Idle,
         Cast,
         Reeling,
     }
     public FishingStates _fishingStates;
-    
+
     // Events
     public Action<SCR_Hook> OnHookCast;
     public Action<SCR_Fish> OnFishCaught;
@@ -33,8 +36,6 @@ public class FishingCastController : MonoBehaviour
     private float power; // Casting power
 
     private SCR_FishSpawner fishSpawner; // Reference to the Fish Spawner
-
-
 
     void Start()
     {
@@ -59,15 +60,7 @@ public class FishingCastController : MonoBehaviour
             CastLine();
         }
 
-        // Handling reeling and returning
-        if (_fishingStates == FishingStates.Cast)
-        {
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                DoReturnLine(); // Return the line
-            }
-        }
-
+        // Handle reeling
         if (_fishingStates == FishingStates.Reeling)
         {
             HandleReeling();
@@ -84,7 +77,7 @@ public class FishingCastController : MonoBehaviour
         currentLine = Instantiate(fishingLinePrefab, startPosition, Quaternion.identity);
         lineRenderer = currentLine.GetComponent<LineRenderer>();
         lineRenderer.SetPosition(0, startPosition);
-        
+
         // Calculate cast direction and endpoint
         Vector2 castDirection = transform.up.normalized;
         Vector2 endPos = startPosition + castDirection * (power / 10);
@@ -106,7 +99,7 @@ public class FishingCastController : MonoBehaviour
     private void HandleReeling()
     {
         float speed = reelSpeed;
-        
+
         // Increase reeling speed if holding left mouse button
         if (Input.GetMouseButton(0))
         {
@@ -121,6 +114,12 @@ public class FishingCastController : MonoBehaviour
         if (Vector3.Distance(currentHook.transform.position, transform.position) <= 1)
         {
             Debug.Log("Fish caught");
+
+            // Only return the line if no fish is hooked
+            if (hookLogic != null && !hookLogic.isFishHooked)
+            {
+                DoReturnLine(); // Clean up the line and hook after catching the fish
+            }
         }
     }
 
@@ -131,35 +130,59 @@ public class FishingCastController : MonoBehaviour
 
     IEnumerator ReturnLine()
     {
-        yield return new WaitForSeconds(3f);
-        //DoReturnLine(); // Uncomment if auto-return is desired
+        yield return new WaitForSeconds(5f); // Wait for 5 seconds
+
+        // Only return the line if no fish is hooked
+        if (hookLogic != null && !hookLogic.isFishHooked)
+        {
+            DoReturnLine(); // Automatically return the line after a delay
+        }
     }
 
     void DoReturnLine()
     {
-        // Clean up the hook and line when retracting
-        if (currentHook != null)
+        // Only clean up the hook and line if no fish is hooked
+        if (hookLogic != null && !hookLogic.isFishHooked)
         {
-            currentHook.GetComponent<SCR_Hook>().isFishHooked = false; // Reset the hook state
-            Destroy(currentHook);
+            // Clean up the hook and line when retracting
+            if (currentHook != null)
+            {
+                currentHook.GetComponent<SCR_Hook>().isFishHooked = false; // Reset the hook state
+                Destroy(currentHook);
+            }
+            if (currentLine != null)
+            {
+                Destroy(currentLine);
+            }
+            _fishingStates = FishingStates.Idle; // Reset the fishing state
         }
-        if (currentLine != null)
-        {
-            Destroy(currentLine);
-        }
-        _fishingStates = FishingStates.Idle;
     }
 
+    // starts the letter sequence once fish is caught.
     public void CatchFish(SCR_Fish fish)
     {
         // Notify all fish that one has been caught
         fishSpawner.fishHooked = true;
         OnFishCaught?.Invoke(fish);
-        
-        Debug.Log("fish is on");
+
+        Debug.Log("Fish is on");
         // Start reeling state and attach fish to hook
         fish.transform.SetParent(hook.transform);
 
+        // Mark the hook as having caught a fish
+        if (hookLogic != null)
+        {
+            hookLogic.isFishHooked = true;
+        }
 
+        // Start the input sequence when the fish is hooked
+        if (catching != null)
+        {
+            catching.GenerateSequence();
+            catching.UpdateUI();
+        }
+
+        // Start reeling state and attach fish to hook
+        fish.transform.SetParent(hook.transform);
     }
 }

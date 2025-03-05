@@ -1,35 +1,25 @@
 using System;
-using System.CodeDom.Compiler;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class Catch : MonoBehaviour
 {
     public string sequence = "";
     public int sequenceLength = 5;
-    public char[] possibleInputs = {'W', 'A', 'S', 'D'};
+    public char[] possibleInputs = { 'W', 'A', 'S', 'D' };
 
     public TMP_Text sequenceText;
 
     public Action complete;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+    private SCR_Hook hookLogic;
+
+    // Begins the letter seqeunce. 
     void Update()
     {
-        if (Input.GetMouseButtonUp(0)){
-            generateSequence();
-            UpdateUI();
-        }
-
+     
         if (sequence.Length > 0)
         {
             char expectedKey = sequence[0];
@@ -52,7 +42,7 @@ public class Catch : MonoBehaviour
                     else // Incorrect input
                     {
                         Debug.Log("Incorrect input. Restarting sequence.");
-                        generateSequence();
+                        GenerateSequence();
                         UpdateUI();
                     }
                     break; // Prevent multiple keys from being processed at once
@@ -61,11 +51,13 @@ public class Catch : MonoBehaviour
         }
     }
 
-    public void generateSequence()
+
+    public void GenerateSequence()
     {
         sequence = "";
-        for (int i=0; i < sequenceLength; i++)
+        for (int i = 0; i < sequenceLength; i++)
         {
+            // Explicitly use UnityEngine.Random to avoid ambiguity
             sequence += possibleInputs[UnityEngine.Random.Range(0, possibleInputs.Length)];
         }
     }

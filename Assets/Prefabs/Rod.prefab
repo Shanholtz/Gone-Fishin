@@ -45,9 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2276d9c609db82e4eb7bde7da75f1f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game_area: {fileID: 0}
+  gameArea: {fileID: 5916680247870177761}
   attractionRadius: 5
   hookedRadius: 0.25
+  isFishHooked: 0
 --- !u!1 &4085305797975335847
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,8 +248,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishingLinePrefab: {fileID: 5916680247870177761}
   hook: {fileID: 472467744690463559}
+  reelSpeed: 0.5
   powerBar: {fileID: 0}
-  IsCast: 0
+  _fishingStates: 0
+  catching: {fileID: 0}
 --- !u!1001 &4714004192084409018
 PrefabInstance:
   m_ObjectHideFlags: 0

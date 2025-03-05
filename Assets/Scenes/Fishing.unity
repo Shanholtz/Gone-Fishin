@@ -131,6 +131,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 291436836920267470, guid: 3c0a7ef63b203d3479c7d3dd6c499438, type: 3}
+      propertyPath: catching
+      value: 
+      objectReference: {fileID: 1976781672}
+    - target: {fileID: 291436836920267470, guid: 3c0a7ef63b203d3479c7d3dd6c499438, type: 3}
       propertyPath: powerBar
       value: 
       objectReference: {fileID: 347254837}
@@ -451,15 +455,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6885eab5d7929a24eb97e8974d672f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game_area: {fileID: 1338933975}
-  fish_prefab: {fileID: 7852427924444507833, guid: d555dc6821c991f428e616cb2b86f11f, type: 3}
-  fish_count: 0
-  fish_limit: 10
-  fish_per_frame: 1
-  spawn_circle_radius: 10
-  game_boundary_circle_radius: 10
-  fastest_speed: 5
-  slowest_speed: 0.75
+  gameArea: {fileID: 1338933975}
+  fishPrefab: {fileID: 7852427924444507833, guid: d555dc6821c991f428e616cb2b86f11f, type: 3}
+  fishCount: 0
+  fishLimit: 10
+  fishPerFrame: 1
+  spawnCircleRadius: 5
+  gameBoundaryCircleRadius: 10
+  fastestSpeed: 5
+  slowestSpeed: 0.75
   fishHooked: 0
 --- !u!1 &1338933975 stripped
 GameObject:
