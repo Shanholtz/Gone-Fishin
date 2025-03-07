@@ -6,8 +6,11 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public HandManager PlayerHand;
+    public AIManager aiManager;
     public float displayTime = 5f;
     private int handCount;
+
+    public bool Changeturn = true;
 
     public void Match()
     {
@@ -39,11 +42,21 @@ public class GameManager : MonoBehaviour
         }
 
         StartCoroutine(Delay(displayTime));
+        ChangeTurn();
     }
 
     private IEnumerator Delay(float delay)
     {
         yield return new WaitForSeconds(delay);
         PlayerHand.PositionCards();
+    }
+
+    void ChangeTurn()
+    {
+        if (Changeturn)
+        {
+            Changeturn = false;
+        }
+        else{Changeturn = true;}
     }
 }

@@ -8,13 +8,15 @@ public class Card : MonoBehaviour
     public string rank;
     public string suit;
     public bool isFaceUp = false;
+    public float hoverHeight = 0.5f; 
 
     public Sprite frontSprite;
     public Sprite backSprite;
 
     private SpriteRenderer spriteRenderer;
-
     private bool dragging;
+    private Vector2 assignedPosition;
+    private Vector2 hoverOffset;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +30,14 @@ public class Card : MonoBehaviour
 
         spriteRenderer.sortingLayerName = "Cards";
         UpdateCardFace();
+
+        hoverOffset = new Vector2(0, hoverHeight);
+    }
+
+    public void SetPosition(Vector2 newPos)
+    {
+        assignedPosition = newPos;
+        transform.position = assignedPosition;
     }
 
     public void FlipCard(bool faceUp)
@@ -53,31 +63,18 @@ public class Card : MonoBehaviour
         spriteRenderer.sprite = isFaceUp ? frontSprite : backSprite;
     }
 
-    private void OnMouseDown()
-    {
-        Debug.Log("Clicked " + gameObject.name);
-    }
-
     private void OnMouseOver()
     {
-        Debug.Log("Hovering on " + gameObject.name);
-    }
-
-    private void OnMouseDrag()
-    {
-        Debug.Log("Dragging " + gameObject.name);
-
-        //todo find way to move with mouse
-        transform.position = Camera.main.ScreenToViewportPoint( Input.mousePosition);
-        dragging = true;
-    }
-
-    private void OnMouseUp()
-    {
-        if (dragging)
+        if (transform.parent != transform.parent.CompareTag("Deck"))
         {
-            Debug.Log("Dragging ended for" + gameObject.name);
+            transform.position = assignedPosition + hoverOffset;
         }
+        
+    }
+
+    private void OnMouseExit()
+    {
+        transform.position = assignedPosition;
     }
 
     //For collision. This may require at least one of the objects to have Rigidbody2d. 
