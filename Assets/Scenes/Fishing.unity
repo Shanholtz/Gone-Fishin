@@ -602,9 +602,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameArea: {fileID: 1338933975}
   fishPrefab: {fileID: 7852427924444507833, guid: d555dc6821c991f428e616cb2b86f11f, type: 3}
+  fishSprites:
+  - {fileID: 21300000, guid: 144721759268387438deae5a1c812f27, type: 3}
+  - {fileID: 21300000, guid: 026e082d4898db94bbaecf0569cd6133, type: 3}
+  - {fileID: 21300000, guid: 4f779ff85cc9f4a4fa97de212b6bc999, type: 3}
   fishCount: 0
   fishLimit: 10
   fishPerFrame: 1
+  rareFishCount: 0
   spawnCircleRadius: 5
   gameBoundaryCircleRadius: 10
   fastestSpeed: 5

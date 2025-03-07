@@ -73,8 +73,8 @@ public class SCR_Fish : MonoBehaviour
             Vector3 direction = (hookToFollow.transform.position - transform.position).normalized;
             transform.position += direction * (Time.deltaTime * speed);
 
-            // Smoothly rotate towards the hook
-            Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, direction);
+            // Smoothly rotate towards the hook (making sure the "right" side faces forward)
+            Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, Vector3.Cross(Vector3.forward, direction));
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * speed);
 
             // Stop the coroutine when moving towards the hook
@@ -86,7 +86,7 @@ public class SCR_Fish : MonoBehaviour
         }
         else
         {
-            transform.position += transform.up * (Time.deltaTime * speed);
+            transform.position += transform.right * (Time.deltaTime * speed);
 
             // Restart the coroutine if not already running
             if (changeDirectionCoroutine == null)
@@ -108,9 +108,20 @@ public class SCR_Fish : MonoBehaviour
             }
             else
             {
-                // Makes fish turn around and adjust angle.
-                transform.Rotate(Vector3.forward * 180);
-                transform.Rotate(Vector3.forward * Random.Range(-45.0f, 45.0f));
+                // Calculate the new direction by flipping the fish 180 degrees
+                Vector3 newDirection = -transform.right; // Reverse the current direction
+
+                // Apply the new rotation explicitly instead of using transform.Rotate()
+                transform.rotation = Quaternion.LookRotation(Vector3.forward, newDirection);
+
+                // Move slightly forward in the new direction to avoid getting stuck
+                transform.position += newDirection * 0.1f;
+
+                // Add slight random variation to avoid perfectly symmetrical bouncing
+                float randomAngle = Random.Range(-45.0f, 45.0f);
+                transform.rotation *= Quaternion.Euler(0, 0, randomAngle);
+
+                Debug.Log("fish has hit the edge!");
             }
         }
     }
