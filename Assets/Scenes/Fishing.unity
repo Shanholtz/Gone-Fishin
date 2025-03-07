@@ -610,6 +610,11 @@ MonoBehaviour:
   fastestSpeed: 5
   slowestSpeed: 0.75
   fishHooked: 0
+--- !u!4 &591548541 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2336461243443522830, guid: d55fc5de3f6401c4ebc9a23a8dc45e49, type: 3}
+  m_PrefabInstance: {fileID: 4605642542488403835}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1329703600
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,6 +707,11 @@ CanvasRenderer:
 --- !u!1 &1338933975 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5405795717336493088, guid: 2b26be38e7e91da4e99a2b448673806e, type: 3}
+  m_PrefabInstance: {fileID: 5556122392389841064}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1338933976 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4888742105127394793, guid: 2b26be38e7e91da4e99a2b448673806e, type: 3}
   m_PrefabInstance: {fileID: 5556122392389841064}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1425222082 stripped
@@ -809,6 +819,63 @@ MonoBehaviour:
   sequenceLength: 5
   possibleInputs: 5700410053004400
   sequenceText: {fileID: 1425222082}
+--- !u!1001 &4605642542488403835
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1338933976}
+    m_Modifications:
+    - target: {fileID: 2336461243443522830, guid: d55fc5de3f6401c4ebc9a23a8dc45e49, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336461243443522830, guid: d55fc5de3f6401c4ebc9a23a8dc45e49, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336461243443522830, guid: d55fc5de3f6401c4ebc9a23a8dc45e49, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336461243443522830, guid: d55fc5de3f6401c4ebc9a23a8dc45e49, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336461243443522830, guid: d55fc5de3f6401c4ebc9a23a8dc45e49, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336461243443522830, guid: d55fc5de3f6401c4ebc9a23a8dc45e49, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336461243443522830, guid: d55fc5de3f6401c4ebc9a23a8dc45e49, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336461243443522830, guid: d55fc5de3f6401c4ebc9a23a8dc45e49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336461243443522830, guid: d55fc5de3f6401c4ebc9a23a8dc45e49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336461243443522830, guid: d55fc5de3f6401c4ebc9a23a8dc45e49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3773996749339127927, guid: d55fc5de3f6401c4ebc9a23a8dc45e49, type: 3}
+      propertyPath: m_Name
+      value: Clouds
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d55fc5de3f6401c4ebc9a23a8dc45e49, type: 3}
 --- !u!1001 &5488168144030269480
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -944,7 +1011,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4888742105127394793, guid: 2b26be38e7e91da4e99a2b448673806e, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 591548541}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b26be38e7e91da4e99a2b448673806e, type: 3}
 --- !u!1660057539 &9223372036854775807
