@@ -24,7 +24,7 @@ public class HandManager : MonoBehaviour
 
     public void AddCard()
     {
-        Card drawnCard = deckManager.DrawCard();
+        Card drawnCard = deckManager.DrawCard(transform);
         if (drawnCard != null)
         {
             playerCards.Add(drawnCard);
@@ -41,7 +41,7 @@ public class HandManager : MonoBehaviour
     {
         for (int i = 0; i < startingHandSize; i++)
         {
-            Card drawnCard = deckManager.DrawCard();
+            Card drawnCard = deckManager.DrawCard(transform);
             if (drawnCard != null)
             {
                 playerCards.Add(drawnCard);

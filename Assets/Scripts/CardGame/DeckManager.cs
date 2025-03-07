@@ -38,11 +38,14 @@ public class DeckManager : MonoBehaviour
             foreach (string rank in ranks)
             {
                 GameObject newCard = Instantiate(cardPrefab);
+               
                 Card card = newCard.GetComponent<Card>();
                 card.rank = rank;
                 card.suit = suit;
                 card.frontSprite = cardSprites[spriteIndex++];
                 card.backSprite = cardBack;
+                newCard.gameObject.name = "Card_" + card.frontSprite.name;
+                newCard.transform.SetParent(transform);
                 deck.Add(card);
             }
         }
@@ -59,7 +62,7 @@ public class DeckManager : MonoBehaviour
         }
     }
 
-    public Card DrawCard()
+    public Card DrawCard(Transform hand)
     {
         if (deck.Count == 0)
         {
@@ -68,6 +71,7 @@ public class DeckManager : MonoBehaviour
         }
 
         Card drawnCard = deck[0];
+        drawnCard.transform.SetParent(hand);
         deck.RemoveAt(0);
         return drawnCard;
     }
