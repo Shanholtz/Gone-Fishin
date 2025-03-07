@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DeckManager : MonoBehaviour
@@ -38,6 +39,7 @@ public class DeckManager : MonoBehaviour
             foreach (string rank in ranks)
             {
                 GameObject newCard = Instantiate(cardPrefab);
+                
                 Card card = newCard.GetComponent<Card>();
                 card.rank = rank;
                 card.suit = suit;

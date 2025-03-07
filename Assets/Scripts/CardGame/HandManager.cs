@@ -41,15 +41,8 @@ public class HandManager : MonoBehaviour
     {
         for (int i = 0; i < startingHandSize; i++)
         {
-            Card drawnCard = deckManager.DrawCard();
-            if (drawnCard != null)
-            {
-                playerCards.Add(drawnCard);
-                drawnCard.gameObject.SetActive(true);
-                drawnCard.FlipCard(true); // Show face-up
-            }
+            AddCard();
         }
-        PositionCards();
     }
 
     public void PositionCards()
