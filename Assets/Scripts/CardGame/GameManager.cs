@@ -1,49 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public DeckManager deckManager;
-    public List<Card> playerHand = new List<Card>();
-    public List<Card> opponentHand = new List<Card>();
-    
-    // UI Hand Panels
-    public Transform playerHandPanel;
-    public Transform opponentHandPanel;
+    public HandManager PlayerHand;
+    public float displayTime = 5f;
+    private int handCount;
 
-    void Start()
+    public void Match()
     {
-        DealInitialCards();
-    }
+        List<Card> cardsToRemove = new List<Card>();
 
-    void DealInitialCards()
-    {
-        for (int i = 0; i < 5; i++) // Deal 5 cards to each player
+        handCount = PlayerHand.playerCards.Count;
+
+        for(int i = 0; i < handCount; i++)
         {
-            DrawCard(playerHand, playerHandPanel);
-            DrawCard(opponentHand, opponentHandPanel);
-        }
-    }
+            Card card1 = PlayerHand.playerCards[i];
 
-    public void DrawCard(List<Card> hand, Transform panel = null)
-    {
-        if (deckManager.deck.Count > 0)
+            for (int j=0; j<handCount; j++)
+            {
+                Card card2 = PlayerHand.playerCards[j];
+                if (card1.rank == card2.rank && card1.suit != card2.suit)
+                {
+                    Debug.Log($"You Have a Pair of: {card1.rank}'s!" );
+
+                    cardsToRemove.Add(card1);
+                    cardsToRemove.Add(card2);
+                }
+            }
+        }
+
+        foreach (Card card in cardsToRemove)
         {
-            Card drawnCard = deckManager.deck[0];
-            deckManager.deck.RemoveAt(0);
-            hand.Add(drawnCard);
-
-            drawnCard.gameObject.SetActive(true);
-            drawnCard.transform.SetParent(panel, false);
-            drawnCard.transform.localScale = Vector2.one;
+            PlayerHand.playerCards.Remove(card);
+            Destroy(card.gameObject, displayTime);
         }
+
+        StartCoroutine(Delay(displayTime));
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator Delay(float delay)
     {
-        
+        yield return new WaitForSeconds(delay);
+        PlayerHand.PositionCards();
     }
 }
