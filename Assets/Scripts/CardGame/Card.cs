@@ -18,14 +18,14 @@ public class Card : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (spriteRenderer == null)
+        {
+            Debug.Log("spriteRenderer is null");
+        }
+
         spriteRenderer.sortingLayerName = "Cards";
         UpdateCardFace();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void FlipCard(bool faceUp)
@@ -36,6 +36,18 @@ public class Card : MonoBehaviour
 
     private void UpdateCardFace()
     {
+        if (frontSprite == null)
+        {
+            Debug.LogError("Front sprites are not assigned on " + gameObject.name);
+            return;
+        }
+
+        if (backSprite == null)
+        {
+            Debug.LogError("Back sprites are not assigned on " + gameObject.name);
+            return;
+        }
+
         spriteRenderer.sprite = isFaceUp ? frontSprite : backSprite;
     }
 }

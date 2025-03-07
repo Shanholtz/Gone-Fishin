@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,10 +14,20 @@ public class DeckManager : MonoBehaviour
     private string[] suits = { "Clubs", "Diamonds", "Hearts", "Spades" };
     private string[] ranks = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"  };
 
+    public event Action onDeckReady;
+
     void Start()
     {
+        StartCoroutine(InitializeDeck());
+    }
+
+    IEnumerator InitializeDeck()
+    {
         GenerateDeck();
+        yield return null;
         ShuffleDeck();
+
+        onDeckReady?.Invoke();
     }
 
     void GenerateDeck()
@@ -33,7 +44,6 @@ public class DeckManager : MonoBehaviour
                 card.frontSprite = cardSprites[spriteIndex++];
                 card.backSprite = cardBack;
                 deck.Add(card);
-                newCard.SetActive(false); // Hide initially
             }
         }
     }
@@ -43,14 +53,22 @@ public class DeckManager : MonoBehaviour
         for (int i = 0; i < deck.Count; i++)
         {
             Card temp = deck[i];
-            int randomIndex = Random.Range(i, deck.Count);
+            int randomIndex = UnityEngine.Random.Range(i, deck.Count);
             deck[i] = deck[randomIndex];
             deck[randomIndex] = temp;
         }
     }
-    // Update is called once per frame
-    void Update()
+
+    public Card DrawCard()
     {
-        
+        if (deck.Count == 0)
+        {
+            Debug.LogWarning("Deck is empty!");
+            return null;
+        }
+
+        Card drawnCard = deck[0];
+        deck.RemoveAt(0);
+        return drawnCard;
     }
 }
