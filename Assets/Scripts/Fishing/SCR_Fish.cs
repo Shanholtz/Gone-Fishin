@@ -121,7 +121,7 @@ public class SCR_Fish : MonoBehaviour
                 float randomAngle = Random.Range(-45.0f, 45.0f);
                 transform.rotation *= Quaternion.Euler(0, 0, randomAngle);
 
-                Debug.Log("fish has hit the edge!");
+                //Debug.Log("fish has hit the edge!");
             }
         }
     }

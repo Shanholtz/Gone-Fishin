@@ -42,7 +42,8 @@ public class FishingCastController : MonoBehaviour
         catching = FindObjectOfType<Catch>();
         if (catching != null)
         {
-            catching.complete += OnCatchingComplete; // Subscribe to the event
+            catching.complete += OnCatchingComplete; // Subscribe to the event, player succeeded
+            catching.onSequenceFailed += ReleaseFish; // Player failed
         }
         // Initialize fishSpawner
         fishSpawner = FindObjectOfType<SCR_FishSpawner>();
@@ -185,4 +186,33 @@ public class FishingCastController : MonoBehaviour
         // Start reeling state and attach fish to hook
         fish.transform.SetParent(hook.transform);
     }
+
+    // Called when time runs out
+    void ReleaseFish()
+    {
+        if (hookLogic != null && hookLogic.isFishHooked)
+        {
+            Debug.Log("Releasing fish...");
+
+            // Detach fish from the hook
+            SCR_Fish hookedFish = hookLogic.GetComponentInChildren<SCR_Fish>();
+            if (hookedFish != null)
+            {
+                hookedFish.transform.SetParent(null);
+                hookedFish.hookInSight = false; // Make fish stop following the hook
+
+                // Make fish swim away in a random direction
+                Vector3 escapeDirection = (hookedFish.transform.position - transform.position).normalized;
+                hookedFish.transform.rotation = Quaternion.LookRotation(Vector3.forward, escapeDirection);
+                hookedFish.speed *= 1.5f; // Make fish swim away faster
+            }
+
+            // Reset hook state
+            hookLogic.isFishHooked = false;
+
+            // Clean up the line and hook
+            DoReturnLine();
+        }
+    }
+
 }
