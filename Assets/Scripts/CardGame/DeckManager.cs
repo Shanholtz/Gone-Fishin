@@ -75,4 +75,10 @@ public class DeckManager : MonoBehaviour
         deck.RemoveAt(0);
         return drawnCard;
     }
+
+    public void PlaceCard(Card card)
+    {
+        card.transform.SetParent(transform);
+        deck.Insert(0, card);
+    }
 }

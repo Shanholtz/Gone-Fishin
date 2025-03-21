@@ -1,75 +1,93 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Animations;
 
-public class AIManager : MonoBehaviour
+public class AIManager : HandManager
 {
-    public DeckManager deckManager;
-    public GameManager game;
-    public List<Card> AICards = new List<Card>();
-    public int startingHandSize = 5;
-    public float spacing = 1.25f; // Space between cards
-    public float yOffset = 4f; // Adjust based on screen size
+    public TurnManager turnManager;
+    public PlayerManager playerHand;
+    public TextMeshProUGUI AIPairs;
+    protected override float yOffset => 4f; // Adjust based on screen size
     public bool isTurn;
 
-    void Update()
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
+    public void AIRequestMatch()
+    {
+        StartCoroutine(AIThinkAndRequest());
+    }
+
+    public IEnumerator AIThinkAndRequest()
+    {
+        yield return new WaitForSeconds (5f);
+
+        if (hand.Count == 0)
         {
-            isTurn = game.Changeturn;
+            Debug.Log("AI has no cards to request with.");
+            AddCard();
+            turnManager.SwapTurn();
+            yield break;
+        }
 
-            if (isTurn)
-            {
-                enabled = false;
-            }
+        // AI randomly selects a card to request
+        Card selectedCard = hand[Random.Range(0, hand.Count)];
+        Debug.Log($"AI is asking for {selectedCard.rank}");
 
-            if (!isTurn)
+        List<Card> matchingCards = new List<Card>();
+
+        foreach (Card playerCard in playerHand.hand)
+        {
+            if (playerCard.rank == selectedCard.rank)
             {
-                enabled = true;
+                matchingCards.Add(playerCard);
             }
         }
-    void Awake()
-    {
-        deckManager.onDeckReady += DrawAndPositionHand;
+
+        if (matchingCards.Count > 0)
+        {
+            Debug.Log("AI found a match! Taking the cards.");
+
+            foreach (Card card in matchingCards)
+            {
+                playerHand.hand.Remove(card);
+                hand.Add(card);
+            }
+
+            game.Match(); // Process matching effects
+        }
+        else
+        {
+            Debug.Log("No match found, AI draws a card.");
+            AddCard();
+        }
+
+        yield return new WaitForSeconds(2f);
+        turnManager.SwapTurn();
     }
 
-    void DrawAndPositionHand()
-    {
-        DrawHand();
-    }
-
-    public void AddCard()
+    public override void AddCard()
     {
         Card drawnCard = deckManager.DrawCard(transform);
         if (drawnCard != null)
         {
-            AICards.Add(drawnCard);
+            hand.Add(drawnCard);
             drawnCard.gameObject.SetActive(true);
-        }
+            drawnCard.FlipCard(true); // Player sees their card
 
-        PositionCards();
-        game.Match();
-    }
-
-    void DrawHand()
-    {
-        for (int i = 0; i < startingHandSize; i++)
-        {
-            AddCard();
+            PositionCards();
+            game.Match();
         }
     }
 
-    public void PositionCards()
+    void Update()
     {
-        float startX = -(spacing * (AICards.Count- 1)) / 2; // Center the hand
-
-        for (int i = 0; i < AICards.Count; i++)
-        {
-            Vector3 newPosition = new Vector3(startX + (i * spacing), yOffset, 0);
-            AICards[i].SetPosition(newPosition);
-        }
-    }
-
-     void OnDestroy()
-    {
-        deckManager.onDeckReady -= DrawAndPositionHand; // Unsubscribe when destroyed
+        AIPairs.text = pairs.ToString();
     }
 }

@@ -1,62 +1,88 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public HandManager PlayerHand;
-    public AIManager aiManager;
+    public PlayerManager PlayerHand;
+    public AIManager aiHand;
     public float displayTime = 5f;
-    private int handCount;
-
     public bool Changeturn = true;
 
     public void Match()
     {
-        List<Card> cardsToRemove = new List<Card>();
+        StartCoroutine(ProcessMatching());
+    }
 
-        handCount = PlayerHand.playerCards.Count;
+    private IEnumerator ProcessMatching()
+    {
+        List<Card> playerCardsToRemove = GetMatchingPairs(PlayerHand.hand);
+        List<Card> aiCardsToRemove = GetMatchingPairs(aiHand.hand);
 
-        for(int i = 0; i < handCount; i++)
+        foreach (Card card in playerCardsToRemove)
         {
-            Card card1 = PlayerHand.playerCards[i];
+            card.FlipCard(true);
+        }
 
-            for (int j=0; j<handCount; j++)
+        foreach (Card card in aiCardsToRemove)
+        {
+            card.FlipCard(true);
+        }
+
+        yield return new WaitForSeconds(displayTime); // Wait for display time before removal
+
+        foreach (Card card in playerCardsToRemove)
+        {
+            PlayerHand.hand.Remove(card);
+            Destroy(card.gameObject);
+        }
+
+        foreach (Card card in aiCardsToRemove)
+        {
+            aiHand.hand.Remove(card);
+            Destroy(card.gameObject);
+        }
+
+        yield return new WaitForEndOfFrame(); // Ensure objects are destroyed before repositioning
+
+        PlayerHand.PositionCards();
+        aiHand.PositionCards();
+
+        ChangeTurn();
+    }
+
+    private List<Card> GetMatchingPairs(List<Card> cardList)
+    {
+        HashSet<Card> cardsToRemove = new HashSet<Card>();
+
+        for (int i = 0; i < cardList.Count; i++)
+        {
+            for (int j = i + 1; j < cardList.Count; j++) // Start from i+1 to avoid duplicate checks
             {
-                Card card2 = PlayerHand.playerCards[j];
-                if (card1.rank == card2.rank && card1.suit != card2.suit)
+                if (cardList[i].rank == cardList[j].rank && cardList[i].suit != cardList[j].suit)
                 {
-                    Debug.Log($"You Have a Pair of: {card1.rank}'s!" );
+                    Debug.Log($"{(cardList == PlayerHand.hand ? "Player" : "AI")} has a Pair of: {cardList[i].rank}'s!");
 
-                    cardsToRemove.Add(card1);
-                    cardsToRemove.Add(card2);
+                    cardsToRemove.Add(cardList[i]);
+                    cardsToRemove.Add(cardList[j]);
+
+                    if (cardList == PlayerHand.hand)
+                    {
+                        PlayerHand.pairs++;
+                    }
+                    if (cardList == aiHand.hand)
+                    {
+                        aiHand.pairs++;
+                    }
                 }
             }
         }
 
-        foreach (Card card in cardsToRemove)
-        {
-            PlayerHand.playerCards.Remove(card);
-            Destroy(card.gameObject, displayTime);
-        }
-
-        StartCoroutine(Delay(displayTime));
-        ChangeTurn();
+        return new List<Card>(cardsToRemove);
     }
 
-    private IEnumerator Delay(float delay)
+    private void ChangeTurn()
     {
-        yield return new WaitForSeconds(delay);
-        PlayerHand.PositionCards();
-    }
-
-    void ChangeTurn()
-    {
-        if (Changeturn)
-        {
-            Changeturn = false;
-        }
-        else{Changeturn = true;}
+        Changeturn = !Changeturn;
     }
 }
