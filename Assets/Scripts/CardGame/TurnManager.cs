@@ -8,7 +8,7 @@ public class TurnManager : MonoBehaviour
     public PlayerManager playerHand;
     public AIManager aiHand;
 
-    public bool isPlayerTurn = true; // Player starts first
+    public bool isPlayerTurn = false; // Player starts first
 
     void Start()
     {
@@ -18,7 +18,6 @@ public class TurnManager : MonoBehaviour
     public void SwapTurn()
     {
         isPlayerTurn = !isPlayerTurn; // Toggle turn
-
         if (isPlayerTurn)
         {
             Debug.Log("Player's Turn");
@@ -30,6 +29,7 @@ public class TurnManager : MonoBehaviour
             Debug.Log("AI's Turn");
             playerHand.isTurn = false;
             aiHand.isTurn = true;
+            aiHand.AIRequestMatch();
         }
     }
 }

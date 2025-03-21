@@ -67,13 +67,13 @@ public class GameManager : MonoBehaviour
                     cardsToRemove.Add(cardList[j]);
 
                     if (cardList == PlayerHand.hand)
-                {
-                    PlayerHand.pairs++;
-                }
-                else
-                {
-                    aiHand.pairs++;
-                }
+                    {
+                        PlayerHand.pairs++;
+                    }
+                    if (cardList == aiHand.hand)
+                    {
+                        aiHand.pairs++;
+                    }
                 }
             }
         }

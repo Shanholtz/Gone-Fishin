@@ -68,7 +68,6 @@ public class Card : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log(playerHand.isTurn);
         if (!playerHand.isTurn) return; // Only allow selection during player's turn
         playerHand.SelectCard(this);
     }

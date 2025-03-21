@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerManager : HandManager
@@ -40,15 +41,35 @@ public class PlayerManager : HandManager
             return;
         }
 
+        List<Card> matchingCards = new List<Card>();
+
         foreach (Card aiCard in aiHand.hand)
         {
             if (aiCard.rank == selectedCard.rank)
             {
-                aiHand.hand.Remove(aiCard);
-                hand.Add(aiCard);
-                game.Match();
+                matchingCards.Add(aiCard);
             }
         }
+
+        if (matchingCards.Count > 0)
+        {
+            Debug.Log("AI found a match! Taking the cards.");
+
+            foreach (Card card in matchingCards)
+            {
+                aiHand.hand.Remove(card);
+                hand.Add(card);
+            }
+
+            game.Match(); // Process matching effects
+        }
+        else
+        {
+            Debug.Log("No match found, AI draws a card.");
+            AddCard();
+        }
+
+        turnManager.SwapTurn();
     }
 
     public override void AddCard()
