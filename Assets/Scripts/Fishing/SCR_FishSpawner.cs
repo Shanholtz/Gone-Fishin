@@ -32,7 +32,7 @@ public class SCR_FishSpawner : MonoBehaviour
         InitialPopulation();
     }
 
-    void InitialPopulation()
+    public void InitialPopulation()
     {
         // Spawns fish in random positions when the game starts.
         for (int i = 0; i < fishLimit; i++)

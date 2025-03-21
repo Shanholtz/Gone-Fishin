@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,7 +21,23 @@ public class Catch : MonoBehaviour
     private SCR_Hook hookLogic;
 
     private bool isTimerRunning = false;
-    private bool isSequenceOver = false; 
+    private bool isSequenceOver = false;
+
+    public TimerBar timerBar; // Reference to TimerBar script
+
+    void Start()
+    {
+        if (timerBar == null)
+        {
+            // Try to find TimerBar in the scene if not assigned
+            timerBar = FindObjectOfType<TimerBar>();
+
+            if (timerBar == null)
+            {
+                Debug.LogError("Catch: TimerBar reference is missing! Please assign it manually.");
+            }
+        }
+    }
 
     // Begins the letter seqeunce. 
     void Update()
@@ -76,6 +92,16 @@ public class Catch : MonoBehaviour
         {
             StartTimer();
             isTimerRunning = true;
+
+            //  Notify TimerBar to start decreasing the timer
+            if (timerBar != null)
+            {
+                timerBar.StartTimer();
+            }
+            else
+            {
+                Debug.LogError("Catch: TimerBar reference is missing!");
+            }
         }
         
     }

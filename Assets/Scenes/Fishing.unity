@@ -615,6 +615,19 @@ MonoBehaviour:
   fastestSpeed: 5
   slowestSpeed: 0.75
   fishHooked: 0
+--- !u!114 &586914209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586914204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6d089fe6a0612f499d71e9b7140abd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishSpawner: {fileID: 586914207}
 --- !u!4 &591548541 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2336461243443522830, guid: d55fc5de3f6401c4ebc9a23a8dc45e49, type: 3}
@@ -825,6 +838,7 @@ MonoBehaviour:
   possibleInputs: 5700410053004400
   sequenceText: {fileID: 1425222082}
   timerDuration: 5
+  timerBar: {fileID: 0}
 --- !u!1001 &4605642542488403835
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -954,6 +968,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1267687858188764005, guid: 5d9358fb846e8a442aedf7a6a19aeea4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 586914207}
+    - targetCorrespondingSourceObject: {fileID: 1267687858188764005, guid: 5d9358fb846e8a442aedf7a6a19aeea4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 586914209}
   m_SourcePrefab: {fileID: 100100000, guid: 5d9358fb846e8a442aedf7a6a19aeea4, type: 3}
 --- !u!1001 &5556122392389841064
 PrefabInstance:
