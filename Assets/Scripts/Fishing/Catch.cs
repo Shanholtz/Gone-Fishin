@@ -20,8 +20,8 @@ public class Catch : MonoBehaviour
 
     private SCR_Hook hookLogic;
 
-    private bool isTimerRunning = false;
-    private bool isSequenceOver = false;
+    public bool isTimerRunning = false;
+    public bool isSequenceOver = false;
 
     public TimerBar timerBar; // Reference to TimerBar script
 
@@ -133,7 +133,7 @@ public class Catch : MonoBehaviour
         sequenceTimerCoroutine = StartCoroutine(SequenceTimer());
     }
 
-    private void StopTimer()
+    public void StopTimer()
     {
         if (sequenceTimerCoroutine != null)
         {

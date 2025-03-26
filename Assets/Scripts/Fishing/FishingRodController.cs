@@ -18,7 +18,7 @@ public class FishingRodController : MonoBehaviour
         }
     }
 
-    private void RotateRod()
+    public void RotateRod()
     {
         // Get horizontal player input
         float input = Input.GetAxis("Horizontal");

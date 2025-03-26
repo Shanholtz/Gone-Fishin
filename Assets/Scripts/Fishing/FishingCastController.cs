@@ -27,12 +27,12 @@ public class FishingCastController : MonoBehaviour
     public Action<SCR_Fish> OnFishCaught;
     public Catch catching;
 
-    private Vector3 origHookPos; // Original hook position
-    private SCR_Hook hookLogic;
-    private Vector2 startPosition; // Starting position of the line (rod's position)
-    private GameObject currentLine; // Instantiated fishing line object
-    private GameObject currentHook; // Instantiated hook object
-    private LineRenderer lineRenderer; // Line renderer component
+    public Vector3 origHookPos; // Original hook position
+    public SCR_Hook hookLogic;
+    public Vector2 startPosition; // Starting position of the line (rod's position)
+    public GameObject currentLine; // Instantiated fishing line object
+    public GameObject currentHook; // Instantiated hook object
+    public LineRenderer lineRenderer; // Line renderer component
     private float power; // Casting power
 
     private SCR_FishSpawner fishSpawner; // Reference to the Fish Spawner

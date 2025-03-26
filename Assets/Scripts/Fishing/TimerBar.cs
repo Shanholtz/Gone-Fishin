@@ -48,8 +48,16 @@ public class TimerBar : MonoBehaviour
     {
         maxTime = catchTimer.timerDuration; // Safe to use after checking
         timeLeft = maxTime; // Reset the timer
+        timerBar.fillAmount = 1f; // Reset the UI fill amount
 
         // Show the timer bar when the timer starts
         //timerBar.gameObject.SetActive(true);
     }
+
+    public void ResetTimer()
+    {
+        timeLeft = maxTime;
+        timerBar.fillAmount = 1f; // Reset the UI fill amount
+    }
+
 }

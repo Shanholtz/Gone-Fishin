@@ -113,5 +113,24 @@ public class SCR_FishSpawner : MonoBehaviour
 
         return fishScript;
     }
-    
+
+    public void ResetFish()
+    {
+        // Destroy all fish
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        fishCount = 0;
+        fishHooked = false;
+
+        // Resets rare fish count
+        rareFishCount = 0;
+
+        // Respawn new fish
+        InitialPopulation();
+    }
+
+
 }
