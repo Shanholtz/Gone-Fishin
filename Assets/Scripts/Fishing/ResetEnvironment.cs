@@ -88,12 +88,7 @@ public class ResetEnvirement : MonoBehaviour
 
             // Stop any running timers
             catchSystem.StopTimer();
-
-            // Reset TimerBar if available
-            if (catchSystem.timerBar != null)
-            {
-                catchSystem.timerBar.ResetTimer();
-            }
+                        
         }
 
         // Reset fish spawner

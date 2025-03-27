@@ -13,6 +13,7 @@ public class TimerBar : MonoBehaviour
     void Start()
     {
         timerBar = GetComponent<Image>(); // Now this will work correctly
+        timerBar.fillAmount = 0f;
 
         if (catchTimer == null)
         {
@@ -24,8 +25,6 @@ public class TimerBar : MonoBehaviour
             }
         }
 
-        // Hide the timer bar initially
-        //timerBar.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -50,14 +49,7 @@ public class TimerBar : MonoBehaviour
         timeLeft = maxTime; // Reset the timer
         timerBar.fillAmount = 1f; // Reset the UI fill amount
 
-        // Show the timer bar when the timer starts
-        //timerBar.gameObject.SetActive(true);
-    }
-
-    public void ResetTimer()
-    {
-        timeLeft = maxTime;
-        timerBar.fillAmount = 1f; // Reset the UI fill amount
+       
     }
 
 }
