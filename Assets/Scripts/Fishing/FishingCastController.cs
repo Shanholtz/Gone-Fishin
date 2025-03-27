@@ -100,6 +100,7 @@ public class FishingCastController : MonoBehaviour
     private void HandleReeling()
     {
         float speed = reelSpeed;
+        SCR_Fish hookedFish = hookLogic.GetComponentInChildren<SCR_Fish>();
 
         // Increase reeling speed if holding left mouse button
         if (Input.GetMouseButton(0))
@@ -107,22 +108,38 @@ public class FishingCastController : MonoBehaviour
             speed *= 2;
         }
 
+        // Ensure currentHook and hookLogic exist before proceeding
+        if (currentHook == null || hookLogic == null)
+        {
+            Debug.LogWarning("HandleReeling: No hook found!");
+            return;
+        }
+
         // Move the hook towards the fishing rod
         currentHook.transform.position = Vector3.MoveTowards(currentHook.transform.position, transform.position, speed * Time.deltaTime);
         lineRenderer.SetPosition(1, currentHook.transform.position);
+
+        // Ensure the fish rotates to face downward along the fishing line
+        if (hookedFish != null)
+        {
+            Vector3 directionToRod = (transform.position - hookedFish.transform.position).normalized;
+            Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, directionToRod);
+            hookedFish.transform.rotation = Quaternion.Slerp(hookedFish.transform.rotation, targetRotation, Time.deltaTime * speed);
+        }
 
         // Check if hook has returned close to rod
         if (Vector3.Distance(currentHook.transform.position, transform.position) <= 1)
         {
             Debug.Log("Fish caught");
 
-            // Only return the line if no fish is hooked
-            if (hookLogic != null && !hookLogic.isFishHooked)
+            if (hookedFish != null)
             {
-                DoReturnLine(); // Clean up the line and hook after catching the fish
+                hookedFish.RemoveFish();
             }
+            
         }
     }
+
 
     private void OnCatchingComplete()
     {
@@ -167,8 +184,6 @@ public class FishingCastController : MonoBehaviour
         OnFishCaught?.Invoke(fish);
 
         Debug.Log("Fish is on");
-        // Start reeling state and attach fish to hook
-        fish.transform.SetParent(hook.transform);
 
         // Mark the hook as having caught a fish
         if (hookLogic != null)
@@ -183,8 +198,8 @@ public class FishingCastController : MonoBehaviour
             catching.UpdateUI();
         }
 
-        // Start reeling state and attach fish to hook
-        fish.transform.SetParent(hook.transform);
+        // Attach fish to the instantiated hook
+        fish.transform.SetParent(currentHook.transform);
     }
 
     // Called when time runs out

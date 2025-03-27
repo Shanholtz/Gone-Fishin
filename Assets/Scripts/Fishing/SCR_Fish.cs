@@ -126,7 +126,7 @@ public class SCR_Fish : MonoBehaviour
         }
     }
 
-    void RemoveFish()
+    public void RemoveFish()
     {
         // Stop the coroutine if it's running
         if (changeDirectionCoroutine != null)
@@ -160,6 +160,7 @@ public class SCR_Fish : MonoBehaviour
 
             if (distanceToHook <= hookToFollow.hookedRadius)
             {
+
                 fishingCastController.CatchFish(this);
                 hookToFollow.isFishHooked = true; // Set the hook as hooked
             }
