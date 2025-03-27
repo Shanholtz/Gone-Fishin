@@ -53,7 +53,7 @@ public class PlayerManager : HandManager
 
         if (matchingCards.Count > 0)
         {
-            Debug.Log("AI found a match! Taking the cards.");
+            Debug.Log("Player found a match! Taking the cards.");
 
             foreach (Card card in matchingCards)
             {
@@ -65,9 +65,11 @@ public class PlayerManager : HandManager
         }
         else
         {
-            Debug.Log("No match found, AI draws a card.");
+            Debug.Log("No match found, Player draws a card.");
             AddCard();
         }
+
+        selectedCard = null;
 
         turnManager.SwapTurn();
     }

@@ -62,9 +62,12 @@ public class GameManager : MonoBehaviour
                 if (cardList[i].rank == cardList[j].rank && cardList[i].suit != cardList[j].suit)
                 {
                     Debug.Log($"{(cardList == PlayerHand.hand ? "Player" : "AI")} has a Pair of: {cardList[i].rank}'s!");
-
+                    
+                    if (cardsToRemove.Count < 2)
+                    {
                     cardsToRemove.Add(cardList[i]);
                     cardsToRemove.Add(cardList[j]);
+                    }
 
                     if (cardList == PlayerHand.hand)
                     {
