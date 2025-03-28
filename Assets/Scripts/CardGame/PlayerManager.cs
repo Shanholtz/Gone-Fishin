@@ -63,6 +63,7 @@ public class PlayerManager : HandManager
             }
 
             game.Match(); // Process matching effects
+            turnManager.SwapTurn();
         }
         else
         {
@@ -72,8 +73,6 @@ public class PlayerManager : HandManager
         }
 
         selectedCard = null;
-
-        turnManager.SwapTurn();
     }
 
     public override void AddCard()

@@ -22,7 +22,10 @@ public class AIManager : HandManager
 
     public void AIRequestMatch()
     {
-        StartCoroutine(AIThinkAndRequest());
+        if(isTurn)
+        {
+            StartCoroutine(AIThinkAndRequest());
+        }
     }
 
     public IEnumerator AIThinkAndRequest()
@@ -67,7 +70,7 @@ public class AIManager : HandManager
         {
             Debug.Log("No match found, AI draws a card.");
             AddCard();
-            sceneManager.ChangeScene();
+            //sceneManager.ChangeScene();
         }
 
         yield return new WaitForSeconds(2f);
