@@ -12,7 +12,7 @@ public class Card : MonoBehaviour
 
     public Sprite frontSprite;
     public Sprite backSprite;
-    //public Button AskButton;
+    public Button AskButton;
 
     private SpriteRenderer spriteRenderer;
     private Vector2 assignedPosition;
@@ -71,7 +71,7 @@ public class Card : MonoBehaviour
     private void OnMouseDown()
     {
         if (!playerHand.isTurn) return; // Only allow selection during player's turn
-        //AskButton.enabled = true;
+        AskButton.enabled = true;
         playerHand.SelectCard(this);
     }
 }
