@@ -8,7 +8,7 @@ public class HandManager : MonoBehaviour
     public DeckManager deckManager;
     public List<Card> hand = new List<Card>();
     public int startingHandSize = 5;
-    public float spacing = 1f; // Space between cards
+    public float spacing = 1.5f; // Space between cards
     protected virtual float yOffset => 4f;
 
     public int pairs = 0;

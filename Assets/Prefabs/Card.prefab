@@ -109,6 +109,7 @@ MonoBehaviour:
   hoverHeight: 0.5
   frontSprite: {fileID: 0}
   backSprite: {fileID: 0}
+  AskButton: {fileID: 0}
 --- !u!61 &5690839877489956810
 BoxCollider2D:
   m_ObjectHideFlags: 0

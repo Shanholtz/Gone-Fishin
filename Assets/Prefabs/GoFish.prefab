@@ -121,8 +121,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: HandManager, Assembly-CSharp
+      - m_Target: {fileID: 6541280408495552216}
+        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
         m_MethodName: AddCard
         m_Mode: 1
         m_Arguments:
@@ -429,9 +429,10 @@ MonoBehaviour:
   startingHandSize: 5
   spacing: 1.25
   pairs: 0
-  turnManager: {fileID: 0}
-  playerHand: {fileID: 0}
-  AIPairs: {fileID: 0}
+  turnManager: {fileID: 996657340737835783}
+  playerHand: {fileID: 6541280408495552216}
+  AIPairs: {fileID: 5662059078139376840}
+  sceneManager: {fileID: 0}
   isTurn: 0
 --- !u!1 &2137516090878794216
 GameObject:
@@ -467,7 +468,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -314, y: -115}
+  m_AnchoredPosition: {x: -274, y: -115}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3721971806688578150
@@ -611,8 +612,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdcfb8ae9592fff46b8405aeade5a286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerHand: {fileID: 0}
-  aiHand: {fileID: 0}
+  PlayerHand: {fileID: 6541280408495552216}
+  aiHand: {fileID: 654815568045170028}
   displayTime: 5
   Changeturn: 1
 --- !u!1 &4335144060847248742
@@ -806,7 +807,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1003016299076264048
 RectTransform:
   m_ObjectHideFlags: 0
@@ -908,7 +909,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5226791845931495356}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6541280408495552216}
+        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
+        m_MethodName: RequestMatch
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5535352142052312408
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,7 +1023,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4997767638236429529}
-  - component: {fileID: 641805141270586131}
+  - component: {fileID: 6541280408495552216}
   m_Layer: 0
   m_Name: PlayerHand
   m_TagString: Player
@@ -1033,7 +1046,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3586412894323875519}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &641805141270586131
+--- !u!114 &6541280408495552216
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1042,15 +1055,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 5844070258904370061}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1863b6005d8af046bb56979b9d5e2d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 1033bf20891954b4994bd7189a33b2aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 7558252137195105127}
   deckManager: {fileID: 8960240776641766422}
   hand: []
   startingHandSize: 5
-  spacing: 1.25
+  spacing: 1
   pairs: 0
+  turnManager: {fileID: 996657340737835783}
+  aiHand: {fileID: 654815568045170028}
+  PlayerPairs: {fileID: 1582910497379693839}
+  sceneManager: {fileID: 0}
+  isTurn: 0
 --- !u!1 &8039256169595060704
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,6 +1212,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3634497595632354684}
+  - component: {fileID: 996657340737835783}
   m_Layer: 0
   m_Name: TurnManager
   m_TagString: Untagged
@@ -1216,6 +1235,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3586412894323875519}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &996657340737835783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8549956810416970427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f77bfe3439d0cd479110748b34da38f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHand: {fileID: 6541280408495552216}
+  aiHand: {fileID: 654815568045170028}
+  isPlayerTurn: 0
 --- !u!1 &8713551430615500701
 GameObject:
   m_ObjectHideFlags: 0
@@ -1250,7 +1284,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 308, y: 121}
+  m_AnchoredPosition: {x: 280, y: 121}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3565390705398965673
@@ -1315,7 +1349,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
