@@ -23,14 +23,21 @@ public class PlayerManager : HandManager
     {
         if (selectedCard == card) // Deselect if clicked again
         {
+            selectedCard.transform.position = selectedCard.assignedPosition;
             selectedCard = null;
             Debug.Log("Deselected card.");
+        }
+        if (selectedCard != card && selectedCard != null)
+        {
+            selectedCard.transform.position = selectedCard.assignedPosition;
+            selectedCard.isSelected = false;
+            selectedCard = card;
+            Debug.Log($"Selected {selectedCard.rank} to ask AI.");
         }
         else
         {
             selectedCard = card;
             Debug.Log($"Selected {selectedCard.rank} to ask AI.");
-            RequestMatch();
         }
     }
 
@@ -42,6 +49,12 @@ public class PlayerManager : HandManager
             return;
         }
 
+        if (!isTurn)
+        {
+            Debug.Log("Not your turn!");
+            return;
+        }
+
         List<Card> matchingCards = new List<Card>();
 
         foreach (Card aiCard in aiHand.hand)
@@ -49,6 +62,7 @@ public class PlayerManager : HandManager
             if (aiCard.rank == selectedCard.rank)
             {
                 matchingCards.Add(aiCard);
+                aiCard.transform.position = aiCard.assignedPosition - aiCard.hoverOffset;
             }
         }
 

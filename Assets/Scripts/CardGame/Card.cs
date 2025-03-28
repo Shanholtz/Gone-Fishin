@@ -9,14 +9,14 @@ public class Card : MonoBehaviour
     public string suit;
     public bool isFaceUp = false;
     public float hoverHeight = 0.5f;
+    public bool isSelected;
 
     public Sprite frontSprite;
     public Sprite backSprite;
-    public Button AskButton;
 
     private SpriteRenderer spriteRenderer;
-    private Vector2 assignedPosition;
-    private Vector2 hoverOffset;
+    public Vector2 assignedPosition;
+    public Vector2 hoverOffset;
 
     private PlayerManager playerHand;
 
@@ -57,7 +57,8 @@ public class Card : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (transform.parent == playerHand)
+        GameObject playerHandObj = GameObject.Find("PlayerHand"); // Use correct GameObject name
+        if (playerHandObj != null && transform.parent == playerHandObj.transform)
         {
             transform.position = assignedPosition + hoverOffset;
         }
@@ -65,13 +66,18 @@ public class Card : MonoBehaviour
 
     private void OnMouseExit()
     {
-        transform.position = assignedPosition;
+        if (!isSelected)
+        {
+           transform.position = assignedPosition; 
+        }
+        
     }
 
     private void OnMouseDown()
     {
         if (!playerHand.isTurn) return; // Only allow selection during player's turn
-        AskButton.enabled = true;
+        isSelected = !isSelected;
+        transform.position = assignedPosition + hoverOffset;
         playerHand.SelectCard(this);
     }
 }

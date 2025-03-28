@@ -244,7 +244,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e7ab012251a79854e8efbc650fb4ef13, type: 3}
   - {fileID: 21300000, guid: 552b2f36f77220e46935e8a70602bc21, type: 3}
   - {fileID: 21300000, guid: 8af8c3b9da67fad43964a5f213f49fe3, type: 3}
-  cardBack: {fileID: 21300000, guid: be457fad9f2c67a4e88e49c5aa6d93ad, type: 3}
+  cardBack: {fileID: 21300000, guid: c9ae65b18467aa84db4f2ed9b2caa233, type: 3}
 --- !u!1 &1404672694496195011
 GameObject:
   m_ObjectHideFlags: 0
