@@ -51,6 +51,7 @@ public class AIManager : HandManager
             if (playerCard.rank == selectedCard.rank)
             {
                 matchingCards.Add(playerCard);
+                playerCard.transform.position = playerCard.assignedPosition + playerCard.hoverOffset;
             }
         }
 
