@@ -9,6 +9,7 @@ public class PlayerManager : HandManager
     public TurnManager turnManager;
     public AIManager aiHand;
     public TextMeshProUGUI PlayerPairs;
+    public SceneManager sceneManager;
     private Card selectedCard;
     protected override float yOffset => -4f; // Adjust based on screen size
     public bool isTurn;
@@ -67,6 +68,7 @@ public class PlayerManager : HandManager
         {
             Debug.Log("No match found, Player draws a card.");
             AddCard();
+            sceneManager.ChangeScene();
         }
 
         selectedCard = null;

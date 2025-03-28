@@ -11,6 +11,7 @@ public class AIManager : HandManager
     public TurnManager turnManager;
     public PlayerManager playerHand;
     public TextMeshProUGUI AIPairs;
+    public SceneManager sceneManager;
     protected override float yOffset => 4f; // Adjust based on screen size
     public bool isTurn;
 
@@ -66,6 +67,7 @@ public class AIManager : HandManager
         {
             Debug.Log("No match found, AI draws a card.");
             AddCard();
+            sceneManager.ChangeScene();
         }
 
         yield return new WaitForSeconds(2f);
