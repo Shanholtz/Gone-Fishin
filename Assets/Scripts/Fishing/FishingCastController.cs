@@ -27,6 +27,8 @@ public class FishingCastController : MonoBehaviour
     public Action<SCR_Fish> OnFishCaught;
     public Catch catching;
 
+    public Action endOfTurn; // event for end of turn
+
     public Vector3 origHookPos; // Original hook position
     public SCR_Hook hookLogic;
     public Vector2 startPosition; // Starting position of the line (rod's position)
@@ -135,6 +137,8 @@ public class FishingCastController : MonoBehaviour
             if (hookedFish != null)
             {
                 hookedFish.RemoveFish();
+
+                endOfTurn?.Invoke(); // calls to end turn, swithcing turn and scene.
             }
             
         }
@@ -227,6 +231,8 @@ public class FishingCastController : MonoBehaviour
 
             // Clean up the line and hook
             DoReturnLine();
+
+            endOfTurn?.Invoke(); // ends turn, switchs scene.
         }
     }
 

@@ -22,7 +22,9 @@ public class ResetEnvirement : MonoBehaviour
         if (fishingController != null)
         {
             originalHookPosition = fishingController.transform.position;
-        }
+
+            fishingController.endOfTurn += ChangeTurnScene; // Subscribe to the event, resets game and waits 3 seconds to change scene.
+    }
     }
 
     void Update()
@@ -36,6 +38,12 @@ public class ResetEnvirement : MonoBehaviour
         {
             ChangeScene();
         }
+    }
+
+    void ChangeTurnScene()
+    {
+        ResetGame();
+        ChangeScene();
     }
 
     public void ResetGame()

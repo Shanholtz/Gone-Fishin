@@ -130,6 +130,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 407802652471018604, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
+      propertyPath: sceneManager
+      value: 
+      objectReference: {fileID: 1168343050}
     - target: {fileID: 684260172802262654, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
       propertyPath: m_Name
       value: Fishing
