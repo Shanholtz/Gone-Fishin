@@ -10,6 +10,9 @@ public class ResetEnvirement : MonoBehaviour
 
     private Vector3 originalHookPosition;
 
+    public SceneManager sceneManager;
+
+
     void Start()
     {
         fishingController = FindObjectOfType<FishingCastController>();
@@ -27,6 +30,11 @@ public class ResetEnvirement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             ResetGame();
+        }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            ChangeScene();
         }
     }
 
@@ -96,6 +104,14 @@ public class ResetEnvirement : MonoBehaviour
         {
             fishSpawner.ResetFish();
         }
+    }
+
+    public void ChangeScene()
+    {
+        Debug.Log("changing scene");
+
+        sceneManager.ChangeScene();
+
     }
 
 }

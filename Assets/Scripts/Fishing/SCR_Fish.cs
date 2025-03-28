@@ -46,11 +46,12 @@ public class SCR_Fish : MonoBehaviour
                 Vector3 runAwayDirection = (transform.position - hookToFollow.transform.position).normalized;
                 transform.rotation = Quaternion.LookRotation(Vector3.forward, runAwayDirection);
 
-                // Move in the new direction
-                transform.position += runAwayDirection * (Time.deltaTime * speed * 2f); // Move faster when dispersing
+                speed = 9f; // set speed for every fish to 9f
+                transform.position += runAwayDirection * (Time.deltaTime * speed);  // Move in the new direction
             }
         }
     }
+
 
     void OnDestroy()
     {

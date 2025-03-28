@@ -219,7 +219,7 @@ public class FishingCastController : MonoBehaviour
                 // Make fish swim away in a random direction
                 Vector3 escapeDirection = (hookedFish.transform.position - transform.position).normalized;
                 hookedFish.transform.rotation = Quaternion.LookRotation(Vector3.forward, escapeDirection);
-                hookedFish.speed *= 1.5f; // Make fish swim away faster
+                hookedFish.speed = 9f; // Make fish swim away faster
             }
 
             // Reset hook state
