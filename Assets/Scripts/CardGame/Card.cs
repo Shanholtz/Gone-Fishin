@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Card : MonoBehaviour
 {
-    public string rank;
+    public int rank;
     public string suit;
     public bool isFaceUp = false;
     public float hoverHeight = 0.5f;

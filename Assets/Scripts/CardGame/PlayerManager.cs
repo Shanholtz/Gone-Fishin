@@ -37,6 +37,7 @@ public class PlayerManager : HandManager
         else
         {
             selectedCard = card;
+            selectedCard.isSelected = true;
             Debug.Log($"Selected {selectedCard.rank} to ask AI.");
         }
     }
@@ -82,8 +83,11 @@ public class PlayerManager : HandManager
         else
         {
             Debug.Log("No match found, Player draws a card.");
+            selectedCard.isSelected = false;
+            selectedCard = null;
             AddCard();
-            sceneManager.ChangeScene();
+            //sceneManager.ChangeScene();
+            turnManager.SwapTurn();
         }
 
         selectedCard = null;

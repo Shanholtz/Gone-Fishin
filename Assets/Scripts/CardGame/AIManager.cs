@@ -85,11 +85,28 @@ public class AIManager : HandManager
         {
             hand.Add(drawnCard);
             drawnCard.gameObject.SetActive(true);
-            drawnCard.FlipCard(true); // Player sees their card
+            drawnCard.FlipCard(false); 
 
             PositionCards();
             game.Match();
         }
+    }
+
+    public override void DrawHand()
+    {
+        for (int i = 0; i < startingHandSize; i++)
+        {
+            Card drawnCard = deckManager.DrawCard(transform);
+            if (drawnCard != null)
+            {
+                hand.Add(drawnCard);
+                drawnCard.gameObject.SetActive(true);
+                drawnCard.FlipCard(false); // Show face-down
+            }
+            
+            PositionCards();
+        }
+        game.Match();
     }
 
     void Update()
