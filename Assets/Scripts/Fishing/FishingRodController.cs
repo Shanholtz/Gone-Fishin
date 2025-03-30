@@ -5,20 +5,25 @@ using UnityEngine;
 
 public class FishingRodController : MonoBehaviour
 {
+    public TurnManager turn;
     public float rotationSpeed = 150f;
     public float maxAngle = 50f;
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
-        RotateRod();
-        if (Input.GetMouseButtonUp(0))
+        if (turn.isPlayerTurn)
         {
-            this.enabled = false;
+            RotateRod();
+            if (Input.GetMouseButtonUp(0))
+            {
+                this.enabled = false;
+            }  
         }
+        
     }
 
-    public void RotateRod()
+    public virtual void RotateRod()
     {
         // Get horizontal player input
         float input = Input.GetAxis("Horizontal");

@@ -71,7 +71,7 @@ public class AIManager : HandManager
         {
             Debug.Log("No match found, AI draws a card.");
             AddCard();
-            //sceneManager.ChangeScene();
+            sceneManager.ChangeScene();
         }
 
         yield return new WaitForSeconds(2f);

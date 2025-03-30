@@ -86,8 +86,7 @@ public class PlayerManager : HandManager
             selectedCard.isSelected = false;
             selectedCard = null;
             AddCard();
-            //sceneManager.ChangeScene();
-            turnManager.SwapTurn();
+            sceneManager.ChangeScene();
         }
 
         selectedCard = null;
