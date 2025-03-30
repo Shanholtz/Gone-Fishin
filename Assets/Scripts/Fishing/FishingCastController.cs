@@ -70,7 +70,7 @@ public class FishingCastController : MonoBehaviour
         }
     }
 
-    private void CastLine()
+    public void CastLine()
     {
         // Set starting position for cast
         startPosition = transform.position;

@@ -6,6 +6,7 @@ using UnityEngine;
 public class FishingAI : MonoBehaviour
 {
     public TurnManager turn;
+    public FishingCastController cast;
     public float rotationSpeed = 150f;
     public float maxAngle = 50f;
     private float randomInput;
@@ -22,6 +23,7 @@ public class FishingAI : MonoBehaviour
             clickTimer -= Time.deltaTime;
             if (clickTimer <= 0)
             {
+                cast.CastLine();
                 SimulateClick(); 
             }
         }

@@ -11,6 +11,7 @@ public class ResetEnvirement : MonoBehaviour
     private Vector3 originalHookPosition;
 
     public SceneManager sceneManager;
+    public TurnManager turn;
 
     private Coroutine changeTurnCoroutine;
 
@@ -60,6 +61,7 @@ public class ResetEnvirement : MonoBehaviour
         // Now execute the methods
         ResetGame();
         ChangeScene();
+        turn.SwapTurn();
     }
 
     public void ResetGame()
