@@ -11,7 +11,7 @@ public class Catch : MonoBehaviour
     public char[] possibleInputs = { 'W', 'A', 'S', 'D' };
 
     public TMP_Text sequenceText;
-
+    public TurnManager turn;
     public Action complete; // event for success
     public Action onSequenceFailed; // event for failure, when time runs out
 
@@ -24,6 +24,7 @@ public class Catch : MonoBehaviour
     public bool isSequenceOver = false;
 
     public TimerBar timerBar; // Reference to TimerBar script
+    public FishingAI ai;
 
     void Start()
     {
@@ -103,7 +104,35 @@ public class Catch : MonoBehaviour
                 Debug.LogError("Catch: TimerBar reference is missing!");
             }
         }
-        
+
+        if (!turn.isPlayerTurn)
+        {
+            StartCoroutine(StallAI());
+        }
+    }
+
+    public void compareAI(string AISequence)
+    {
+        if (AISequence == sequence)
+        {
+            Debug.Log("Success! Sequence completed.");
+            StopTimer(); // Stop the timer
+            complete?.Invoke();
+        }
+        else
+        {
+            Debug.Log("Incorrect input. Restarting sequence.");
+            GenerateSequence();
+            UpdateUI();
+            StartCoroutine(StallAI());
+        }
+    }
+
+    IEnumerator StallAI()
+    {
+        yield return new WaitForSeconds(3f);
+
+        ai.AISequence();
     }
 
     public void UpdateUI()

@@ -229,6 +229,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7961677693773598796, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
+      propertyPath: ai
+      value: 
+      objectReference: {fileID: 1687811630}
+    - target: {fileID: 7961677693773598796, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
+      propertyPath: turn
+      value: 
+      objectReference: {fileID: 889514639}
     - target: {fileID: 9142163396712149238, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -631,6 +639,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turn: {fileID: 889514639}
   cast: {fileID: 792567481}
+  catching: {fileID: 1687811629}
+  possibleInputs: 5700410053004400
   rotationSpeed: 150
   maxAngle: 50
 --- !u!1 &1712834564 stripped
