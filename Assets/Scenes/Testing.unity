@@ -161,6 +161,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1656170016900857279, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
+      propertyPath: fishLimit
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656170016900857279, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
+      propertyPath: fishSprites.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656170016900857279, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
+      propertyPath: fishSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: c4232da8eff2b6b42bd6c0149d7fdaa0, type: 3}
+    - target: {fileID: 1656170016900857279, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
+      propertyPath: fishSprites.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 96496cee05f64f14eadccc37f54d687b, type: 3}
+    - target: {fileID: 1656170016900857279, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
+      propertyPath: fishSprites.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: c67ce7fcbbf67d645bbb5bfdad5126d7, type: 3}
     - target: {fileID: 2786817473954712331, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
       propertyPath: turn
       value: 

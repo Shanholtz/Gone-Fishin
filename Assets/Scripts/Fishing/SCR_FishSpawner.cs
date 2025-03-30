@@ -86,10 +86,10 @@ public class SCR_FishSpawner : MonoBehaviour
         if (fishSprites.Length > 0 && spriteRenderer != null)
         {
             // Gives fish a random value to determine type
-            int randFish = Random.Range(1, 10);
+            int randFish = Random.Range(1, 101);
 
             // Bass stats
-            if (randFish >= 4) 
+            if (randFish > 50 && randFish <= 100) // 50%
             {
                 spriteRenderer.sprite = fishSprites[1];
 
@@ -99,13 +99,43 @@ public class SCR_FishSpawner : MonoBehaviour
                 return fishScript;
             }
             // Can fish stats
-            if (randFish <= 3)
+            if (randFish <= 10) // 10%
             {
                 spriteRenderer.sprite = fishSprites[2];
                 float canFishSize = 0.75f;
                 newFish.transform.localScale = new Vector3(canFishSize, canFishSize);
 
                 fishScript.speed = slowestSpeed;
+                return fishScript;
+            }
+            // Shark stats
+            if (randFish > 10 && randFish <= 30) // 20%
+            {
+                spriteRenderer.sprite = fishSprites[3];
+
+                fishScript.speed = Random.Range(slowestSpeed, fastestSpeed);
+                float randomSize = 2f;
+                newFish.transform.localScale = new Vector3(randomSize, randomSize);
+                return fishScript;
+            }
+            // Angel Fish stats
+            if (randFish > 30 && randFish <= 50) // 20%
+            {
+                spriteRenderer.sprite = fishSprites[4];
+
+                fishScript.speed = Random.Range(slowestSpeed, fastestSpeed);
+                float randomSize = Random.Range(1.0f, 1.5f);
+                newFish.transform.localScale = new Vector3(randomSize, randomSize);
+                return fishScript;
+            }
+            // Fish sticks Fish stats
+            if (randFish == 101) // 20%
+            {
+                spriteRenderer.sprite = fishSprites[5];
+
+                fishScript.speed = fastestSpeed;
+                float randomSize = 1.0f;
+                newFish.transform.localScale = new Vector3(randomSize, randomSize);
                 return fishScript;
             }
         }
