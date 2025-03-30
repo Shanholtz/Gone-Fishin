@@ -12,6 +12,8 @@ public class ResetEnvirement : MonoBehaviour
 
     public SceneManager sceneManager;
 
+    private Coroutine changeTurnCoroutine;
+
 
     void Start()
     {
@@ -24,7 +26,7 @@ public class ResetEnvirement : MonoBehaviour
             originalHookPosition = fishingController.transform.position;
 
             fishingController.endOfTurn += ChangeTurnScene; // Subscribe to the event, resets game and waits 3 seconds to change scene.
-    }
+        }
     }
 
     void Update()
@@ -42,6 +44,20 @@ public class ResetEnvirement : MonoBehaviour
 
     void ChangeTurnScene()
     {
+        // Start the coroutine and store a reference to it
+        if (changeTurnCoroutine != null)
+        {
+            StopCoroutine(changeTurnCoroutine);
+        }
+        changeTurnCoroutine = StartCoroutine(ChangeTurnSceneWithDelay());
+    }
+
+    IEnumerator ChangeTurnSceneWithDelay()
+    {
+        // Wait for 5 seconds
+        yield return new WaitForSeconds(5f);
+
+        // Now execute the methods
         ResetGame();
         ChangeScene();
     }
