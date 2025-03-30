@@ -236,4 +236,9 @@ public class FishingCastController : MonoBehaviour
         }
     }
 
+    public void ResetPowerBar()
+    {
+        powerBar.value = 10f;
+    }
+
 }

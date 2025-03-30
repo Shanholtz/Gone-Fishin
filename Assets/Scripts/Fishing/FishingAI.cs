@@ -23,6 +23,8 @@ public class FishingAI : MonoBehaviour
             clickTimer -= Time.deltaTime;
             if (clickTimer <= 0)
             {
+                cast.powerBar.value = Random.Range(10f,100f);
+
                 cast.CastLine();
                 SimulateClick(); 
             }

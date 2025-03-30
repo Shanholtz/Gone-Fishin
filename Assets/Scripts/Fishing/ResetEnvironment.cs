@@ -82,6 +82,7 @@ public class ResetEnvirement : MonoBehaviour
         {
             fishingController._fishingStates = FishingCastController.FishingStates.Idle;
             fishingController.transform.position = originalHookPosition;
+            fishingController.ResetPowerBar();
 
             // Destroy the existing fishing line and hook if they exist
             if (fishingController.currentLine != null)
@@ -105,6 +106,7 @@ public class ResetEnvirement : MonoBehaviour
         {
             rodController.enabled = true; // Reactivate rotation
             rodController.transform.rotation = Quaternion.identity; // Reset to default rotation
+           
         }
 
         // **Detach the fish from the hook and reset it**
