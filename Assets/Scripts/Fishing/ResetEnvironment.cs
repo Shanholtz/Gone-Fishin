@@ -7,6 +7,7 @@ public class ResetEnvirement : MonoBehaviour
     private FishingCastController fishingController;
     private SCR_FishSpawner fishSpawner;
     private Catch catchSystem;
+    private TimerBar timerBar;
 
     private Vector3 originalHookPosition;
 
@@ -22,6 +23,7 @@ public class ResetEnvirement : MonoBehaviour
         fishingController = FindObjectOfType<FishingCastController>();
         fishSpawner = FindObjectOfType<SCR_FishSpawner>();
         catchSystem = FindObjectOfType<Catch>();
+        timerBar = FindObjectOfType<TimerBar>();
 
         if (fishingController != null)
         {
@@ -68,6 +70,12 @@ public class ResetEnvirement : MonoBehaviour
     public void ResetGame()
     {
         Debug.Log("Game Reset!");
+
+        // Reset timer bar first
+        if (timerBar != null)
+        {
+            timerBar.ResetTimer();
+        }
 
         // Reset the fishing rod and hook position
         if (fishingController != null)
@@ -133,6 +141,8 @@ public class ResetEnvirement : MonoBehaviour
         {
             fishSpawner.ResetFish();
         }
+
+       
     }
 
     public void ChangeScene()

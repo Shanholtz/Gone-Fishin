@@ -52,4 +52,10 @@ public class TimerBar : MonoBehaviour
        
     }
 
+    public void ResetTimer()
+    {
+        timeLeft = 0f;
+        timerBar.fillAmount = 0f;
+    }
+
 }
