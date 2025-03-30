@@ -86,10 +86,19 @@ public class PlayerManager : HandManager
             selectedCard.isSelected = false;
             selectedCard = null;
             AddCard();
-            sceneManager.ChangeScene();
+
+            StartCoroutine(sceneChange());
+            
+            
         }
 
         selectedCard = null;
+    }
+
+    IEnumerator sceneChange()
+    {
+        yield return new WaitForSeconds(6f);
+        sceneManager.ChangeScene();
     }
 
     public override void AddCard()

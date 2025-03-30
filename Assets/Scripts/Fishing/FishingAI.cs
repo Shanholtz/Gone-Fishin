@@ -52,6 +52,7 @@ public class FishingAI : MonoBehaviour
     private void SimulateClick()
     {
         Debug.Log("AI Simulated Click!");
+        clickTimer = 5f;
         DisableAI();
     }
 

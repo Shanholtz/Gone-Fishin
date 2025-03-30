@@ -66,16 +66,24 @@ public class AIManager : HandManager
             }
 
             game.Match(); // Process matching effects
+            
+            yield return new WaitForSeconds(2f);
+            turnManager.SwapTurn();
         }
         else
         {
             Debug.Log("No match found, AI draws a card.");
             AddCard();
-            sceneManager.ChangeScene();
-        }
 
-        yield return new WaitForSeconds(2f);
-        turnManager.SwapTurn();
+            StartCoroutine(sceneChange());
+            
+        }
+    }
+
+    IEnumerator sceneChange()
+    {
+        yield return new WaitForSeconds(6f);
+        sceneManager.ChangeScene();
     }
 
     public override void AddCard()
