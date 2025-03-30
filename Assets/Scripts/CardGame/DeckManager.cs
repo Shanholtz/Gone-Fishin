@@ -11,8 +11,8 @@ public class DeckManager : MonoBehaviour
     public Sprite[] cardSprites; // Assign in Inspector
     public Sprite cardBack;
 
-    private string[] suits = { "Clubs", "Diamonds", "Hearts", "Spades" };
-    private string[] ranks = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"  };
+    private string[] suits = { "Hook", "Rod", "String", "Bait" };
+    private int[] ranks = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13  };
 
     public event Action onDeckReady;
 
@@ -35,7 +35,7 @@ public class DeckManager : MonoBehaviour
         int spriteIndex = 0;
         foreach (string suit in suits)
         {
-            foreach (string rank in ranks)
+            foreach (int rank in ranks)
             {
                 GameObject newCard = Instantiate(cardPrefab);
                

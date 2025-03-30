@@ -1,11 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class GameManager : MonoBehaviour
 {
     public PlayerManager PlayerHand;
     public AIManager aiHand;
+    public StatManager stats;
     public float displayTime = 5f;
     public bool Changeturn = true;
 
@@ -27,6 +30,16 @@ public class GameManager : MonoBehaviour
         foreach (Card card in aiCardsToRemove)
         {
             card.FlipCard(true);
+        }
+
+        foreach (Card card in playerCardsToRemove)
+        {
+            stats.ChangeStat(card.suit, card.rank);
+        }
+
+        foreach (Card card in aiCardsToRemove)
+        {
+            stats.ChangeStat(card.suit, card.rank);
         }
 
         yield return new WaitForSeconds(displayTime); // Wait for display time before removal

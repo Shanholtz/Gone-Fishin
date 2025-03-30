@@ -38,7 +38,7 @@ public class HandManager : MonoBehaviour
 
     }
 
-    protected void DrawHand()
+    public virtual void DrawHand()
     {
         for (int i = 0; i < startingHandSize; i++)
         {
