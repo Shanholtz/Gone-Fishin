@@ -10,6 +10,7 @@ public class ResetEnvirement : MonoBehaviour
 
     private Vector3 originalHookPosition;
 
+    public FishingAI ai;
     public SceneManager sceneManager;
     public TurnManager turn;
 
@@ -86,6 +87,8 @@ public class ResetEnvirement : MonoBehaviour
                 Destroy(fishingController.currentHook);
                 fishingController.currentHook = null;
             }
+
+            ai.enabled = true;
         }
 
         // Ensure the fishing rod can rotate again
