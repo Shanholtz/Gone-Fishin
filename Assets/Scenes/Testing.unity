@@ -322,7 +322,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1960748548961381979, guid: f9051ee1dc903974d98491d7d30ec430, type: 3}
       propertyPath: m_text
-      value: Reuest Pair?
+      value: Request Pair?
       objectReference: {fileID: 0}
     - target: {fileID: 2824704859142085793, guid: f9051ee1dc903974d98491d7d30ec430, type: 3}
       propertyPath: m_BackGroundColor.b

@@ -65,7 +65,7 @@ public class AIManager : HandManager
                 hand.Add(card);
             }
 
-            game.Match(); // Process matching effects
+            game.Match(hand); // Process matching effects
             
             yield return new WaitForSeconds(2f);
             turnManager.SwapTurn();
@@ -94,10 +94,10 @@ public class AIManager : HandManager
             hand.Add(drawnCard);
             drawnCard.gameObject.SetActive(true);
             drawnCard.FlipCard(false); 
-
-            PositionCards();
-            game.Match();
         }
+
+        PositionCards();
+        game.Match(hand);
     }
 
     public override void DrawHand()
@@ -114,7 +114,8 @@ public class AIManager : HandManager
             
             PositionCards();
         }
-        game.Match();
+        Debug.Log("Test");
+        game.Match(hand);
     }
 
     void Update()

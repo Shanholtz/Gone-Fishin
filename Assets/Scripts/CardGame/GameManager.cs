@@ -12,47 +12,30 @@ public class GameManager : MonoBehaviour
     public float displayTime = 5f;
     public bool Changeturn = true;
 
-    public void Match()
+    public void Match(List<Card> hand)
     {
-        StartCoroutine(ProcessMatching());
+        StartCoroutine(ProcessMatching(hand));
     }
 
-    private IEnumerator ProcessMatching()
+    private IEnumerator ProcessMatching(List<Card> hand)
     {
-        List<Card> playerCardsToRemove = GetMatchingPairs(PlayerHand.hand);
-        List<Card> aiCardsToRemove = GetMatchingPairs(aiHand.hand);
+        List<Card> CardsToRemove = GetMatchingPairs(hand);
 
-        foreach (Card card in playerCardsToRemove)
+        foreach (Card card in CardsToRemove)
         {
             card.FlipCard(true);
         }
 
-        foreach (Card card in aiCardsToRemove)
-        {
-            card.FlipCard(true);
-        }
-
-        foreach (Card card in playerCardsToRemove)
-        {
-            stats.ChangeStat(card.suit, card.rank);
-        }
-
-        foreach (Card card in aiCardsToRemove)
+        foreach (Card card in CardsToRemove)
         {
             stats.ChangeStat(card.suit, card.rank);
         }
 
         yield return new WaitForSeconds(displayTime); // Wait for display time before removal
 
-        foreach (Card card in playerCardsToRemove)
+        foreach (Card card in CardsToRemove)
         {
-            PlayerHand.hand.Remove(card);
-            Destroy(card.gameObject);
-        }
-
-        foreach (Card card in aiCardsToRemove)
-        {
-            aiHand.hand.Remove(card);
+            hand.Remove(card);
             Destroy(card.gameObject);
         }
 
@@ -67,33 +50,29 @@ public class GameManager : MonoBehaviour
     private List<Card> GetMatchingPairs(List<Card> cardList)
     {
         HashSet<Card> cardsToRemove = new HashSet<Card>();
+        HashSet<int> countedRanks = new HashSet<int>(); // Track counted ranks
 
         for (int i = 0; i < cardList.Count; i++)
         {
-            for (int j = i + 1; j < cardList.Count; j++) // Start from i+1 to avoid duplicate checks
+            for (int j = i + 1; j < cardList.Count; j++)
             {
                 if (cardList[i].rank == cardList[j].rank && cardList[i].suit != cardList[j].suit)
                 {
-                    Debug.Log($"{(cardList == PlayerHand.hand ? "Player" : "AI")} has a Pair of: {cardList[i].rank}'s!");
-                    
-                    if (cardsToRemove.Count < 2)
+                    if (!countedRanks.Contains(cardList[i].rank)) // Only count this rank once
                     {
-                    cardsToRemove.Add(cardList[i]);
-                    cardsToRemove.Add(cardList[j]);
-                    }
+                        Debug.Log($"{(cardList == PlayerHand.hand ? "Player" : "AI")} has a Pair of: {cardList[i].rank}'s!");
+                        
+                        cardsToRemove.Add(cardList[i]);
+                        cardsToRemove.Add(cardList[j]);
 
-                    if (cardList == PlayerHand.hand)
-                    {
-                        PlayerHand.pairs++;
-                    }
-                    if (cardList == aiHand.hand)
-                    {
-                        aiHand.pairs++;
+                        if (cardList == PlayerHand.hand) PlayerHand.pairs++;
+                        if (cardList == aiHand.hand) aiHand.pairs++;
+
+                        countedRanks.Add(cardList[i].rank); // Mark this rank as counted
                     }
                 }
             }
         }
-
         return new List<Card>(cardsToRemove);
     }
 
