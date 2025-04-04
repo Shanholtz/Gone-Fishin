@@ -34,7 +34,7 @@ public class HandManager : MonoBehaviour
         }
         
         PositionCards();
-        game.Match();
+        game.Match(hand);
 
     }
 
@@ -52,7 +52,7 @@ public class HandManager : MonoBehaviour
             
             PositionCards();
         }
-        game.Match();
+        game.Match(hand);
     }
 
     public virtual void PositionCards()

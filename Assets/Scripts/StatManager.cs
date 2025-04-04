@@ -13,25 +13,21 @@ public class StatManager : MonoBehaviour
         if (suit == "Hook")
         {
             hookRadius.attractionRadius += rank;
-            Debug.Log("Hook has been matched");
         }
 
         if (suit == "Rod")
         {
             spawner.fishLimit += rank;
-            Debug.Log("Rod has been matched");
         }
 
         if (suit == "String")
         {
             time.timerDuration += rank;
-            Debug.Log("String has been matched");
         }
 
         if (suit == "Bait")
         {
             spawner.rareFishCount += rank;
-            Debug.Log("Bait has been matched");
         }
     }
 }

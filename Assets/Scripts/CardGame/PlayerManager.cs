@@ -77,7 +77,7 @@ public class PlayerManager : HandManager
                 hand.Add(card);
             }
 
-            game.Match(); // Process matching effects
+            game.Match(hand); // Process matching effects
             turnManager.SwapTurn();
         }
         else
