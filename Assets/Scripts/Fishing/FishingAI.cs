@@ -37,14 +37,72 @@ public class FishingAI : MonoBehaviour
     public void AISequence()
     {
         sequence = "";
-        for (int i = 0; i < catching.sequenceLength; i++)
+
+        // Copys the first part of the generated sequence except the last letter
+        int copyLength = Mathf.Max(0, catching.sequenceLength - 1); 
+        sequence = catching.sequence.Substring(0, copyLength);
+
+        // Decide whether to choose the correct letter or a wrong one
+        float chance = UnityEngine.Random.value; // gives a float between 0.0 and 1.0
+
+        char correctLastChar = catching.sequence[copyLength];
+        char chosenChar;
+
+        if (chance <= 0.6f)
         {
-            // Explicitly use UnityEngine.Random to avoid ambiguity
-            sequence += possibleInputs[UnityEngine.Random.Range(0, possibleInputs.Length)];
+            // 60% chance to pick the correct final input
+            chosenChar = correctLastChar;
         }
-        
+        else
+        {
+            // 40% chance to pick a wrong input
+            List<char> wrongOptions = new List<char>(possibleInputs);
+            wrongOptions.Remove(correctLastChar);
+            chosenChar = wrongOptions[UnityEngine.Random.Range(0, wrongOptions.Count)];
+        }
+
+        sequence += chosenChar;
         Debug.Log("AI sequence: " + sequence);
-        catching.compareAI(sequence);
+
+        StartCoroutine(SimulateInputSequence(sequence));
+    }
+
+    private IEnumerator SimulateInputSequence(string aiSequence)
+    {
+        for (int i = 0; i < aiSequence.Length; i++)
+        {
+            char currentChar = aiSequence[i];
+
+            // Simulate key press by feeding the key to the catching system
+            if (currentChar == catching.sequence[0])
+            {
+                // Correct key, remove it from the target sequence
+                catching.sequence = catching.sequence.Substring(1);
+                catching.UpdateUI();
+
+                if (catching.sequence.Length == 0)
+                {
+                    Debug.Log("AI completed the sequence!");
+                    catching.StopTimer();
+                    catching.complete?.Invoke();
+                    yield break;
+                }
+            }
+            else
+            {
+                // Incorrect key, reset the sequence
+                Debug.Log("AI made a mistake!");
+                catching.GenerateSequence();
+                catching.UpdateUI();
+
+                // Optionally restart the AI after a short pause
+                yield return new WaitForSeconds(1f);
+                StartCoroutine(catching.StallAI());
+                yield break;
+            }
+
+            yield return new WaitForSeconds(0.5f); // Delay between inputs
+        }
     }
 
     public void RotateRod()

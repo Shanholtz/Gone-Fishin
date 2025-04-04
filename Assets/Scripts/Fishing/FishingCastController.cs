@@ -75,6 +75,12 @@ public class FishingCastController : MonoBehaviour
         // Set starting position for cast
         startPosition = transform.position;
         power = powerBar.value;
+        
+        // If power value is less than 30, defaults it to 30 so the end of the line isnt in the rod.
+        if (power < 30)
+        {
+            power = 30;
+        }
 
         // Instantiate fishing line and configure LineRenderer
         currentLine = Instantiate(fishingLinePrefab, startPosition, Quaternion.identity);
@@ -132,8 +138,8 @@ public class FishingCastController : MonoBehaviour
         // Check if hook has returned close to rod
         if (Vector3.Distance(currentHook.transform.position, transform.position) <= 1)
         {
-            Debug.Log("Fish caught");
-
+            //Debug.Log("Fish caught");
+            
             if (hookedFish != null)
             {
                 hookedFish.RemoveFish();

@@ -111,24 +111,7 @@ public class Catch : MonoBehaviour
         }
     }
 
-    public void compareAI(string AISequence)
-    {
-        if (AISequence == sequence)
-        {
-            Debug.Log("Success! Sequence completed.");
-            StopTimer(); // Stop the timer
-            complete?.Invoke();
-        }
-        else
-        {
-            Debug.Log("Incorrect input. Restarting sequence.");
-            GenerateSequence();
-            UpdateUI();
-            StartCoroutine(StallAI());
-        }
-    }
-
-    IEnumerator StallAI()
+    public IEnumerator StallAI()
     {
         yield return new WaitForSeconds(3f);
 
