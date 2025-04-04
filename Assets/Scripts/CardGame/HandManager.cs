@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HandManager : MonoBehaviour
@@ -10,7 +11,6 @@ public class HandManager : MonoBehaviour
     public int startingHandSize = 5;
     public float spacing = 1.5f; // Space between cards
     protected virtual float yOffset => 4f;
-
     public int pairs = 0;
 
     protected virtual void Awake()

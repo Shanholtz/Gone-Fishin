@@ -67,6 +67,10 @@ public class DeckManager : MonoBehaviour
         if (deck.Count == 0)
         {
             Debug.LogWarning("Deck is empty!");
+            if (hand.childCount == 0)
+            {
+                //End Game
+            }
             return null;
         }
 

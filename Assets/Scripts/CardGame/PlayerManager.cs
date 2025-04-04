@@ -88,8 +88,6 @@ public class PlayerManager : HandManager
             AddCard();
 
             StartCoroutine(sceneChange());
-            
-            
         }
 
         selectedCard = null;

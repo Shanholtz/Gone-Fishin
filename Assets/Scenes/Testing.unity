@@ -541,6 +541,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f77bfe3439d0cd479110748b34da38f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &889514640 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 654815568045170028, guid: f9051ee1dc903974d98491d7d30ec430, type: 3}
+  m_PrefabInstance: {fileID: 889514638}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03544737d2232ac45bd54a0573eeb96c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1124227576 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1656170016900857279, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
@@ -583,6 +594,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GoFish: {fileID: 1712834564}
   Fishing: {fileID: 1463229989}
+  hand: {fileID: 1547433147}
+  aiHand: {fileID: 889514640}
 --- !u!4 &1168343051
 Transform:
   m_ObjectHideFlags: 0
