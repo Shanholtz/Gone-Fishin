@@ -7,8 +7,15 @@ public class SceneManager : MonoBehaviour
 
     public GameObject GoFish;
     public GameObject Fishing;
-    public HandManager hand;
+    public HandManager playerHand;
     public AIManager aiHand;
+    public DeckManager deck;
+    public TurnManager turn;
+    public ResetEnvirement reset;
+
+    public bool Playerdone = false;
+    public bool Aidone = false;
+    private bool isReset = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,16 +31,19 @@ public class SceneManager : MonoBehaviour
 
         if (GoFish)
         {
-            if(hand.hand.Count == 0)
+            if(playerHand.hand.Count == 0)
             {
-                hand.DrawHand();
+                playerHand.DrawHand();
             }
 
             if(aiHand.hand.Count == 0)
             {
-                hand.DrawHand();
+                aiHand.DrawHand();
             }
         }
+
+        Playerdone = false;
+        Aidone = false;
     }
 
     private void Update()
@@ -42,5 +52,46 @@ public class SceneManager : MonoBehaviour
         {
             Application.Quit();
         }
+
+        CheckGameEnd();
+    }
+
+    private void CheckGameEnd()
+    {
+        if (playerHand.hand.Count == 0 && aiHand.hand.Count == 0 && deck.deck.Count == 0)
+        {
+            EnterFinalFishingMode();
+        }
+    }
+
+    private void EnterFinalFishingMode()
+    {
+        GoFish.SetActive(false);
+        Fishing.SetActive(true);
+
+        if(Playerdone && !Aidone && !isReset)
+        {
+            turn.isPlayerTurn = false;
+            reset.ResetGame();
+            isReset = true;
+        }
+
+        if(!Playerdone && Aidone && !isReset)
+        {
+            turn.isPlayerTurn = true;
+            reset.ResetGame();
+            isReset= true;
+        }
+
+        if(Playerdone && Aidone)
+        {
+            EndGame();
+        }
+    }
+
+    private void EndGame()
+    {
+        Debug.Log("Game Over! Display results here.");
+        // Implement logic for displaying results or transitioning to a game-over scene
     }
 }

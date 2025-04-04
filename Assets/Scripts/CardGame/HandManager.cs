@@ -35,7 +35,6 @@ public class HandManager : MonoBehaviour
         
         PositionCards();
         game.Match(hand);
-
     }
 
     public virtual void DrawHand()

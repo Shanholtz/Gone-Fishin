@@ -114,7 +114,6 @@ public class AIManager : HandManager
             
             PositionCards();
         }
-        Debug.Log("Test");
         game.Match(hand);
     }
 

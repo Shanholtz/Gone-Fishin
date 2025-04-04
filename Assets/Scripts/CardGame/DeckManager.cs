@@ -10,6 +10,10 @@ public class DeckManager : MonoBehaviour
 
     public Sprite[] cardSprites; // Assign in Inspector
     public Sprite cardBack;
+    public SceneManager scene;
+
+    private string[] Testsuits = { "Hook", "Rod"};
+    private int[] Testranks = { 1, 2, 3, 4, 5};
 
     private string[] suits = { "Hook", "Rod", "String", "Bait" };
     private int[] ranks = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13  };
@@ -33,9 +37,9 @@ public class DeckManager : MonoBehaviour
     void GenerateDeck()
     {
         int spriteIndex = 0;
-        foreach (string suit in suits)
+        foreach (string suit in Testsuits)
         {
-            foreach (int rank in ranks)
+            foreach (int rank in Testranks)
             {
                 GameObject newCard = Instantiate(cardPrefab);
                
@@ -69,7 +73,7 @@ public class DeckManager : MonoBehaviour
             Debug.LogWarning("Deck is empty!");
             if (hand.childCount == 0)
             {
-                //End Game
+                scene.ChangeScene();
             }
             return null;
         }

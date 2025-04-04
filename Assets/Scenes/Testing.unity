@@ -520,6 +520,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -120
       objectReference: {fileID: 0}
+    - target: {fileID: 8960240776641766422, guid: f9051ee1dc903974d98491d7d30ec430, type: 3}
+      propertyPath: scene
+      value: 
+      objectReference: {fileID: 1168343050}
     - target: {fileID: 9175375945915377752, guid: f9051ee1dc903974d98491d7d30ec430, type: 3}
       propertyPath: m_Name
       value: GoFish
@@ -594,8 +598,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GoFish: {fileID: 1712834564}
   Fishing: {fileID: 1463229989}
-  hand: {fileID: 1547433147}
+  playerHand: {fileID: 1547433147}
   aiHand: {fileID: 889514640}
+  deck: {fileID: 1610201385}
+  turn: {fileID: 889514639}
+  reset: {fileID: 1936044820}
+  Playerdone: 0
+  Aidone: 0
 --- !u!4 &1168343051
 Transform:
   m_ObjectHideFlags: 0
@@ -625,6 +634,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1033bf20891954b4994bd7189a33b2aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1610201385 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8960240776641766422, guid: f9051ee1dc903974d98491d7d30ec430, type: 3}
+  m_PrefabInstance: {fileID: 889514638}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5841c878a63635f4f9d5f8e7c361a90a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1687811629 stripped
@@ -661,6 +681,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9175375945915377752, guid: f9051ee1dc903974d98491d7d30ec430, type: 3}
   m_PrefabInstance: {fileID: 889514638}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1936044820 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 407802652471018604, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
+  m_PrefabInstance: {fileID: 792567479}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6d089fe6a0612f499d71e9b7140abd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

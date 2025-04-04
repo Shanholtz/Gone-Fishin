@@ -54,6 +54,16 @@ public class ResetEnvirement : MonoBehaviour
             StopCoroutine(changeTurnCoroutine);
         }
         changeTurnCoroutine = StartCoroutine(ChangeTurnSceneWithDelay());
+
+        if (turn.isPlayerTurn)
+        {
+            sceneManager.Playerdone = true;
+        }
+                
+        if (!turn.isPlayerTurn)
+        {
+            sceneManager.Aidone = true;
+        }
     }
 
     IEnumerator ChangeTurnSceneWithDelay()
