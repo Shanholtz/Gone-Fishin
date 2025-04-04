@@ -20,4 +20,12 @@ public class SceneManager : MonoBehaviour
         GoFish.SetActive(!GoFish.activeSelf);
         Fishing.SetActive(!Fishing.activeSelf);
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
 }

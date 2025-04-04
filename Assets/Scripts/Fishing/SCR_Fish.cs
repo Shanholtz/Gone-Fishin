@@ -55,8 +55,11 @@ public class SCR_Fish : MonoBehaviour
 
     void OnDestroy()
     {
-        fishingCastController.OnHookCast -= AssignHook;
-        fishingCastController.OnFishCaught -= DisperseFish;
+        if (fishingCastController)
+        {
+            fishingCastController.OnHookCast -= AssignHook;
+            fishingCastController.OnFishCaught -= DisperseFish;
+        }    
     }
 
     void Update()
