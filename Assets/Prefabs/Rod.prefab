@@ -232,6 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1eae537235f1e4599147209814bb31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turn: {fileID: 0}
   rotationSpeed: 150
   maxAngle: 50
 --- !u!114 &291436836920267470
@@ -252,6 +253,12 @@ MonoBehaviour:
   powerBar: {fileID: 0}
   _fishingStates: 0
   catching: {fileID: 0}
+  origHookPos: {x: 0, y: 0, z: 0}
+  hookLogic: {fileID: 0}
+  startPosition: {x: 0, y: 0}
+  currentLine: {fileID: 0}
+  currentHook: {fileID: 0}
+  lineRenderer: {fileID: 0}
 --- !u!1001 &4714004192084409018
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -307,6 +314,14 @@ PrefabInstance:
     - target: {fileID: 1879294137270229301, guid: 5e9e456c575c18345bae95054563f98a, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1879294137270229301, guid: 5e9e456c575c18345bae95054563f98a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 1879294137270229301, guid: 5e9e456c575c18345bae95054563f98a, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1879294137270229301, guid: 5e9e456c575c18345bae95054563f98a, type: 3}
       propertyPath: m_Parameters.colorGradient.atime1
