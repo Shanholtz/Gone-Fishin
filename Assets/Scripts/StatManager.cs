@@ -48,7 +48,7 @@ public class StatManager : MonoBehaviour
 
             if (suit == "Bait")
             {
-                if (rank >= 1 && rank <= 3)
+                if (rank >= 0 && rank <= 3)
                     spawner.playerSpawnTable = spawner.GetTier1Table();
                 else if (rank >= 4 && rank <= 6)
                     spawner.playerSpawnTable = spawner.GetTier2Table();
@@ -64,45 +64,45 @@ public class StatManager : MonoBehaviour
             }
         }
 
-        if(player == "ai")
-        {
-            if (suit == "Hook")
+            if(player == "ai")
             {
-                aiRadius += (float)(rank/5.2); // a 13 rank card will double the current attraction radius of 2.5
-            }
-
-            if (suit == "Rod")
-            {
-                if (rank == 1) // if ace, just adds 1 fish
+                if (suit == "Hook")
                 {
-                    aiLimit += (int)(rank);
+                    aiRadius += (float)(rank/5.2); // a 13 rank card will double the current attraction radius of 2.5
                 }
-                else // anything else
+
+                if (suit == "Rod")
                 {
-                aiLimit += (int)(rank/2.6); // a 13 rank card will add 5 fish to the pond
+                    if (rank == 1) // if ace, just adds 1 fish
+                    {
+                        aiLimit += (int)(rank);
+                    }
+                    else // anything else
+                    {
+                        aiLimit += (int)(rank/2.6); // a 13 rank card will add 5 fish to the pond
+                    }
                 }
-            }
 
-            if (suit == "String")
-            {
-                aiTimer += (float)(rank/2.6); // a 13 rank card will double the time of 5 seconds to 10
-            }
+                if (suit == "String")
+                {
+                    aiTimer += (float)(rank/2.6); // a 13 rank card will double the time of 5 seconds to 10
+                }
 
-            if (suit == "Bait")
-            {
-                if (rank >= 1 && rank <= 3)
-                    spawner.aiSpawnTable = spawner.GetTier1Table();
-                else if (rank >= 4 && rank <= 6)
-                    spawner.aiSpawnTable = spawner.GetTier2Table();
-                else if (rank >= 7 && rank <= 10)
-                    spawner.aiSpawnTable = spawner.GetTier3Table();
-                else if (rank >= 11 && rank <= 13)
-                    spawner.aiSpawnTable = spawner.GetTier4Table();
-                else if (rank >= 14)
-                    spawner.aiSpawnTable = spawner.GetTier5Table();// anything above the 13 card rank, give the best table
+                if (suit == "Bait")
+                {
+                    if (rank >= 0 && rank <= 3)
+                        spawner.aiSpawnTable = spawner.GetTier1Table();
+                    else if (rank >= 4 && rank <= 6)
+                        spawner.aiSpawnTable = spawner.GetTier2Table();
+                    else if (rank >= 7 && rank <= 10)
+                        spawner.aiSpawnTable = spawner.GetTier3Table();
+                    else if (rank >= 11 && rank <= 13)
+                        spawner.aiSpawnTable = spawner.GetTier4Table();
+                    else if (rank >= 14)
+                        spawner.aiSpawnTable = spawner.GetTier5Table();// anything above the 13 card rank, give the best table
 
 
-                spawner.ResetFish();
+                    spawner.ResetFish();
             }
         }
     }
