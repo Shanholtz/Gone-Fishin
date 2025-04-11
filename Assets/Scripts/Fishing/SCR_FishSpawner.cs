@@ -42,6 +42,8 @@ public class SCR_FishSpawner : MonoBehaviour
     private List<FishSpawnChance> tier2SpawnTable;
     private List<FishSpawnChance> tier3SpawnTable;
     private List<FishSpawnChance> tier4SpawnTable;
+    private List<FishSpawnChance> tier5SpawnTable;
+
 
     void Awake()
     {
@@ -80,10 +82,18 @@ public class SCR_FishSpawner : MonoBehaviour
 
         tier4SpawnTable = new List<FishSpawnChance>
         {
-            new FishSpawnChance { spriteIndex = 0, chance = 25f }, // Golden
-            new FishSpawnChance { spriteIndex = 3, chance = 25f }, // Shark
-            new FishSpawnChance { spriteIndex = 4, chance = 25f }, // Angel
-            new FishSpawnChance { spriteIndex = 5, chance = 25f }  // Fish Sticks
+            new FishSpawnChance { spriteIndex = 0, chance = 20f }, // Golden
+            new FishSpawnChance { spriteIndex = 3, chance = 32.5f }, // Shark
+            new FishSpawnChance { spriteIndex = 4, chance = 32.5f }, // Angel
+            new FishSpawnChance { spriteIndex = 5, chance = 10f }  // Fish Sticks
+        };
+
+        tier5SpawnTable = new List<FishSpawnChance>
+        {
+            new FishSpawnChance { spriteIndex = 0, chance = 50f }, // Golden
+            new FishSpawnChance { spriteIndex = 3, chance = 20f }, // Shark
+            new FishSpawnChance { spriteIndex = 4, chance = 20f }, // Angel
+            new FishSpawnChance { spriteIndex = 5, chance = 10f }  // Fish Sticks
         };
     }
 
@@ -91,6 +101,7 @@ public class SCR_FishSpawner : MonoBehaviour
     public List<FishSpawnChance> GetTier2Table() => tier2SpawnTable;
     public List<FishSpawnChance> GetTier3Table() => tier3SpawnTable;
     public List<FishSpawnChance> GetTier4Table() => tier4SpawnTable;
+    public List<FishSpawnChance> GetTier5Table() => tier5SpawnTable;
 
     public void InitialPopulation()
     {
