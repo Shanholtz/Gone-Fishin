@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class FishSpawnChance
+{
+    public int spriteIndex;  // Index of fish sprite
+    public float chance;     // Percent out of 100
+}
+
 public class SCR_FishSpawner : MonoBehaviour
 {
     public GameObject gameArea;
@@ -12,9 +18,9 @@ public class SCR_FishSpawner : MonoBehaviour
 
     // Controls amount of fish
     public int fishCount = 0;
-    public int fishLimit = 10;
+    public int fishLimit = 3;
     public int fishPerFrame = 1;
-    public int rareFishCount = 0;
+    //public int rareFishCount = 0;
 
     // Controls game area
     public float spawnCircleRadius = 5.0f;
@@ -26,11 +32,62 @@ public class SCR_FishSpawner : MonoBehaviour
 
     public bool fishHooked = false;
 
+
+    public List<FishSpawnChance> spawnTable; // Active spawn table
+
+    private List<FishSpawnChance> tier1SpawnTable;
+    private List<FishSpawnChance> tier2SpawnTable;
+    private List<FishSpawnChance> tier3SpawnTable;
+    private List<FishSpawnChance> tier4SpawnTable;
+
+    void Awake()
+    {
+        InitSpawnTables();
+        spawnTable = tier1SpawnTable;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         InitialPopulation();
     }
+
+    void InitSpawnTables()
+    {
+        tier1SpawnTable = new List<FishSpawnChance>
+        {
+            new FishSpawnChance { spriteIndex = 1, chance = 50f }, // Bass
+            new FishSpawnChance { spriteIndex = 2, chance = 50f }  // Can
+        };
+
+        tier2SpawnTable = new List<FishSpawnChance>
+        {
+            new FishSpawnChance { spriteIndex = 1, chance = 40f }, // Bass
+            new FishSpawnChance { spriteIndex = 2, chance = 30f }, // Can
+            new FishSpawnChance { spriteIndex = 3, chance = 30f }  // Shark
+        };
+
+        tier3SpawnTable = new List<FishSpawnChance>
+        {
+            new FishSpawnChance { spriteIndex = 1, chance = 35f }, // Bass
+            new FishSpawnChance { spriteIndex = 3, chance = 30f }, // Shark
+            new FishSpawnChance { spriteIndex = 4, chance = 25f }, // Angel
+            new FishSpawnChance { spriteIndex = 0, chance = 10f }  // Golden
+        };
+
+        tier4SpawnTable = new List<FishSpawnChance>
+        {
+            new FishSpawnChance { spriteIndex = 0, chance = 25f }, // Golden
+            new FishSpawnChance { spriteIndex = 3, chance = 25f }, // Shark
+            new FishSpawnChance { spriteIndex = 4, chance = 25f }, // Angel
+            new FishSpawnChance { spriteIndex = 5, chance = 25f }  // Fish Sticks
+        };
+    }
+
+    public List<FishSpawnChance> GetTier1Table() => tier1SpawnTable;
+    public List<FishSpawnChance> GetTier2Table() => tier2SpawnTable;
+    public List<FishSpawnChance> GetTier3Table() => tier3SpawnTable;
+    public List<FishSpawnChance> GetTier4Table() => tier4SpawnTable;
 
     public void InitialPopulation()
     {
@@ -59,89 +116,64 @@ public class SCR_FishSpawner : MonoBehaviour
         return position;
     }
 
-    // Adds fish, for now always just 1 golden fish, lower spawn rate for can fish.
     SCR_Fish AddFish(Vector3 position)
     {
         fishCount++;
-
         GameObject newFish = Instantiate(fishPrefab, position, Quaternion.FromToRotation(Vector3.up, (gameArea.transform.position - position)), transform);
         SCR_Fish fishScript = newFish.GetComponent<SCR_Fish>();
         fishScript.fishSpawner = this;
         fishScript.gameArea = gameArea;
         SpriteRenderer spriteRenderer = newFish.GetComponent<SpriteRenderer>();
 
-        // Golden fish (rare) creation
-        if (rareFishCount != 1) 
-        {            
-            rareFishCount++;
-            spriteRenderer.sprite = fishSprites[0];
-            fishScript.speed = fastestSpeed;
-            float goldenFishSize = 0.75f;
-            newFish.transform.localScale = new Vector3(goldenFishSize, goldenFishSize);
-
-            return fishScript;
-        }
-
-        // Random between bass and can fish
-        if (fishSprites.Length > 0 && spriteRenderer != null)
+        if (fishSprites.Length > 0 && spriteRenderer != null && spawnTable != null)
         {
-            // Gives fish a random value to determine type
-            int randFish = Random.Range(1, 101);
+            float roll = Random.Range(0f, 100f);
+            float cumulative = 0f;
 
-            // Bass stats
-            if (randFish > 50 && randFish <= 100) // 50%
+            foreach (var entry in spawnTable)
             {
-                spriteRenderer.sprite = fishSprites[1];
-
-                fishScript.speed = Random.Range(slowestSpeed, fastestSpeed);
-                float randomSize = Random.Range(1.0f, 1.5f);
-                newFish.transform.localScale = new Vector3(randomSize, randomSize);
-                return fishScript;
-            }
-            // Can fish stats
-            if (randFish <= 10) // 10%
-            {
-                spriteRenderer.sprite = fishSprites[2];
-                float canFishSize = 0.75f;
-                newFish.transform.localScale = new Vector3(canFishSize, canFishSize);
-
-                fishScript.speed = slowestSpeed;
-                return fishScript;
-            }
-            // Shark stats
-            if (randFish > 10 && randFish <= 30) // 20%
-            {
-                spriteRenderer.sprite = fishSprites[3];
-
-                fishScript.speed = Random.Range(slowestSpeed, fastestSpeed);
-                float randomSize = 2f;
-                newFish.transform.localScale = new Vector3(randomSize, randomSize);
-                return fishScript;
-            }
-            // Angel Fish stats
-            if (randFish > 30 && randFish <= 50) // 20%
-            {
-                spriteRenderer.sprite = fishSprites[4];
-
-                fishScript.speed = Random.Range(slowestSpeed, fastestSpeed);
-                float randomSize = Random.Range(1.0f, 1.5f);
-                newFish.transform.localScale = new Vector3(randomSize, randomSize);
-                return fishScript;
-            }
-            // Fish sticks Fish stats
-            if (randFish == 101) // 20%
-            {
-                spriteRenderer.sprite = fishSprites[5];
-
-                fishScript.speed = fastestSpeed;
-                float randomSize = 1.0f;
-                newFish.transform.localScale = new Vector3(randomSize, randomSize);
-                return fishScript;
+                cumulative += entry.chance;
+                if (roll <= cumulative)
+                {
+                    spriteRenderer.sprite = fishSprites[entry.spriteIndex];
+                    SetFishStats(fishScript, newFish, entry.spriteIndex);
+                    break;
+                }
             }
         }
-
 
         return fishScript;
+    }
+
+    void SetFishStats(SCR_Fish fishScript, GameObject fishObj, int spriteIndex)
+    {
+        switch (spriteIndex)
+        {
+            case 0: // Golden Fish
+                fishScript.speed = fastestSpeed;
+                fishObj.transform.localScale = Vector3.one * 0.75f;
+                break;
+            case 1: // Bass
+                fishScript.speed = Random.Range(slowestSpeed, fastestSpeed);
+                fishObj.transform.localScale = Vector3.one * Random.Range(1.0f, 1.5f);
+                break;
+            case 2: // Can
+                fishScript.speed = slowestSpeed;
+                fishObj.transform.localScale = Vector3.one * 0.75f;
+                break;
+            case 3: // Shark
+                fishScript.speed = Random.Range(slowestSpeed, fastestSpeed);
+                fishObj.transform.localScale = Vector3.one * 2f;
+                break;
+            case 4: // Angel
+                fishScript.speed = Random.Range(slowestSpeed, fastestSpeed);
+                fishObj.transform.localScale = Vector3.one * Random.Range(1.0f, 1.5f);
+                break;
+            case 5: // Fish Sticks
+                fishScript.speed = fastestSpeed;
+                fishObj.transform.localScale = Vector3.one;
+                break;
+        }
     }
 
     public void ResetFish()
@@ -156,7 +188,7 @@ public class SCR_FishSpawner : MonoBehaviour
         fishHooked = false;
 
         // Resets rare fish count
-        rareFishCount = 0;
+        //rareFishCount = 0;
 
         // Respawn new fish
         InitialPopulation();

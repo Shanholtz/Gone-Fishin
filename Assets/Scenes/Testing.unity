@@ -163,7 +163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1656170016900857279, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
       propertyPath: fishLimit
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1656170016900857279, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
       propertyPath: fishSprites.Array.size
