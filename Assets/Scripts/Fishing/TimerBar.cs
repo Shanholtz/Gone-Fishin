@@ -7,6 +7,8 @@ public class TimerBar : MonoBehaviour
 {
     Catch catchTimer;
     Image timerBar; // Ensure this is an Image, NOT TimerBar
+    public TurnManager turn;
+    public StatManager stats;
     public float maxTime;
     float timeLeft;
 
@@ -45,7 +47,15 @@ public class TimerBar : MonoBehaviour
     // Start the timer and show the timer bar
     public void StartTimer()
     {
-        maxTime = catchTimer.timerDuration; // Safe to use after checking
+        if(turn.isPlayerTurn)
+        {
+            maxTime = stats.playerTimer;
+        }
+        if(!turn.isPlayerTurn)
+        {
+            maxTime = stats.aiTimer;
+        }
+        // Safe to use after checking
         timeLeft = maxTime; // Reset the timer
         timerBar.fillAmount = 1f; // Reset the UI fill amount
 

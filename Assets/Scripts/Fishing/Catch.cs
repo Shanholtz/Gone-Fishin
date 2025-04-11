@@ -12,6 +12,7 @@ public class Catch : MonoBehaviour
 
     public TMP_Text sequenceText;
     public TurnManager turn;
+    public StatManager stats;
     public Action complete; // event for success
     public Action onSequenceFailed; // event for failure, when time runs out
 
@@ -125,6 +126,14 @@ public class Catch : MonoBehaviour
 
     private IEnumerator SequenceTimer()
     {
+        if (turn.isPlayerTurn)
+        {
+            timerDuration = stats.playerTimer;
+        }
+        if (!turn.isPlayerTurn)
+        {
+            timerDuration = stats.aiTimer;
+        }
         yield return new WaitForSeconds(timerDuration); // wait for how many seconds
 
         if (sequence.Length > 0) // If the sequence is not completed

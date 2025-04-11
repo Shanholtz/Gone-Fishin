@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class FishSpawnChance
@@ -12,13 +13,15 @@ public class SCR_FishSpawner : MonoBehaviour
 {
     public GameObject gameArea;
     public GameObject fishPrefab;
+    public TurnManager turn;
+    public StatManager stats;
 
     // List of fish sprites to choose from
     public Sprite[] fishSprites;
 
     // Controls amount of fish
     public int fishCount = 0;
-    public int fishLimit = 3;
+    public float fishLimit = 3;
     public int fishPerFrame = 1;
     //public int rareFishCount = 0;
 
@@ -91,6 +94,14 @@ public class SCR_FishSpawner : MonoBehaviour
 
     public void InitialPopulation()
     {
+        if (turn.isPlayerTurn)
+        {
+            fishLimit = stats.playerLimit;
+        }
+        if (!turn.isPlayerTurn)
+        {
+            fishLimit = stats.aiLimit;
+        }
         // Spawns fish in random positions when the game starts.
         for (int i = 0; i < fishLimit; i++)
         {
