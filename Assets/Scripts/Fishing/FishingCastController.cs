@@ -108,7 +108,6 @@ public class FishingCastController : MonoBehaviour
     private void HandleReeling()
     {
         float speed = reelSpeed;
-        SCR_Fish hookedFish = hookLogic.GetComponentInChildren<SCR_Fish>();
 
         // Increase reeling speed if holding left mouse button
         if (Input.GetMouseButton(0))
@@ -122,6 +121,9 @@ public class FishingCastController : MonoBehaviour
             Debug.LogWarning("HandleReeling: No hook found!");
             return;
         }
+
+
+        SCR_Fish hookedFish = hookLogic.GetComponentInChildren<SCR_Fish>();
 
         // Move the hook towards the fishing rod
         currentHook.transform.position = Vector3.MoveTowards(currentHook.transform.position, transform.position, speed * Time.deltaTime);
@@ -159,7 +161,7 @@ public class FishingCastController : MonoBehaviour
     IEnumerator ReturnLine()
     {
         yield return new WaitForSeconds(5f); // Wait for 5 seconds
-
+        Debug.Log("waiting 5 seconds");
         // Only return the line if no fish is hooked
         if (hookLogic != null && !hookLogic.isFishHooked)
         {

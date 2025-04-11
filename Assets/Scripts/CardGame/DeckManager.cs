@@ -37,9 +37,9 @@ public class DeckManager : MonoBehaviour
     void GenerateDeck()
     {
         int spriteIndex = 0;
-        foreach (string suit in Testsuits)
+        foreach (string suit in suits)
         {
-            foreach (int rank in Testranks)
+            foreach (int rank in ranks)
             {
                 GameObject newCard = Instantiate(cardPrefab);
                
