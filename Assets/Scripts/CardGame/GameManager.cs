@@ -28,7 +28,15 @@ public class GameManager : MonoBehaviour
 
         foreach (Card card in CardsToRemove)
         {
-            stats.ChangeStat(card.suit, card.rank);
+            if (hand == PlayerHand.hand)
+            {
+                stats.ChangeStat(card.suit, card.rank, "player");
+            }
+            if (hand == aiHand.hand)
+            {
+                stats.ChangeStat(card.suit, card.rank, "ai");
+            }
+            
         }
 
         yield return new WaitForSeconds(displayTime); // Wait for display time before removal

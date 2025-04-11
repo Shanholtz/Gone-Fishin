@@ -14,6 +14,7 @@ public class ResetEnvirement : MonoBehaviour
     public FishingAI ai;
     public SceneManager sceneManager;
     public TurnManager turn;
+    public StatManager stats;
 
     private Coroutine changeTurnCoroutine;
 
@@ -159,6 +160,19 @@ public class ResetEnvirement : MonoBehaviour
             fishSpawner.ResetFish();
         }
 
+        if(turn.isPlayerTurn)
+        {
+            stats.playerLimit = 3f;
+            stats.playerRadius = 2.5f;
+            stats.playerTimer = 5f;
+        }
+
+        if(!turn.isPlayerTurn)
+        {
+            stats.aiLimit = 3f;
+            stats.aiRadius = 2.5f;
+            stats.aiTimer = 5f;
+        }
        
     }
 

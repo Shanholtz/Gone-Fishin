@@ -20,9 +20,9 @@ public class StatManager : MonoBehaviour
     public float aiTimer = 5f;
     public float aiRare;
 
-    public void ChangeStat(string suit, float rank)
+    public void ChangeStat(string suit, float rank, string player)
     {
-        if(turn.isPlayerTurn)
+        if(player == "player")
         {
             if (suit == "Hook")
             {
@@ -71,8 +71,9 @@ public class StatManager : MonoBehaviour
 
                 spawner.ResetFish();
             }
+        }
 
-            if(!turn.isPlayerTurn)
+            if(player == "ai")
             {
                 if (suit == "Hook")
                 {
@@ -121,8 +122,8 @@ public class StatManager : MonoBehaviour
 
 
                     spawner.ResetFish();
-                }
             }
         }
     }
 }
+

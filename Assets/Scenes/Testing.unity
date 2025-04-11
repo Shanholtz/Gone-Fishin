@@ -141,6 +141,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 350905045908985818, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
+      propertyPath: turn
+      value: 
+      objectReference: {fileID: 889514639}
+    - target: {fileID: 350905045908985818, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
+      propertyPath: stats
+      value: 
+      objectReference: {fileID: 834522597}
     - target: {fileID: 407802652471018604, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
       propertyPath: ai
       value: 
@@ -149,6 +157,10 @@ PrefabInstance:
       propertyPath: turn
       value: 
       objectReference: {fileID: 889514639}
+    - target: {fileID: 407802652471018604, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
+      propertyPath: stats
+      value: 
+      objectReference: {fileID: 834522597}
     - target: {fileID: 407802652471018604, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
       propertyPath: sceneManager
       value: 
@@ -161,6 +173,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1656170016900857279, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
+      propertyPath: turn
+      value: 
+      objectReference: {fileID: 889514639}
+    - target: {fileID: 1656170016900857279, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
+      propertyPath: stats
+      value: 
+      objectReference: {fileID: 834522597}
     - target: {fileID: 1656170016900857279, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
       propertyPath: fishLimit
       value: 3
@@ -182,6 +202,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: c67ce7fcbbf67d645bbb5bfdad5126d7, type: 3}
     - target: {fileID: 2786817473954712331, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
+      propertyPath: turn
+      value: 
+      objectReference: {fileID: 889514639}
+    - target: {fileID: 6178385243159859380, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
+      propertyPath: turn
+      value: 
+      objectReference: {fileID: 889514639}
+    - target: {fileID: 6217546342800428171, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
+      propertyPath: stat
+      value: 
+      objectReference: {fileID: 834522597}
+    - target: {fileID: 6217546342800428171, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
       propertyPath: turn
       value: 
       objectReference: {fileID: 889514639}
@@ -237,6 +269,10 @@ PrefabInstance:
       propertyPath: turn
       value: 
       objectReference: {fileID: 889514639}
+    - target: {fileID: 7961677693773598796, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
+      propertyPath: stats
+      value: 
+      objectReference: {fileID: 834522597}
     - target: {fileID: 9142163396712149238, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -297,6 +333,15 @@ MonoBehaviour:
   time: {fileID: 1687811629}
   spawner: {fileID: 1124227576}
   hookRadius: {fileID: 78139801}
+  turn: {fileID: 889514639}
+  playerLimit: 3
+  playerRadius: 2.5
+  playerTimer: 5
+  playerRare: 0
+  aiLimit: 3
+  aiRadius: 2.5
+  aiTimer: 5
+  aiRare: 0
 --- !u!4 &834522598
 Transform:
   m_ObjectHideFlags: 0
@@ -603,6 +648,7 @@ MonoBehaviour:
   deck: {fileID: 1610201385}
   turn: {fileID: 889514639}
   reset: {fileID: 1936044820}
+  Final: 0
   Playerdone: 0
   Aidone: 0
 --- !u!4 &1168343051
