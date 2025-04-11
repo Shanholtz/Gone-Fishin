@@ -64,6 +64,10 @@ public class StatManager : MonoBehaviour
                 {
                     spawner.spawnTable = spawner.GetTier4Table();
                 }
+                else if(rank >= 14)
+                {
+                    spawner.spawnTable = spawner.GetTier5Table(); // anything above the 13 card rank, give the best table
+                }
 
                 spawner.ResetFish();
             }
@@ -110,6 +114,11 @@ public class StatManager : MonoBehaviour
                     {
                         spawner.spawnTable = spawner.GetTier4Table();
                     }
+                    else if (rank >= 14) // anything above the 13 card rank, gives it the best table
+                    {
+                        spawner.spawnTable = spawner.GetTier5Table();
+                    }
+
 
                     spawner.ResetFish();
                 }
