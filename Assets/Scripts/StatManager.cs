@@ -7,51 +7,113 @@ public class StatManager : MonoBehaviour
     public Catch time;
     public SCR_FishSpawner spawner;
     public SCR_Hook hookRadius;
+    public TurnManager turn;
+
+    // stats
+    public float playerLimit = 3f;
+    public float playerRadius= 2.5f;
+    public float playerTimer = 5f;
+    public float playerRare;
+
+    public float aiLimit = 3f;
+    public float aiRadius = 2.5f;
+    public float aiTimer = 5f;
+    public float aiRare;
 
     public void ChangeStat(string suit, float rank)
     {
-        if (suit == "Hook")
+        if(turn.isPlayerTurn)
         {
-            hookRadius.attractionRadius += (float)(rank/5.2); // a 13 rank card will double the current attraction radius of 2.5
-        }
-
-        if (suit == "Rod")
-        {
-            if (rank == 1) // if ace, just adds 1 fish
+            if (suit == "Hook")
             {
-                spawner.fishLimit += (int)(rank);
-            }
-            else // anything else
-            {
-                spawner.fishLimit += (int)(rank/2.6); // a 13 rank card will add 5 fish to the pond
-            }
-        }
-
-        if (suit == "String")
-        {
-            time.timerDuration += (float)(rank/2.6); // a 13 rank card will double the time of 5 seconds to 10
-        }
-
-        if (suit == "Bait")
-        {
-            if (rank >= 1 && rank <= 3)
-            {
-                spawner.spawnTable = spawner.GetTier1Table();
-            }
-            else if (rank >= 4 && rank <= 6)
-            {
-                spawner.spawnTable = spawner.GetTier2Table();
-            }
-            else if (rank >= 7 && rank <= 10)
-            {
-                spawner.spawnTable = spawner.GetTier3Table();
-            }
-            else if (rank >= 11 && rank <= 13)
-            {
-                spawner.spawnTable = spawner.GetTier4Table();
+                playerRadius += (float)(rank/5.2); // a 13 rank card will double the current attraction radius of 2.5
             }
 
-            spawner.ResetFish();
+            if (suit == "Rod")
+            {
+                if (rank == 1) // if ace, just adds 1 fish
+                {
+                    playerLimit += (int)(rank);
+                }
+                else // anything else
+                {
+                    playerLimit += (int)(rank/2.6); // a 13 rank card will add 5 fish to the pond
+                }
+            }
+
+            if (suit == "String")
+            {
+                playerTimer += (float)(rank/2.6); // a 13 rank card will double the time of 5 seconds to 10
+            }
+
+            if (suit == "Bait")
+            {
+                if (rank >= 1 && rank <= 3)
+                {
+                    spawner.spawnTable = spawner.GetTier1Table();
+                }
+                else if (rank >= 4 && rank <= 6)
+                {
+                    spawner.spawnTable = spawner.GetTier2Table();
+                }
+                else if (rank >= 7 && rank <= 10)
+                {
+                    spawner.spawnTable = spawner.GetTier3Table();
+                }
+                else if (rank >= 11 && rank <= 13)
+                {
+                    spawner.spawnTable = spawner.GetTier4Table();
+                }
+
+                spawner.ResetFish();
+            }
+
+            if(!turn.isPlayerTurn)
+            {
+                if (suit == "Hook")
+                {
+                    aiRadius += (float)(rank/5.2); // a 13 rank card will double the current attraction radius of 2.5
+                }
+
+                if (suit == "Rod")
+                {
+                    if (rank == 1) // if ace, just adds 1 fish
+                    {
+                        aiLimit += (int)(rank);
+                    }
+                    else // anything else
+                    {
+                        aiLimit += (int)(rank/2.6); // a 13 rank card will add 5 fish to the pond
+                    }
+                }
+
+                if (suit == "String")
+                {
+                    aiTimer += (float)(rank/2.6); // a 13 rank card will double the time of 5 seconds to 10
+                }
+
+                if (suit == "Bait")
+                {
+                    if (rank >= 1 && rank <= 3)
+                    {
+                        spawner.spawnTable = spawner.GetTier1Table();
+                    }
+                    else if (rank >= 4 && rank <= 6)
+                    {
+                        spawner.spawnTable = spawner.GetTier2Table();
+                    }
+                    else if (rank >= 7 && rank <= 10)
+                    {
+                        spawner.spawnTable = spawner.GetTier3Table();
+                    }
+                    else if (rank >= 11 && rank <= 13)
+                    {
+                        spawner.spawnTable = spawner.GetTier4Table();
+                    }
+
+                    spawner.ResetFish();
+                }
+            }
         }
     }
 }
