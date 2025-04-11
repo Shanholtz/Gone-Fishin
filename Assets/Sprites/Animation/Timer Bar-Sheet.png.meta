@@ -1,0 +1,1192 @@
+fileFormatVersion: 2
+guid: 102a346974c28904382a3b0c06170f14
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4800
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a77fbfc2eb60cec44b60d4579b361fbb
+      internalID: 404511281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4700
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7081bd198558cb548b18407eaf689c49
+      internalID: -715802775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4600
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d2a684a38f65f34384cfec569e3a74b
+      internalID: 1671874714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4500
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1607ce19ec895f45a578df3600b504e
+      internalID: -963488568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4400
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4036af135a4a1148ac3da5ad0ddf150
+      internalID: -1365305863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4300
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f5b1765e158cd64bbd81abf0de45af0
+      internalID: 350696806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4200
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a3d9e8793eef0d4884dbc8cf670176b
+      internalID: -1120609396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4100
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d0616e1052b011429ee129fde12e903
+      internalID: -25785401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4000
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a325c9e9c23a8e4c9ea7a6b1b36fcef
+      internalID: -849538550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3900
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f377c4e6ec20806478d4fa9a56cfed70
+      internalID: -471359581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3800
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb4c491b71f615c40aceada3856dba4e
+      internalID: 1071630635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3700
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0c331796b32dde48af6a7f8fc504584
+      internalID: 858465190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3600
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4e1577944567fe4997b46ac1717bd19
+      internalID: 8736609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3500
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8081c9b4b17ef541b437635ad2dec7e
+      internalID: 1849412268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3400
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d290b5cfe10291d48a653d26d5af82c5
+      internalID: -1315563206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3300
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fa1a08c65ec43d4cb307d1c884332df
+      internalID: -1981818167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3200
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbf93ac545adcc0498cf6d36ee5fd004
+      internalID: -30242716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3100
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87eddb50dcce7384eba9ca851e8d2136
+      internalID: -493861310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3000
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 032aae65da6a6604297e3112f639f2d3
+      internalID: 1195564736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2900
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ed12a45f39a7fc42b2105503cbb9602
+      internalID: 372930555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2800
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51e493d818409c340bba45b1cca5b311
+      internalID: 63370028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2700
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 299318a795927d74b99e2cce97d05fa4
+      internalID: 1774286949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2600
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c5bd419ea9e1954a9aa31e9fb9a3a63
+      internalID: -1857889338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2500
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1eece39e2d4ca094b8fcded882893baa
+      internalID: 1960566512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2400
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba932b3434920db438b71bdf0b7a267f
+      internalID: -1608067133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2300
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35bae93fda0614b49bebab0a8b721a52
+      internalID: -2043651369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2200
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba8955902d39aae469627b953fa9e84a
+      internalID: 341598192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2100
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a5c1d2add88bc54987a4c946a39333e
+      internalID: -67982325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2000
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69d1ef54c53c95846b522dc479813113
+      internalID: 2055411435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1900
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d772eb8101e9e4e4fb83c6d94c2f2786
+      internalID: -395004346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1800
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e777bfb10b12034896d6a6a9f507fcf
+      internalID: -682653822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1700
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec6f2b7a1bf08584f9c3fbb5e9bfa0ac
+      internalID: 1113578410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1600
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97c8119fe50ee604ca359c731b187f65
+      internalID: 1750108998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1500
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee0ac710d755ca940b10c96739eface7
+      internalID: 1081849280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1400
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9da56e7f9a0f28f4fa51533d6bc8c425
+      internalID: 1583738433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1300
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5166ea8e57f93b547bdcbff9ffcd22dc
+      internalID: 215355832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1200
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e2121ad9a2868c45b9d5e1afc2d1669
+      internalID: -1819996327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1100
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c96611b2940a2074fb2313448e6e63ea
+      internalID: 252737326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1000
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82afc84dc19dd914a98268eabe74abeb
+      internalID: -864049427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 900
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4aabdbea4bb47d04baadb95423d53203
+      internalID: 1497655293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 800
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 136fa6bfc34bdcd4f9f0d3a91107282e
+      internalID: -320854853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_41
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 700
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 572a881436fce6143ab54ad56862124f
+      internalID: 1658910643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 600
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc640514beb41544cbd89f941af90117
+      internalID: 2000504809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_43
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 500
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 127fb0135fea1b04999fdbf01a57e7ed
+      internalID: -142072628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 400
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6ce5d74b62e5204fa0d7e48a27fbb46
+      internalID: 954812405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 300
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59053964dc3bc444199fec0b815578cd
+      internalID: 1258668033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_46
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 200
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e767f5742cb9d424b8ce8e25f454739f
+      internalID: -1519132516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_47
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 100
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69cd1d56373108349ab8093245b27bd3
+      internalID: -667593228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Timer Bar-Sheet_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 700
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 845db2b2ab333d3479d8cf6e617ff64a
+      internalID: 127681487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Timer Bar-Sheet_0: 404511281
+      Timer Bar-Sheet_1: -715802775
+      Timer Bar-Sheet_10: 1071630635
+      Timer Bar-Sheet_11: 858465190
+      Timer Bar-Sheet_12: 8736609
+      Timer Bar-Sheet_13: 1849412268
+      Timer Bar-Sheet_14: -1315563206
+      Timer Bar-Sheet_15: -1981818167
+      Timer Bar-Sheet_16: -30242716
+      Timer Bar-Sheet_17: -493861310
+      Timer Bar-Sheet_18: 1195564736
+      Timer Bar-Sheet_19: 372930555
+      Timer Bar-Sheet_2: 1671874714
+      Timer Bar-Sheet_20: 63370028
+      Timer Bar-Sheet_21: 1774286949
+      Timer Bar-Sheet_22: -1857889338
+      Timer Bar-Sheet_23: 1960566512
+      Timer Bar-Sheet_24: -1608067133
+      Timer Bar-Sheet_25: -2043651369
+      Timer Bar-Sheet_26: 341598192
+      Timer Bar-Sheet_27: -67982325
+      Timer Bar-Sheet_28: 2055411435
+      Timer Bar-Sheet_29: -395004346
+      Timer Bar-Sheet_3: -963488568
+      Timer Bar-Sheet_30: -682653822
+      Timer Bar-Sheet_31: 1113578410
+      Timer Bar-Sheet_32: 1750108998
+      Timer Bar-Sheet_33: 1081849280
+      Timer Bar-Sheet_34: 1583738433
+      Timer Bar-Sheet_35: 215355832
+      Timer Bar-Sheet_36: -1819996327
+      Timer Bar-Sheet_37: 252737326
+      Timer Bar-Sheet_38: -864049427
+      Timer Bar-Sheet_39: 1497655293
+      Timer Bar-Sheet_4: -1365305863
+      Timer Bar-Sheet_40: -320854853
+      Timer Bar-Sheet_41: 1658910643
+      Timer Bar-Sheet_42: 2000504809
+      Timer Bar-Sheet_43: -142072628
+      Timer Bar-Sheet_44: 954812405
+      Timer Bar-Sheet_45: 1258668033
+      Timer Bar-Sheet_46: -1519132516
+      Timer Bar-Sheet_47: -667593228
+      Timer Bar-Sheet_48: 127681487
+      Timer Bar-Sheet_5: 350696806
+      Timer Bar-Sheet_6: -1120609396
+      Timer Bar-Sheet_7: -25785401
+      Timer Bar-Sheet_8: -849538550
+      Timer Bar-Sheet_9: -471359581
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
