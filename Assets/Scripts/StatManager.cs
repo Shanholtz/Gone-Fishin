@@ -49,25 +49,16 @@ public class StatManager : MonoBehaviour
             if (suit == "Bait")
             {
                 if (rank >= 1 && rank <= 3)
-                {
-                    spawner.spawnTable = spawner.GetTier1Table();
-                }
+                    spawner.playerSpawnTable = spawner.GetTier1Table();
                 else if (rank >= 4 && rank <= 6)
-                {
-                    spawner.spawnTable = spawner.GetTier2Table();
-                }
+                    spawner.playerSpawnTable = spawner.GetTier2Table();
                 else if (rank >= 7 && rank <= 10)
-                {
-                    spawner.spawnTable = spawner.GetTier3Table();
-                }
+                    spawner.playerSpawnTable = spawner.GetTier3Table();
                 else if (rank >= 11 && rank <= 13)
-                {
-                    spawner.spawnTable = spawner.GetTier4Table();
-                }
-                else if(rank >= 14)
-                {
-                    spawner.spawnTable = spawner.GetTier5Table(); // anything above the 13 card rank, give the best table
-                }
+                    spawner.playerSpawnTable = spawner.GetTier4Table();
+                else if (rank >= 14)
+                    spawner.playerSpawnTable = spawner.GetTier5Table(); // anything above the 13 card rank, give the best table
+            
 
                 spawner.ResetFish();
             }
@@ -99,25 +90,15 @@ public class StatManager : MonoBehaviour
                 if (suit == "Bait")
                 {
                     if (rank >= 1 && rank <= 3)
-                    {
-                        spawner.spawnTable = spawner.GetTier1Table();
-                    }
+                        spawner.aiSpawnTable = spawner.GetTier1Table();
                     else if (rank >= 4 && rank <= 6)
-                    {
-                        spawner.spawnTable = spawner.GetTier2Table();
-                    }
+                        spawner.aiSpawnTable = spawner.GetTier2Table();
                     else if (rank >= 7 && rank <= 10)
-                    {
-                        spawner.spawnTable = spawner.GetTier3Table();
-                    }
+                        spawner.aiSpawnTable = spawner.GetTier3Table();
                     else if (rank >= 11 && rank <= 13)
-                    {
-                        spawner.spawnTable = spawner.GetTier4Table();
-                    }
-                    else if (rank >= 14) // anything above the 13 card rank, gives it the best table
-                    {
-                        spawner.spawnTable = spawner.GetTier5Table();
-                    }
+                        spawner.aiSpawnTable = spawner.GetTier4Table();
+                    else if (rank >= 14)
+                        spawner.aiSpawnTable = spawner.GetTier5Table();// anything above the 13 card rank, give the best table
 
 
                     spawner.ResetFish();
