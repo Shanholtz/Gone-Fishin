@@ -15,6 +15,8 @@ public class SCR_FishSpawner : MonoBehaviour
     public GameObject fishPrefab;
     public TurnManager turn;
     public StatManager stats;
+    public List<FishSpawnChance> playerSpawnTable;
+    public List<FishSpawnChance> aiSpawnTable;
 
     // List of fish sprites to choose from
     public Sprite[] fishSprites;
@@ -108,10 +110,14 @@ public class SCR_FishSpawner : MonoBehaviour
         if (turn.isPlayerTurn)
         {
             fishLimit = stats.playerLimit;
+            spawnTable = playerSpawnTable;
+
         }
         if (!turn.isPlayerTurn)
         {
             fishLimit = stats.aiLimit;
+            spawnTable = aiSpawnTable;
+
         }
         // Spawns fish in random positions when the game starts.
         for (int i = 0; i < fishLimit; i++)
