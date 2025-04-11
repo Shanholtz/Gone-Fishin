@@ -53,14 +53,19 @@ public class ResetEnvirement : MonoBehaviour
         {
             StopCoroutine(changeTurnCoroutine);
         }
-        changeTurnCoroutine = StartCoroutine(ChangeTurnSceneWithDelay());
 
-        if (turn.isPlayerTurn)
+        if(!sceneManager.Final)
+        {
+            changeTurnCoroutine = StartCoroutine(ChangeTurnSceneWithDelay());
+        }
+        
+
+        if (turn.isPlayerTurn && sceneManager.Final)
         {
             sceneManager.Playerdone = true;
         }
                 
-        if (!turn.isPlayerTurn)
+        if (!turn.isPlayerTurn && sceneManager.Final)
         {
             sceneManager.Aidone = true;
         }

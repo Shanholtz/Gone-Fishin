@@ -16,6 +16,12 @@ public class FishingAI : MonoBehaviour
     private float rotateTimer = 0f;
     private float clickTimer = 5f; // Timer for simulated click
 
+    // AI stats
+    int radius;
+    int fishLimit;
+    int timer;
+    int rare;
+
     public void Update()
     {
         if (!turn.isPlayerTurn)

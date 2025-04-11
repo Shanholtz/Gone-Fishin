@@ -13,9 +13,12 @@ public class SceneManager : MonoBehaviour
     public TurnManager turn;
     public ResetEnvirement reset;
 
+    public bool Final = false;
+
     public bool Playerdone = false;
     public bool Aidone = false;
     private bool isReset = false;
+    private int i;
 
     // Start is called before the first frame update
     void Start()
@@ -31,19 +34,16 @@ public class SceneManager : MonoBehaviour
 
         if (GoFish)
         {
-            if(playerHand.hand.Count == 0)
+            if(playerHand.hand.Count == 0 && deck.deck.Count != 0)
             {
                 playerHand.DrawHand();
             }
 
-            if(aiHand.hand.Count == 0)
+            if(aiHand.hand.Count == 0 && deck.deck.Count != 0)//&& deck.deck.Count != 0)
             {
                 aiHand.DrawHand();
             }
         }
-
-        Playerdone = false;
-        Aidone = false;
     }
 
     private void Update()
@@ -61,6 +61,7 @@ public class SceneManager : MonoBehaviour
         if (playerHand.hand.Count == 0 && aiHand.hand.Count == 0 && deck.deck.Count == 0)
         {
             EnterFinalFishingMode();
+            Final = true;
         }
     }
 
@@ -68,6 +69,12 @@ public class SceneManager : MonoBehaviour
     {
         GoFish.SetActive(false);
         Fishing.SetActive(true);
+
+        if(!Playerdone && !Aidone && i <= 0)
+        {
+            Debug.Log("FinalFishing");
+            i += 1;
+        }
 
         if(Playerdone && !Aidone && !isReset)
         {

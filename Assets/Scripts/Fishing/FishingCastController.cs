@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class FishingCastController : MonoBehaviour
 {
+    public TurnManager turn;
+    public FishingAI ai;
     // Fishing line and hook references
     public GameObject fishingLinePrefab; // Prefab for the fishing line (LineRenderer)
     public GameObject hook; // Hook object
@@ -144,7 +146,7 @@ public class FishingCastController : MonoBehaviour
             {
                 hookedFish.RemoveFish();
 
-                endOfTurn?.Invoke(); // calls to end turn, swithcing turn and scene.
+                endOfTurn?.Invoke(); // calls to end turn, switching turn and scene.
             }
             
         }
