@@ -48,7 +48,7 @@ public class StatManager : MonoBehaviour
 
             if (suit == "Bait")
             {
-                if (rank >= 1 && rank <= 3)
+                if (rank >= 0 && rank <= 3)
                     spawner.playerSpawnTable = spawner.GetTier1Table();
                 else if (rank >= 4 && rank <= 6)
                     spawner.playerSpawnTable = spawner.GetTier2Table();
@@ -90,7 +90,7 @@ public class StatManager : MonoBehaviour
 
                 if (suit == "Bait")
                 {
-                    if (rank >= 1 && rank <= 3)
+                    if (rank >= 0 && rank <= 3)
                         spawner.aiSpawnTable = spawner.GetTier1Table();
                     else if (rank >= 4 && rank <= 6)
                         spawner.aiSpawnTable = spawner.GetTier2Table();

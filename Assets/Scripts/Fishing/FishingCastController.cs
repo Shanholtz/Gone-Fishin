@@ -168,6 +168,8 @@ public class FishingCastController : MonoBehaviour
         if (hookLogic != null && !hookLogic.isFishHooked)
         {
             DoReturnLine(); // Automatically return the line after a delay
+            endOfTurn?.Invoke(); // ends turn, switchs scene.
+
         }
     }
 

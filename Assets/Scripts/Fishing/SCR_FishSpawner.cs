@@ -46,15 +46,27 @@ public class SCR_FishSpawner : MonoBehaviour
     private List<FishSpawnChance> tier4SpawnTable;
     private List<FishSpawnChance> tier5SpawnTable;
 
-
     void Awake()
     {
         InitSpawnTables();
-        spawnTable = tier1SpawnTable;
+
+        // Set default spawn tables if they aren't already assigned
+        if (playerSpawnTable == null || playerSpawnTable.Count == 0)
+        {
+            playerSpawnTable = GetTier1Table();
+        }
+
+        if (aiSpawnTable == null || aiSpawnTable.Count == 0)
+        {
+            aiSpawnTable = GetTier1Table();
+        }
+
+        spawnTable = tier1SpawnTable; // This will be overridden in InitialPopulation anyway
     }
 
-    // Start is called before the first frame update
-    void Start()
+
+// Start is called before the first frame update
+void Start()
     {
         InitialPopulation();
     }
