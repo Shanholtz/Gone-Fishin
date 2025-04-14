@@ -146,6 +146,13 @@ public class FishingCastController : MonoBehaviour
             
             if (hookedFish != null)
             {
+                int points = hookedFish.scoreValue;
+
+                //Will have to implement a point system.
+                //playerScore += points;
+
+                Debug.Log($"Caught fish worth {points} points!"); //Total score: {playerScore}");
+
                 hookedFish.RemoveFish();
 
                 endOfTurn?.Invoke(); // calls to end turn, switching turn and scene.

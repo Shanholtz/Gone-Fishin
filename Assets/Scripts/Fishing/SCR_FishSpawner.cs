@@ -192,26 +192,32 @@ void Start()
             case 0: // Golden Fish
                 fishScript.speed = fastestSpeed;
                 fishObj.transform.localScale = Vector3.one * 0.75f;
+                fishScript.scoreValue = 10;
                 break;
             case 1: // Bass
                 fishScript.speed = Random.Range(slowestSpeed, fastestSpeed);
                 fishObj.transform.localScale = Vector3.one * Random.Range(1.0f, 1.5f);
+                fishScript.scoreValue = 3;
                 break;
             case 2: // Can
                 fishScript.speed = slowestSpeed;
                 fishObj.transform.localScale = Vector3.one * 0.75f;
+                fishScript.scoreValue = 1;
                 break;
             case 3: // Shark
                 fishScript.speed = Random.Range(slowestSpeed, fastestSpeed);
                 fishObj.transform.localScale = Vector3.one * 2f;
+                fishScript.scoreValue = 5;
                 break;
             case 4: // Angel
                 fishScript.speed = Random.Range(slowestSpeed, fastestSpeed);
                 fishObj.transform.localScale = Vector3.one * Random.Range(1.0f, 1.5f);
+                fishScript.scoreValue = 7;
                 break;
             case 5: // Fish Sticks
                 fishScript.speed = fastestSpeed;
                 fishObj.transform.localScale = Vector3.one;
+                fishScript.scoreValue = 20;
                 break;
         }
     }

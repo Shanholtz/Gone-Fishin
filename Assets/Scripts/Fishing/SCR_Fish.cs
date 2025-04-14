@@ -8,8 +8,10 @@ public class SCR_Fish : MonoBehaviour
     public SCR_FishSpawner fishSpawner;
     public GameObject gameArea;
 
-    // Fish speed
+    // Fish speed and score value
     public float speed;
+    public int scoreValue;
+
     public bool hookInSight;
 
     private SCR_Hook hookToFollow;
