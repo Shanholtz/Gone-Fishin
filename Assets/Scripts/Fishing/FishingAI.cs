@@ -39,20 +39,32 @@ public class FishingAI : MonoBehaviour
             }
         }
     }
-
     public void AISequence()
     {
         sequence = "";
 
-        // Copys the first part of the generated sequence except the last letter
-        int copyLength = Mathf.Max(0, catching.sequenceLength - 1); 
-        sequence = catching.sequence.Substring(0, copyLength);
+        // Ensure we have a valid sequence to work with
+        if (string.IsNullOrEmpty(catching.sequence))
+        {
+            Debug.LogWarning("No sequence available for AI!");
+            return;
+        }
+
+        // Calculate how much to copy (minimum 0, maximum sequenceLength-1)
+        int copyLength = Mathf.Clamp(catching.sequenceLength - 1, 0, catching.sequence.Length - 1);
+
+        // Safely get the substring
+        if (copyLength > 0)
+        {
+            sequence = catching.sequence.Substring(0, copyLength);
+        }
+
+        // Get the correct last character (using the original full sequence)
+        char correctLastChar = catching.sequence[Mathf.Min(copyLength, catching.sequence.Length - 1)];
+        char chosenChar;
 
         // Decide whether to choose the correct letter or a wrong one
-        float chance = UnityEngine.Random.value; // gives a float between 0.0 and 1.0
-
-        char correctLastChar = catching.sequence[copyLength];
-        char chosenChar;
+        float chance = UnityEngine.Random.value;
 
         if (chance <= 0.6f)
         {
@@ -102,12 +114,12 @@ public class FishingAI : MonoBehaviour
                 catching.UpdateUI();
 
                 // Optionally restart the AI after a short pause
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.5f);
                 StartCoroutine(catching.StallAI());
                 yield break;
             }
 
-            yield return new WaitForSeconds(0.5f); // Delay between inputs
+            yield return new WaitForSeconds(0.25f); // Delay between inputs
         }
     }
 
