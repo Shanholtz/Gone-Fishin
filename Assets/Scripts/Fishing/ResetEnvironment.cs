@@ -18,6 +18,7 @@ public class ResetEnvirement : MonoBehaviour
 
     private Coroutine changeTurnCoroutine;
 
+    private bool initReset = false; 
 
     void Start()
     {
@@ -32,10 +33,18 @@ public class ResetEnvirement : MonoBehaviour
 
             fishingController.endOfTurn += ChangeTurnScene; // Subscribe to the event, resets game and waits 3 seconds to change scene.
         }
+
+       
     }
 
     void Update()
     {
+        if (initReset == false) // This is here because both player fishing tables spawn on the initial fishing game, has the fishing game reset to get rid of them.
+        {
+            ResetGame();
+            initReset = true;
+        }
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             ResetGame();
