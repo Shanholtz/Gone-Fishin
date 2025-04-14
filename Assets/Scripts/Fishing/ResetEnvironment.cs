@@ -102,14 +102,13 @@ public class ResetEnvirement : MonoBehaviour
             timerBar.ResetTimer();
         }
 
-        // Reset the fishing rod and hook position
+        // Reset fishing rod and hook position
         if (fishingController != null)
         {
             fishingController._fishingStates = FishingCastController.FishingStates.Idle;
             fishingController.transform.position = originalHookPosition;
             fishingController.ResetPowerBar();
 
-            // Destroy the existing fishing line and hook if they exist
             if (fishingController.currentLine != null)
             {
                 Destroy(fishingController.currentLine);
@@ -125,65 +124,77 @@ public class ResetEnvirement : MonoBehaviour
             ai.enabled = true;
         }
 
-        // Ensure the fishing rod can rotate again
+        // Reset fishing rod rotation
         FishingRodController rodController = FindObjectOfType<FishingRodController>();
         if (rodController != null)
         {
-            rodController.enabled = true; // Reactivate rotation
-            rodController.transform.rotation = Quaternion.identity; // Reset to default rotation
-           
+            rodController.enabled = true;
+            rodController.transform.rotation = Quaternion.identity;
         }
 
-        // **Detach the fish from the hook and reset it**
+        // Detach any hooked fish
         SCR_Hook hook = FindObjectOfType<SCR_Hook>();
         if (hook != null)
         {
             SCR_Fish hookedFish = hook.GetComponentInChildren<SCR_Fish>();
             if (hookedFish != null)
             {
-                hookedFish.transform.SetParent(null); // Remove parent-child relationship
-                hookedFish.hookInSight = false; // Make fish stop following the hook
+                hookedFish.transform.SetParent(null);
+                hookedFish.hookInSight = false;
             }
-
-            hook.isFishHooked = false; // Ensure the hook is empty
+            hook.isFishHooked = false;
         }
 
-        // Reset the sequence system
+        // Reset sequence system
         if (catchSystem != null)
         {
             catchSystem.sequence = "";
             catchSystem.UpdateUI();
-
-            // Reset the bool values
             catchSystem.isTimerRunning = false;
             catchSystem.isSequenceOver = false;
-
-            // Stop any running timers
             catchSystem.StopTimer();
-                        
         }
 
-        // Reset fish spawner
+        // Reset fish spawner with correct tables
         if (fishSpawner != null)
         {
+            // Set spawn table and limit based on whose turn it is
+            if (turn.isPlayerTurn)
+            {
+                fishSpawner.spawnTable = fishSpawner.playerSpawnTable;
+                fishSpawner.fishLimit = stats.playerLimit;
+            }
+            else
+            {
+                fishSpawner.spawnTable = fishSpawner.aiSpawnTable;
+                fishSpawner.fishLimit = stats.aiLimit;
+            }
+
             fishSpawner.ResetFish();
         }
 
-        if(turn.isPlayerTurn)
+        // Reset stats ONLY if we're past initial setup
+        if (initReset)
         {
-            stats.playerLimit = 3f;
-            stats.playerRadius = 2.5f;
-            stats.playerTimer = 5f;
+            if (turn.isPlayerTurn)
+            {
+                Debug.Log("Player Stats Are RESET!!!");
+                // Reset player stats after their turn ends
+                stats.playerLimit = 3f;
+                stats.playerRadius = 2.5f;
+                stats.playerTimer = 5f;
+            }
+            else
+            {
+                Debug.Log("AI Stats Are RESET!!!");
+                // Reset AI stats after their turn ends
+                stats.aiLimit = 3f;
+                stats.aiRadius = 2.5f;
+                stats.aiTimer = 5f;
+            }
         }
-
-        if(!turn.isPlayerTurn)
-        {
-            stats.aiLimit = 3f;
-            stats.aiRadius = 2.5f;
-            stats.aiTimer = 5f;
-        }
-       
     }
+
 
     public void ChangeScene()
     {

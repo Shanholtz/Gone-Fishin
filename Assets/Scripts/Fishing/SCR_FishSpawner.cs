@@ -233,6 +233,17 @@ void Start()
         fishCount = 0;
         fishHooked = false;
 
+        // Force update of the active spawn table and fish limit
+        if (turn.isPlayerTurn)
+        {
+            fishLimit = stats.playerLimit;
+            spawnTable = playerSpawnTable;
+        }
+        else
+        {
+            fishLimit = stats.aiLimit;
+            spawnTable = aiSpawnTable;
+        }
         // Resets rare fish count
         //rareFishCount = 0;
 
