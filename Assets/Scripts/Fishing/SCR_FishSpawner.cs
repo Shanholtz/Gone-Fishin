@@ -119,6 +119,9 @@ void Start()
 
     public void InitialPopulation()
     {
+        // reset the fish count before spawning
+        fishCount = 0;
+
         if (turn.isPlayerTurn)
         {
             fishLimit = stats.playerLimit;

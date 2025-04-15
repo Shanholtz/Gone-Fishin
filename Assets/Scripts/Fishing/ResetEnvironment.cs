@@ -108,6 +108,7 @@ public class ResetEnvirement : MonoBehaviour
             fishingController._fishingStates = FishingCastController.FishingStates.Idle;
             fishingController.transform.position = originalHookPosition;
             fishingController.ResetPowerBar();
+            fishingController.disableRod = false;
 
             if (fishingController.currentLine != null)
             {

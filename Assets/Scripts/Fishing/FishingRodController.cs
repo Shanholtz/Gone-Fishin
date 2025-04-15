@@ -5,21 +5,32 @@ using UnityEngine;
 public class FishingRodController : MonoBehaviour
 {
     public TurnManager turn;
+    public FishingCastController disableRod;
     public float rotationSpeed = 150f;
     public float maxAngle = 50f;
 
     // Update is called once per frame
-    public virtual void Update()
+    public void Update()
     {
         if (turn.isPlayerTurn)
         {
             RotateRod();
-            if (Input.GetMouseButtonUp(0))
+
+            if (disableRod == null)
             {
-                this.enabled = false;
-            }  
+                Debug.LogWarning("FishingCastController is not assigned to FishingRodController!");
+            }
+            else
+            {
+                //Debug.Log("disableRod bool value is: " + disableRod.disableRod);
+
+                if (disableRod.disableRod)
+                {
+                    Debug.Log("Rod rotation script DISABLED via bool!");
+                    this.enabled = false;
+                }
+            }
         }
-        
     }
 
     public virtual void RotateRod()
@@ -38,4 +49,5 @@ public class FishingRodController : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(0, 0, clamped);
     }
+
 }

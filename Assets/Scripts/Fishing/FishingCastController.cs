@@ -8,6 +8,7 @@ public class FishingCastController : MonoBehaviour
 {
     public TurnManager turn;
     public FishingAI ai;
+
     // Fishing line and hook references
     public GameObject fishingLinePrefab; // Prefab for the fishing line (LineRenderer)
     public GameObject hook; // Hook object
@@ -41,6 +42,9 @@ public class FishingCastController : MonoBehaviour
 
     private SCR_FishSpawner fishSpawner; // Reference to the Fish Spawner
 
+    public bool isDraggingPowerBar = false;
+    public bool disableRod = false;
+
     void Start()
     {
         catching = FindObjectOfType<Catch>();
@@ -59,11 +63,11 @@ public class FishingCastController : MonoBehaviour
 
     void Update()
     {
-        // Casting the fishing line
-        if (Input.GetMouseButtonUp(0) && _fishingStates == FishingStates.Idle)
-        {
-            CastLine();
-        }
+        //// Casting the fishing line
+        //if (Input.GetMouseButtonUp(0) && _fishingStates == FishingStates.Idle)
+        //{
+        //    CastLine();
+        //}
 
         // Handle reeling
         if (_fishingStates == FishingStates.Reeling)
@@ -71,6 +75,18 @@ public class FishingCastController : MonoBehaviour
             HandleReeling();
         }
     }
+
+    
+
+    public void OnPowerBarReleased()
+    {
+        if (_fishingStates == FishingStates.Idle)
+        {
+            CastLine();
+            disableRod = true;
+        }
+    }
+
 
     public void CastLine()
     {
@@ -102,6 +118,8 @@ public class FishingCastController : MonoBehaviour
         // Notify fish about hook being cast
         OnHookCast?.Invoke(hookLogic);
         _fishingStates = FishingStates.Cast;
+
+
 
         // Start coroutine for auto-retraction after a delay
         StartCoroutine(ReturnLine());
