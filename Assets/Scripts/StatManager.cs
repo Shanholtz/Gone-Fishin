@@ -14,11 +14,13 @@ public class StatManager : MonoBehaviour
     public float playerRadius = 2.5f;
     public float playerTimer = 5f;
     public float playerRareTier;
+    public int playerScore = 100;
 
     public float aiLimit = 3f;
     public float aiRadius = 2.5f;
     public float aiTimer = 5f;
     public float aiRareTier;
+    public int aiScore = 300;
 
     public void ChangeStat(string suit, float rank, string player)
     {

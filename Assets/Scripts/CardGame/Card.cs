@@ -76,6 +76,7 @@ public class Card : MonoBehaviour
     private void OnMouseDown()
     {
         if (!playerHand.isTurn) return; // Only allow selection during player's turn
+
         isSelected = !isSelected;
         transform.position = assignedPosition + hoverOffset;
         playerHand.SelectCard(this);

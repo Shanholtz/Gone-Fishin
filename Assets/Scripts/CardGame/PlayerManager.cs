@@ -36,9 +36,13 @@ public class PlayerManager : HandManager
         }
         else
         {
-            selectedCard = card;
-            selectedCard.isSelected = true;
-            Debug.Log($"Selected {selectedCard.rank} to ask AI.");
+            if (hand.Contains(card))
+            {
+                selectedCard = card;
+                selectedCard.isSelected = true;
+                Debug.Log($"Selected {selectedCard.rank} to ask AI."); 
+            }
+            
         }
     }
 
