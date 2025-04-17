@@ -18,7 +18,7 @@ public class ResetEnvirement : MonoBehaviour
 
     private Coroutine changeTurnCoroutine;
 
-    private bool initReset = false; 
+    private bool initReset = false;
 
     void Start()
     {
@@ -34,7 +34,7 @@ public class ResetEnvirement : MonoBehaviour
             fishingController.endOfTurn += ChangeTurnScene; // Subscribe to the event, resets game and waits 3 seconds to change scene.
         }
 
-       
+
     }
 
     void Update()
@@ -64,17 +64,17 @@ public class ResetEnvirement : MonoBehaviour
             StopCoroutine(changeTurnCoroutine);
         }
 
-        if(!sceneManager.Final)
+        if (!sceneManager.Final)
         {
             changeTurnCoroutine = StartCoroutine(ChangeTurnSceneWithDelay());
         }
-        
+
 
         if (turn.isPlayerTurn && sceneManager.Final)
         {
             sceneManager.Playerdone = true;
         }
-                
+
         if (!turn.isPlayerTurn && sceneManager.Final)
         {
             sceneManager.Aidone = true;
@@ -86,10 +86,15 @@ public class ResetEnvirement : MonoBehaviour
         // Wait for 5 seconds
         yield return new WaitForSeconds(5f);
 
+        // first swap the turn
+        turn.SwapTurn();
+
         // Now execute the methods
         ResetGame();
         ChangeScene();
-        turn.SwapTurn();
+
+        turn.aiHand.AIRequestMatch();
+
     }
 
     public void ResetGame()

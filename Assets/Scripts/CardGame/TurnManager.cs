@@ -14,10 +14,13 @@ public class TurnManager : MonoBehaviour
     {
         SwapTurn();
     }
-
     public void SwapTurn()
     {
         isPlayerTurn = !isPlayerTurn; // Toggle turn
+
+        // Reset stats for the new turn
+        FindObjectOfType<StatManager>().ResetStats();
+
         if (isPlayerTurn)
         {
             Debug.Log("Player's Turn");
@@ -29,7 +32,7 @@ public class TurnManager : MonoBehaviour
             Debug.Log("AI's Turn");
             playerHand.isTurn = false;
             aiHand.isTurn = true;
-            aiHand.AIRequestMatch();
+            //aiHand.AIRequestMatch();
         }
     }
 }

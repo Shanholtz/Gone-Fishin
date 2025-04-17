@@ -38,12 +38,12 @@ public class SceneManager : MonoBehaviour
 
         if (GoFish)
         {
-            if(playerHand.hand.Count == 0 && deck.deck.Count != 0)
+            if (playerHand.hand.Count == 0 && deck.deck.Count != 0)
             {
                 playerHand.DrawHand();
             }
 
-            if(aiHand.hand.Count == 0 && deck.deck.Count != 0)//&& deck.deck.Count != 0)
+            if (aiHand.hand.Count == 0 && deck.deck.Count != 0)//&& deck.deck.Count != 0)
             {
                 aiHand.DrawHand();
             }
@@ -74,27 +74,27 @@ public class SceneManager : MonoBehaviour
         GoFish.SetActive(false);
         Fishing.SetActive(true);
 
-        if(!Playerdone && !Aidone && i <= 0)
+        if (!Playerdone && !Aidone && i <= 0)
         {
             Debug.Log("FinalFishing");
             i += 1;
         }
 
-        if(Playerdone && !Aidone && !isReset)
+        if (Playerdone && !Aidone && !isReset)
         {
             turn.isPlayerTurn = false;
             reset.ResetGame();
             isReset = true;
         }
 
-        if(!Playerdone && Aidone && !isReset)
+        if (!Playerdone && Aidone && !isReset)
         {
             turn.isPlayerTurn = true;
             reset.ResetGame();
-            isReset= true;
+            isReset = true;
         }
 
-        if(Playerdone && Aidone)
+        if (Playerdone && Aidone)
         {
             EndGame();
         }
