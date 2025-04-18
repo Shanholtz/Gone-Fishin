@@ -136,4 +136,21 @@ public class StatManager : MonoBehaviour
             }
         }
     }
+
+    public void ResetStats()
+    {
+        if (turn.isPlayerTurn)
+        {
+            playerLimit = 3f;
+            playerRadius = 2.5f;
+            playerTimer = 5f;
+        }
+        else
+        {
+            aiLimit = 3f;
+            aiRadius = 2.5f;
+            aiTimer = 5f;
+        }
+    }
 }
+
