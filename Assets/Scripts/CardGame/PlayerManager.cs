@@ -93,8 +93,8 @@ public class PlayerManager : HandManager
             red.text = "WHAAAAAAT!";
             selectedCard.isSelected = false;
             selectedCard = null;
-            AddCard();
 
+            //AddCard();
             StartCoroutine(sceneChange());
         }
 
@@ -103,7 +103,7 @@ public class PlayerManager : HandManager
 
     IEnumerator sceneChange()
     {
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(3f);
         sceneManager.ChangeScene();
     }
 
