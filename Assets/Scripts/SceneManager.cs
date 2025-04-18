@@ -32,7 +32,7 @@ public class SceneManager : MonoBehaviour
         GoFish.SetActive(!GoFish.activeSelf);
         Fishing.SetActive(!Fishing.activeSelf);
 
-        if (GoFish)
+        if (GoFish.activeSelf)
         {
             if(!turn.isPlayerTurn)
             {
