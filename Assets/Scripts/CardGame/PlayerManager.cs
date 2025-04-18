@@ -9,6 +9,8 @@ public class PlayerManager : HandManager
     public TurnManager turnManager;
     public AIManager aiHand;
     public TextMeshProUGUI PlayerPairs;
+    public TextMeshProUGUI red;
+    public TextMeshProUGUI blue;
     public SceneManager sceneManager;
     private Card selectedCard;
     protected override float yOffset => -4f; // Adjust based on screen size
@@ -73,7 +75,8 @@ public class PlayerManager : HandManager
 
         if (matchingCards.Count > 0)
         {
-            Debug.Log("Player found a match! Taking the cards.");
+            red.text = "That was easy!";
+            blue.text = "I'm sure it was...";
 
             foreach (Card card in matchingCards)
             {
@@ -86,7 +89,8 @@ public class PlayerManager : HandManager
         }
         else
         {
-            Debug.Log("No match found, Player draws a card.");
+            blue.text = "Go Fish, kid";
+            red.text = "WHAAAAAAT!";
             selectedCard.isSelected = false;
             selectedCard = null;
             AddCard();

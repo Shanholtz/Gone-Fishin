@@ -11,6 +11,8 @@ public class AIManager : HandManager
     public TurnManager turnManager;
     public PlayerManager playerHand;
     public TextMeshProUGUI AIPairs;
+    public TextMeshProUGUI red;
+    public TextMeshProUGUI blue;
     public SceneManager sceneManager;
     protected override float yOffset => 4f; // Adjust based on screen size
     public bool isTurn;
@@ -28,6 +30,11 @@ public class AIManager : HandManager
         }
     }
 
+    public IEnumerator stall()
+    {
+        yield return new WaitForSeconds (5f);
+    }
+
     public IEnumerator AIThinkAndRequest()
     {
         yield return new WaitForSeconds (5f);
@@ -42,7 +49,9 @@ public class AIManager : HandManager
 
         // AI randomly selects a card to request
         Card selectedCard = hand[Random.Range(0, hand.Count)];
-        Debug.Log($"AI is asking for {selectedCard.rank}");
+        blue.text=$"Got any... {selectedCard.rank}'s ?";
+
+        StartCoroutine(stall()); 
 
         List<Card> matchingCards = new List<Card>();
 
@@ -57,7 +66,8 @@ public class AIManager : HandManager
 
         if (matchingCards.Count > 0)
         {
-            Debug.Log("AI found a match! Taking the cards.");
+            red.text = "Awww man!";
+            blue.text = "Ahaha, I knew it!";
 
             foreach (Card card in matchingCards)
             {
@@ -72,7 +82,8 @@ public class AIManager : HandManager
         }
         else
         {
-            Debug.Log("No match found, AI draws a card.");
+            red.text = "GO FISH!";
+            blue.text = "Dag Nabbit!";
             AddCard();
 
             StartCoroutine(sceneChange());
@@ -97,7 +108,6 @@ public class AIManager : HandManager
         }
 
         PositionCards();
-        game.Match(hand);
     }
 
     public override void DrawHand()

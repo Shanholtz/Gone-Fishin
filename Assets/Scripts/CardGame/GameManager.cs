@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR;
 
 public class GameManager : MonoBehaviour
@@ -9,6 +11,8 @@ public class GameManager : MonoBehaviour
     public PlayerManager PlayerHand;
     public AIManager aiHand;
     public StatManager stats;
+    public TextMeshProUGUI red;
+    public TextMeshProUGUI blue;
     public float displayTime = 5f;
 
     public void Match(List<Card> hand)
@@ -75,8 +79,17 @@ public class GameManager : MonoBehaviour
                 {
                     if (!countedRanks.Contains(cardList[i].rank)) // Only count this rank once
                     {
-                        Debug.Log($"{(cardList == PlayerHand.hand ? "Player" : "AI")} has a Pair of: {cardList[i].rank}'s!");
-                        
+
+                        if (cardList == PlayerHand.hand)
+                        {
+                            red.text = red.text + $"\nI got a pair of {cardList[i].rank}'s!";
+                        }
+
+                        if (cardList == aiHand.hand)
+                        {
+                            blue.text = blue.text + $"\nI got a pair of {cardList[i].rank}'s!";
+                        }
+
                         cardsToRemove.Add(cardList[i]);
                         cardsToRemove.Add(cardList[j]);
 
