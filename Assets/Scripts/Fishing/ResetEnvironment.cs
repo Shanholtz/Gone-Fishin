@@ -86,15 +86,10 @@ public class ResetEnvirement : MonoBehaviour
         // Wait for 5 seconds
         yield return new WaitForSeconds(5f);
 
-        // first swap the turn
-        turn.SwapTurn();
-
         // Now execute the methods
         ResetGame();
         ChangeScene();
-
-        turn.aiHand.AIRequestMatch();
-
+        turn.SwapTurn();
     }
 
     public void ResetGame()
@@ -211,3 +206,4 @@ public class ResetEnvirement : MonoBehaviour
     }
 
 }
+
