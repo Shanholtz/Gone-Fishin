@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -77,8 +78,12 @@ public class Card : MonoBehaviour
     {
         if (!playerHand.isTurn) return; // Only allow selection during player's turn
 
-        isSelected = !isSelected;
-        transform.position = assignedPosition + hoverOffset;
-        playerHand.SelectCard(this);
+        if (isFaceUp)
+        {
+           isSelected = !isSelected;
+            transform.position = assignedPosition + hoverOffset;
+            playerHand.SelectCard(this); 
+        }
+        
     }
 }

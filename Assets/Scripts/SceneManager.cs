@@ -38,12 +38,21 @@ public class SceneManager : MonoBehaviour
 
         if (GoFish)
         {
+            if(!turn.isPlayerTurn)
+            {
+                aiHand.AddCard();
+            }
+            if(turn.isPlayerTurn)
+            {
+                playerHand.AddCard();
+            }
+
             if (playerHand.hand.Count == 0 && deck.deck.Count != 0)
             {
                 playerHand.DrawHand();
             }
 
-            if (aiHand.hand.Count == 0 && deck.deck.Count != 0)//&& deck.deck.Count != 0)
+            if (aiHand.hand.Count == 0 && deck.deck.Count != 0)
             {
                 aiHand.DrawHand();
             }

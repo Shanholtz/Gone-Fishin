@@ -39,14 +39,6 @@ public class AIManager : HandManager
     {
         yield return new WaitForSeconds (5f);
 
-        if (hand.Count == 0)
-        {
-            Debug.Log("AI has no cards to request with.");
-            AddCard();
-            turnManager.SwapTurn();
-            yield break;
-        }
-
         // AI randomly selects a card to request
         Card selectedCard = hand[Random.Range(0, hand.Count)];
         blue.text=$"Got any... {selectedCard.rank}'s ?";
@@ -84,8 +76,8 @@ public class AIManager : HandManager
         {
             red.text = "GO FISH!";
             blue.text = "Dag Nabbit!";
-            AddCard();
-
+            
+            //AddCard();
             StartCoroutine(sceneChange());
             
         }
@@ -93,7 +85,7 @@ public class AIManager : HandManager
 
     IEnumerator sceneChange()
     {
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(3f);
         sceneManager.ChangeScene();
     }
 
