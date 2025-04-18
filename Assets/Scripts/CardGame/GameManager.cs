@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     public AIManager aiHand;
     public StatManager stats;
     public float displayTime = 5f;
-    public bool Changeturn = true;
 
     public void Match(List<Card> hand)
     {
@@ -52,7 +51,15 @@ public class GameManager : MonoBehaviour
         PlayerHand.PositionCards();
         aiHand.PositionCards();
 
-        ChangeTurn();
+        if (PlayerHand.hand.Count == 0)
+        {
+            PlayerHand.DrawHand();
+        }
+
+        if (aiHand.hand.Count == 0)
+        {
+            aiHand.DrawHand();
+        }
     }
 
     private List<Card> GetMatchingPairs(List<Card> cardList)
@@ -82,10 +89,5 @@ public class GameManager : MonoBehaviour
             }
         }
         return new List<Card>(cardsToRemove);
-    }
-
-    private void ChangeTurn()
-    {
-        Changeturn = !Changeturn;
     }
 }
