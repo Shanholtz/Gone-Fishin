@@ -163,12 +163,12 @@ public class ResetEnvirement : MonoBehaviour
             if (turn.isPlayerTurn)
             {
                 fishSpawner.spawnTable = fishSpawner.playerSpawnTable;
-                fishSpawner.fishLimit = stats.playerLimit;
+                fishSpawner.fishLimit = stats.playerStats.limit;
             }
             else
             {
                 fishSpawner.spawnTable = fishSpawner.aiSpawnTable;
-                fishSpawner.fishLimit = stats.aiLimit;
+                fishSpawner.fishLimit = stats.aiStats.limit;
             }
 
             fishSpawner.ResetFish();
@@ -181,17 +181,17 @@ public class ResetEnvirement : MonoBehaviour
             {
                 Debug.Log("Player Stats Are RESET!!!");
                 // Reset player stats after their turn ends
-                stats.playerLimit = 3f;
-                stats.playerRadius = 2.5f;
-                stats.playerTimer = 5f;
+                stats.playerStats.limit = 3f;
+                stats.playerStats.radius = 2.5f;
+                stats.playerStats.timer = 5f;
             }
             else
             {
                 Debug.Log("AI Stats Are RESET!!!");
                 // Reset AI stats after their turn ends
-                stats.aiLimit = 3f;
-                stats.aiRadius = 2.5f;
-                stats.aiTimer = 5f;
+                stats.aiStats.limit = 3f;
+                stats.aiStats.radius = 2.5f;
+                stats.aiStats.timer = 5f;
             }
         }
     }

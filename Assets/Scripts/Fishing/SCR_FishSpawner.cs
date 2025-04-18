@@ -124,13 +124,13 @@ void Start()
 
         if (turn.isPlayerTurn)
         {
-            fishLimit = stats.playerLimit;
+            fishLimit = stats.playerStats.limit;
             spawnTable = playerSpawnTable;
 
         }
         if (!turn.isPlayerTurn)
         {
-            fishLimit = stats.aiLimit;
+            fishLimit = stats.aiStats.limit;
             spawnTable = aiSpawnTable;
 
         }
@@ -239,12 +239,12 @@ void Start()
         // Force update of the active spawn table and fish limit
         if (turn.isPlayerTurn)
         {
-            fishLimit = stats.playerLimit;
+            fishLimit = stats.playerStats.limit;
             spawnTable = playerSpawnTable;
         }
         else
         {
-            fishLimit = stats.aiLimit;
+            fishLimit = stats.aiStats.limit;
             spawnTable = aiSpawnTable;
         }
         // Resets rare fish count

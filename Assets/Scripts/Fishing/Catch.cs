@@ -128,11 +128,11 @@ public class Catch : MonoBehaviour
     {
         if (turn.isPlayerTurn)
         {
-            timerDuration = stats.playerTimer;
+            timerDuration = stats.playerStats.timer;
         }
         if (!turn.isPlayerTurn)
         {
-            timerDuration = stats.aiTimer;
+            timerDuration = stats.aiStats.timer;
         }
         yield return new WaitForSeconds(timerDuration); // wait for how many seconds
 

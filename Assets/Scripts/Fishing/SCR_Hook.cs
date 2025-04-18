@@ -12,20 +12,31 @@ public class SCR_Hook : MonoBehaviour
     public bool isFishHooked = false; // New flag to track if a fish is hooked
     public float attractionRadius;
 
+    public float AttractionRadius
+    {
+        get
+        {
+            float radius = stat.playerStats.radius;
+            if (!turn.isPlayerTurn)
+            {
+                radius = stat.aiStats.radius;
+            }
+
+            return radius;
+        }
+    }
+
     public void attraction()
     {
         if (turn.isPlayerTurn)
         {
-            attractionRadius = stat.playerRadius;
+            attractionRadius = stat.playerStats.radius;
         }
 
         if (!turn.isPlayerTurn)
         {
-            attractionRadius = stat.aiRadius;
+            attractionRadius = stat.aiStats.radius;
         }
     }
-
-    
-    
     
 }

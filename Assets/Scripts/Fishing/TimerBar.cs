@@ -49,11 +49,11 @@ public class TimerBar : MonoBehaviour
     {
         if(turn.isPlayerTurn)
         {
-            maxTime = stats.playerTimer;
+            maxTime = stats.playerStats.timer;
         }
         if(!turn.isPlayerTurn)
         {
-            maxTime = stats.aiTimer;
+            maxTime = stats.aiStats.timer;
         }
         // Safe to use after checking
         timeLeft = maxTime; // Reset the timer
