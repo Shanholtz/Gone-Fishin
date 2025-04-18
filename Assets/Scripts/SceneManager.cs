@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class SceneManager : MonoBehaviour
@@ -8,15 +7,11 @@ public class SceneManager : MonoBehaviour
 
     public GameObject GoFish;
     public GameObject Fishing;
-    public GameObject EndScreen;
     public HandManager playerHand;
-    public TextMeshProUGUI PlayerScore;
-    public TextMeshProUGUI AIScore;
     public AIManager aiHand;
     public DeckManager deck;
     public TurnManager turn;
     public ResetEnvirement reset;
-    public StatManager stats;
 
     public bool Final = false;
 
@@ -28,6 +23,7 @@ public class SceneManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GoFish.SetActive(true);
         Fishing.SetActive(false);
     }
 
@@ -111,9 +107,7 @@ public class SceneManager : MonoBehaviour
 
     private void EndGame()
     {
-        EndScreen.SetActive(true);
-        AIScore.text = "AI Score: \n" + stats.aiScore;
-        PlayerScore.text = "Player Score: \n" + stats.playerScore;
-        Fishing.SetActive(false);
+        Debug.Log("Game Over! Display results here.");
+        // Implement logic for displaying results or transitioning to a game-over scene
     }
 }
