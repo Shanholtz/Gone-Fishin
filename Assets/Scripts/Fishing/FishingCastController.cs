@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,9 @@ public class FishingCastController : MonoBehaviour
 {
     public TurnManager turn;
     public FishingAI ai;
+    public StatManager stats;
+    public TextMeshProUGUI red;
+    public TextMeshProUGUI blue;
 
     // Fishing line and hook references
     public GameObject fishingLinePrefab; // Prefab for the fishing line (LineRenderer)
@@ -160,16 +164,23 @@ public class FishingCastController : MonoBehaviour
         // Check if hook has returned close to rod
         if (Vector3.Distance(currentHook.transform.position, transform.position) <= 1)
         {
-            //Debug.Log("Fish caught");
             
             if (hookedFish != null)
             {
                 int points = hookedFish.scoreValue;
 
                 //Will have to implement a point system.
-                //playerScore += points;
+                if (turn.isPlayerTurn)
+                {
+                    stats.playerStats.score += points;
+                    
+                }
+                if (!turn.isPlayerTurn)
+                {
+                    stats.aiStats.score += points;
+                }
 
-                Debug.Log($"Caught fish worth {points} points!"); //Total score: {playerScore}");
+                red.text = $"That's worth {points} points!"; //Total score: {playerScore}");
 
                 hookedFish.RemoveFish();
 

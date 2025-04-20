@@ -14,6 +14,7 @@ public class AIManager : HandManager
     public TextMeshProUGUI red;
     public TextMeshProUGUI blue;
     public SceneManager sceneManager;
+
     protected override float yOffset => 4f; // Adjust based on screen size
     public bool isTurn;
 
@@ -59,7 +60,7 @@ public class AIManager : HandManager
         if (matchingCards.Count > 0)
         {
             red.text = "Awww man!";
-            blue.text = "Ahaha, I knew it!";
+            blue.text = blue.text + "\nAhaha, I knew it!";
 
             foreach (Card card in matchingCards)
             {
@@ -75,7 +76,7 @@ public class AIManager : HandManager
         else
         {
             red.text = "GO FISH!";
-            blue.text = "Dag Nabbit!";
+            blue.text = blue.text + "\nDag Nabbit!";
             
             //AddCard();
             StartCoroutine(sceneChange());
@@ -117,10 +118,5 @@ public class AIManager : HandManager
             PositionCards();
         }
         game.Match(hand);
-    }
-
-    void Update()
-    {
-        AIPairs.text = pairs.ToString();
     }
 }

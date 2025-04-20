@@ -393,9 +393,21 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6178385243159859380, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
+      propertyPath: red
+      value: 
+      objectReference: {fileID: 1791818968}
+    - target: {fileID: 6178385243159859380, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
+      propertyPath: blue
+      value: 
+      objectReference: {fileID: 423314599}
+    - target: {fileID: 6178385243159859380, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
       propertyPath: turn
       value: 
       objectReference: {fileID: 996657340385212809}
+    - target: {fileID: 6178385243159859380, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
+      propertyPath: stats
+      value: 
+      objectReference: {fileID: 834522597}
     - target: {fileID: 6217546342800428171, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
       propertyPath: stat
       value: 
@@ -573,20 +585,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be26b1f7b9b8f764bae453155088d539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  redScore: {fileID: 1520167139}
+  blueScore: {fileID: 1159765066}
   time: {fileID: 1687811629}
   spawner: {fileID: 1124227576}
   hookRadius: {fileID: 78139801}
   turn: {fileID: 996657340385212809}
-  playerLimit: 3
-  playerRadius: 2.5
-  playerTimer: 5
-  playerRareTier: 0
-  playerScore: 100
-  aiLimit: 3
-  aiRadius: 2.5
-  aiTimer: 5
-  aiRareTier: 0
-  aiScore: 300
+  playerStats:
+    limit: 3
+    radius: 2.5
+    timer: 5
+    rareTier: 0
+    score: 0
+  aiStats:
+    limit: 3
+    radius: 2.5
+    timer: 5
+    rareTier: 0
+    score: 0
 --- !u!4 &834522598
 Transform:
   m_ObjectHideFlags: 0
@@ -611,6 +627,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6885eab5d7929a24eb97e8974d672f30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1159765066 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5662059078139376840, guid: f9051ee1dc903974d98491d7d30ec430, type: 3}
+  m_PrefabInstance: {fileID: 6082650192971850500}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1168343049
@@ -644,15 +671,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GoFish: {fileID: 9175375946804871894}
   Fishing: {fileID: 1463229989}
-  EndScreen: {fileID: 1361171331}
   playerHand: {fileID: 6541280408713927766}
-  PlayerScore: {fileID: 1911031675}
-  AIScore: {fileID: 1569212410}
   aiHand: {fileID: 654815567726688226}
   deck: {fileID: 8960240776960741016}
   turn: {fileID: 996657340385212809}
   reset: {fileID: 1936044820}
-  stats: {fileID: 834522597}
   Final: 0
   Playerdone: 0
   Aidone: 0
@@ -852,16 +875,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1361171331 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4679973629728797036, guid: 6af50816565cd4e4384506601517e3c8, type: 3}
-  m_PrefabInstance: {fileID: 1804745394184875641}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1463229989 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 684260172802262654, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
   m_PrefabInstance: {fileID: 792567479}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1520167139 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1582910497379693839, guid: f9051ee1dc903974d98491d7d30ec430, type: 3}
+  m_PrefabInstance: {fileID: 6082650192971850500}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1546732258
 GameObject:
   m_ObjectHideFlags: 0
@@ -965,17 +994,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1569212410 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5755962725326370903, guid: 6af50816565cd4e4384506601517e3c8, type: 3}
-  m_PrefabInstance: {fileID: 1804745394184875641}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1606651667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1289,17 +1307,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5133007557483819166, guid: 984681594bb829e448fe7ef7dfbe66e0, type: 3}
   m_PrefabInstance: {fileID: 105165804}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1911031675 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8136575106253199857, guid: 6af50816565cd4e4384506601517e3c8, type: 3}
-  m_PrefabInstance: {fileID: 1804745394184875641}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1917719608 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7078094442664610788, guid: 6ef10196f6c9fd94c8dfb92c14b39f8e, type: 3}
@@ -1352,7 +1359,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4679973629728797036, guid: 6af50816565cd4e4384506601517e3c8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5755962725326370903, guid: 6af50816565cd4e4384506601517e3c8, type: 3}
       propertyPath: m_fontColor.b
@@ -1659,7 +1666,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7078094442664610788, guid: 6ef10196f6c9fd94c8dfb92c14b39f8e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8697151204051499741, guid: 6ef10196f6c9fd94c8dfb92c14b39f8e, type: 3}
       propertyPath: m_LocalPosition.z

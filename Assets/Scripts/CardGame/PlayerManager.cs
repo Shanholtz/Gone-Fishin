@@ -111,9 +111,4 @@ public class PlayerManager : HandManager
     {
         base.AddCard();
     }
-
-    void Update()
-    {
-        PlayerPairs.text = pairs.ToString();
-    }
 }

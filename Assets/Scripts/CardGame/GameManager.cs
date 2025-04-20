@@ -93,8 +93,8 @@ public class GameManager : MonoBehaviour
                         cardsToRemove.Add(cardList[i]);
                         cardsToRemove.Add(cardList[j]);
 
-                        if (cardList == PlayerHand.hand) PlayerHand.pairs++;
-                        if (cardList == aiHand.hand) aiHand.pairs++;
+                        if (cardList == PlayerHand.hand) stats.playerStats.score += 10;
+                        if (cardList == aiHand.hand) stats.aiStats.score += 10;
 
                         countedRanks.Add(cardList[i].rank); // Mark this rank as counted
                     }

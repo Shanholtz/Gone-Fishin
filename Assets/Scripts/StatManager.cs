@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 [Serializable]
@@ -11,10 +12,13 @@ public class Stats
     public float radius = 2.5f;
     public float timer = 5f;
     public float rareTier;
+    public int score = 0;
 }
 
 public class StatManager : MonoBehaviour
 {
+    public TextMeshProUGUI redScore;
+    public TextMeshProUGUI blueScore;
     public Catch time;
     public SCR_FishSpawner spawner;
     public SCR_Hook hookRadius;
@@ -24,6 +28,12 @@ public class StatManager : MonoBehaviour
     // stats
     public Stats playerStats;
     public Stats aiStats;
+
+    void Update()
+    {
+        redScore.text = $"{playerStats.score}";
+        blueScore.text = $"{aiStats.score}";
+    }
 
     public void ChangeStat(string suit, float rank, string player)
     {
