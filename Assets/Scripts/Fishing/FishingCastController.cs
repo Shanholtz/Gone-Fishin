@@ -18,7 +18,7 @@ public class FishingCastController : MonoBehaviour
     public GameObject hook; // Hook object
 
     // Fishing mechanics
-    public float reelSpeed = 0.5f;
+    public float reelSpeed = 5f;
     public Slider powerBar; // Power meter for casting strength
 
     public enum FishingStates // Fishing states

@@ -258,11 +258,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7106207403744656496, guid: 984681594bb829e448fe7ef7dfbe66e0, type: 3}
   m_PrefabInstance: {fileID: 105165804}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &138324404 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4838032333390590884, guid: f9051ee1dc903974d98491d7d30ec430, type: 3}
-  m_PrefabInstance: {fileID: 6082650192971850500}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &383936216 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2177849204176681150, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
@@ -413,6 +408,10 @@ PrefabInstance:
       propertyPath: stats
       value: 
       objectReference: {fileID: 834522597}
+    - target: {fileID: 6178385243159859380, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
+      propertyPath: reelSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6217546342800428171, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
       propertyPath: stat
       value: 
@@ -1328,6 +1327,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6d089fe6a0612f499d71e9b7140abd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2076605981 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4838032333390590884, guid: f9051ee1dc903974d98491d7d30ec430, type: 3}
+  m_PrefabInstance: {fileID: 6082650192971850500}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &654815567726688226 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 654815568045170028, guid: f9051ee1dc903974d98491d7d30ec430, type: 3}
@@ -1710,7 +1714,7 @@ PrefabInstance:
     - target: {fileID: 996657340737835783, guid: f9051ee1dc903974d98491d7d30ec430, type: 3}
       propertyPath: request
       value: 
-      objectReference: {fileID: 138324404}
+      objectReference: {fileID: 2076605981}
     - target: {fileID: 3586412894323875519, guid: f9051ee1dc903974d98491d7d30ec430, type: 3}
       propertyPath: m_LocalPosition.x
       value: 402.9767
