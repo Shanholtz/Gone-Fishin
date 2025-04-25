@@ -101,6 +101,7 @@ public class AIManager : HandManager
         }
 
         PositionCards();
+        game.Match(hand);
     }
 
     public override void DrawHand()

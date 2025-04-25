@@ -68,10 +68,6 @@ public class FishingCastController : MonoBehaviour
     void Update()
     {
         //// Casting the fishing line
-        //if (Input.GetMouseButtonUp(0) && _fishingStates == FishingStates.Idle)
-        //{
-        //    CastLine();
-        //}
 
         // Handle reeling
         if (_fishingStates == FishingStates.Reeling)
@@ -181,6 +177,31 @@ public class FishingCastController : MonoBehaviour
                 }
 
                 red.text = $"That's worth {points} points!"; //Total score: {playerScore}");
+
+                if (points == 1)
+                {
+                    blue.text = "You caught a Canned Fish.";
+                }
+                if (points == 3)
+                {
+                    blue.text = "You caught a Bass.";
+                }
+                if (points == 5)
+                {
+                    blue.text = "You caught a Shark.";
+                }
+                if (points == 7)
+                {
+                    blue.text = "You caught an Angel Fish!";
+                }
+                if (points == 10)
+                {
+                    blue.text = "You caught a Goldie!";
+                }
+                if (points == 20)
+                {
+                    blue.text = "You caught Fish Sticks!";
+                }
 
                 hookedFish.RemoveFish();
 
