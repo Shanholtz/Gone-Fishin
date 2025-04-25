@@ -18,7 +18,7 @@ public class FishingCastController : MonoBehaviour
     public GameObject hook; // Hook object
 
     // Fishing mechanics
-    public float reelSpeed = 0.5f;
+    public float reelSpeed = 5f;
     public Slider powerBar; // Power meter for casting strength
 
     public enum FishingStates // Fishing states
@@ -43,6 +43,8 @@ public class FishingCastController : MonoBehaviour
     public GameObject currentHook; // Instantiated hook object
     public LineRenderer lineRenderer; // Line renderer component
     private float power; // Casting power
+
+    public GameObject hookSprite;
 
     private SCR_FishSpawner fishSpawner; // Reference to the Fish Spawner
 
@@ -114,6 +116,8 @@ public class FishingCastController : MonoBehaviour
         currentHook = Instantiate(hook, endPos, Quaternion.identity);
         currentHook.transform.position = endPos;
         hookLogic = currentHook.GetComponent<SCR_Hook>();
+
+        hookSprite.SetActive(false);
 
         // Notify fish about hook being cast
         OnHookCast?.Invoke(hookLogic);
@@ -206,8 +210,11 @@ public class FishingCastController : MonoBehaviour
                 hookedFish.RemoveFish();
 
                 endOfTurn?.Invoke(); // calls to end turn, switching turn and scene.
+
+                hookSprite.SetActive(true);
+
             }
-            
+
         }
     }
 
@@ -245,6 +252,7 @@ public class FishingCastController : MonoBehaviour
             {
                 Destroy(currentLine);
             }
+            hookSprite.SetActive(true);
             _fishingStates = FishingStates.Idle; // Reset the fishing state
         }
     }
