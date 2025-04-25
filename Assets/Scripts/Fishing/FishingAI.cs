@@ -66,14 +66,14 @@ public class FishingAI : MonoBehaviour
         // Decide whether to choose the correct letter or a wrong one
         float chance = UnityEngine.Random.value;
 
-        if (chance <= 0.6f)
+        if (chance <= 0.8f)
         {
-            // 60% chance to pick the correct final input
+            // 80% chance to pick the correct final input
             chosenChar = correctLastChar;
         }
         else
         {
-            // 40% chance to pick a wrong input
+            // 20% chance to pick a wrong input
             List<char> wrongOptions = new List<char>(possibleInputs);
             wrongOptions.Remove(correctLastChar);
             chosenChar = wrongOptions[UnityEngine.Random.Range(0, wrongOptions.Count)];
