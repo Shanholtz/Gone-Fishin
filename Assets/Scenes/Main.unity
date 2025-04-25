@@ -258,6 +258,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7106207403744656496, guid: 984681594bb829e448fe7ef7dfbe66e0, type: 3}
   m_PrefabInstance: {fileID: 105165804}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &138324404 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4838032333390590884, guid: f9051ee1dc903974d98491d7d30ec430, type: 3}
+  m_PrefabInstance: {fileID: 6082650192971850500}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &383936216 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2177849204176681150, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
@@ -1702,6 +1707,10 @@ PrefabInstance:
       propertyPath: sceneManager
       value: 
       objectReference: {fileID: 1168343050}
+    - target: {fileID: 996657340737835783, guid: f9051ee1dc903974d98491d7d30ec430, type: 3}
+      propertyPath: request
+      value: 
+      objectReference: {fileID: 138324404}
     - target: {fileID: 3586412894323875519, guid: f9051ee1dc903974d98491d7d30ec430, type: 3}
       propertyPath: m_LocalPosition.x
       value: 402.9767
