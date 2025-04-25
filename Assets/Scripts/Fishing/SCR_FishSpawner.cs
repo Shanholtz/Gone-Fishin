@@ -75,8 +75,13 @@ void Start()
     {
         tier1SpawnTable = new List<FishSpawnChance>
         {
-            new FishSpawnChance { spriteIndex = 1, chance = 50f }, // Bass
-            new FishSpawnChance { spriteIndex = 2, chance = 50f }  // Can
+            new FishSpawnChance { spriteIndex = 1, chance = 35f }, // Bass
+            new FishSpawnChance { spriteIndex = 2, chance = 20f },  // Can
+            new FishSpawnChance { spriteIndex = 3, chance = 20f },  // Shark
+            new FishSpawnChance { spriteIndex = 4, chance = 15f }, // Angel
+            new FishSpawnChance { spriteIndex = 0, chance = 7.5f },  // Golden
+            new FishSpawnChance { spriteIndex = 5, chance = 2.5f }  // Fish Sticks
+
         };
 
         tier2SpawnTable = new List<FishSpawnChance>
