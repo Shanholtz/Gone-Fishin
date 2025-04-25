@@ -13,7 +13,7 @@ public class DeckManager : MonoBehaviour
     public SceneManager scene;
 
     private string[] Testsuits = { "Hook", "Rod"};
-    private int[] Testranks = { 1, 2, 3, 4, 5};
+    private int[] Testranks = { 1, 2, 3, 4, 5, 6};
 
     private string[] suits = { "Hook", "Rod", "String", "Bait" };
     private int[] ranks = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13  };

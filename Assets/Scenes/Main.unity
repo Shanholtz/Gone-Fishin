@@ -863,6 +863,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &917504795 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5755962725326370903, guid: 6af50816565cd4e4384506601517e3c8, type: 3}
+  m_PrefabInstance: {fileID: 1804745394184875641}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &976422624
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,6 +1199,10 @@ MonoBehaviour:
   deck: {fileID: 8960240776960741016}
   turn: {fileID: 996657340385212809}
   reset: {fileID: 1936044820}
+  end: {fileID: 1390257355}
+  stats: {fileID: 834522597}
+  PlayerScore: {fileID: 1666063449}
+  AIScore: {fileID: 917504795}
   Final: 0
   Playerdone: 0
   Aidone: 0
@@ -1586,6 +1601,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1346107621}
   m_CullTransparentMesh: 1
+--- !u!1 &1390257355 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4679973629728797036, guid: 6af50816565cd4e4384506601517e3c8, type: 3}
+  m_PrefabInstance: {fileID: 1804745394184875641}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1463229989 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 684260172802262654, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}
@@ -2048,6 +2068,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1618859763}
   m_CullTransparentMesh: 1
+--- !u!114 &1666063449 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8136575106253199857, guid: 6af50816565cd4e4384506601517e3c8, type: 3}
+  m_PrefabInstance: {fileID: 1804745394184875641}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1687811629 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7961677693773598796, guid: 2e51f1d14de19474f9a55afc7fa9249d, type: 3}

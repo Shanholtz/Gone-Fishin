@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SceneManager : MonoBehaviour
 {
@@ -12,6 +14,11 @@ public class SceneManager : MonoBehaviour
     public DeckManager deck;
     public TurnManager turn;
     public ResetEnvirement reset;
+    public GameObject end;
+    public StatManager stats;
+    public TextMeshProUGUI PlayerScore;
+    public TextMeshProUGUI AIScore;
+
 
     public bool Final = false;
 
@@ -107,7 +114,9 @@ public class SceneManager : MonoBehaviour
 
     private void EndGame()
     {
-        Debug.Log("Game Over! Display results here.");
-        // Implement logic for displaying results or transitioning to a game-over scene
+        Fishing.SetActive(false);
+        end.SetActive(true);
+        PlayerScore.text = $"Player Score:\n{stats.playerStats.score}";
+        AIScore.text = $"AI Score:\n{stats.aiStats.score}";
     }
 }
