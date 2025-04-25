@@ -45,15 +45,16 @@ public class ResetEnvirement : MonoBehaviour
             initReset = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ResetGame();
-        }
+        // This is only for fish testing.
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    ResetGame();
+        //}
 
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            ChangeScene();
-        }
+        //if (Input.GetKeyDown(KeyCode.C))
+        //{
+        //    ChangeScene();
+        //}
     }
 
     void ChangeTurnScene()
